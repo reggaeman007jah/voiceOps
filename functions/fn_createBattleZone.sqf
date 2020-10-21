@@ -17,4 +17,4 @@ _battleZoneMarker setMarkerColor "ColorRed";
 _battleZoneMarker setMarkerSize [1000, 1000];
 _battleZoneMarker setMarkerAlpha 0.5;
 
-call RGG_fnc_createAmbientConflict [_battleZone];
+[_battleZone] call RGG_fnc_determineAmbientConflict;

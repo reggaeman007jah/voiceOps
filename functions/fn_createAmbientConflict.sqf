@@ -36,6 +36,7 @@
 	2 = 3-4 burning vics 
 */
 
+/*
 private ["_threatLevel, _ambush, _defAtt, _blufor, _opfor, _effects"];
 
 _threatLevel = param[0];
@@ -44,5 +45,6 @@ _defAtt = param[2];
 _blufor = param[3];
 _opfor = param[4];
 _effects = param[5];
+*/
 
 // create mayhem 

@@ -53,7 +53,7 @@ _location = param[0];
 */
 
 // output of this function contains elements that make up the actual bz 
+call RGG_fnc_createAmbientConflict;
 
-call fn_createAmbientConflict
 
 
