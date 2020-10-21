@@ -20,6 +20,11 @@ respawnButton = 1;
 enableDebugConsole = 2;
 allowFunctionsLog = 0;
 
+class cfgFunctions {
+	#include "functions\functions.hpp"
+}
+
+
 // briefingName = $STR_MISSION_TITLE;
 overviewText = "VOICE OPS";
 // overviewPicture = "killchain.jpg";

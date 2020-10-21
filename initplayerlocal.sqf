@@ -1,5 +1,17 @@
+_unit = _this select 0;
+_isJIP = _this select 1;
 
-sleep 1;
+if (!_isJIP) then {
+	[_unit] call RGG_fnc_removeWeapons;
+};
+
+if (_isJIP) then {
+	[_unit] call RGG_fnc_removeWeapons;
+};
+
+
+
+// sleep 1;
 
 // test of new voiceMarkerSystem 
 // execVM "voiceMarkerSystem\1_vmsInit.sqf";
