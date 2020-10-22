@@ -29,3 +29,5 @@ heading xxx
 grid ref xxxx xxxx
 area is hot
 pick up on green smoke
+
+We need to enable both totally random skirmishes as well as more defined missions
