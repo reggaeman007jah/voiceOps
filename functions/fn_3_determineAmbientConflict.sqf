@@ -84,7 +84,7 @@ _burningVics = selectRandom [0,1,2,3,4];
 
 [_bluforFob, _opforFob, _initialOpforInfiPresence, _initialopforVicPresence] call RGG_fnc_4b_spawnOpforUnits;
 
-[_battleZone, _burningVics] call RGG_fnc_4c_createAmbientEffects;
+[_battleZone, _burningVics] call RGG_fnc_4c_spawnAmbientEffects;
 
 
 

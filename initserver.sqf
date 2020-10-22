@@ -20,7 +20,7 @@
 // initialise para spawner script 
 // execVM "autoPatrolSystem\pickupSystems\spawnParas.sqf";
 
-call RGG_fnc_createBattleZone;
+call RGG_fnc_2_createBattleZone;
 
 while {true} do {
 	{ deleteVehicle _x } forEach allDead;

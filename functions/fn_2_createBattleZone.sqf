@@ -30,7 +30,8 @@ _r360 = random 360;
 _random360 = _battleZone getPos [750, _r360]; // generate point 750m away 
 _bluforPos = [_random360, 1, 100, 3, 0, 0, 0] call BIS_fnc_findSafePos; // generate patrol obj between 1m and 100m away, and always over land
 
-_o360 = (_random360 + 180) % 360;
+// _o360 = (_random360 + 180) % 360;
+_o360 = 090;
 _opp360 = _battleZone getPos [750, _o360]; // generate point 750m away 
 _opforPos = [_opp360, 1, 100, 3, 0, 0, 0] call BIS_fnc_findSafePos; // generate patrol obj between 1m and 100m away, and always over land 
 
@@ -72,4 +73,4 @@ select opposite degreee - assign to opfor
 
 
 // next stage...
-[_battleZone, _bluforPos, _opforPos] call RGG_fnc_determineAmbientConflict;
+[_battleZone, _bluforPos, _opforPos] call RGG_fnc_3_determineAmbientConflict;

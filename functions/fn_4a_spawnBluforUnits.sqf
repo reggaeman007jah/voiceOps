@@ -2,8 +2,8 @@
 
 private ["_bluforFob", "_opforFob", "_initialBluforInfiPresence", "_initialBluforVicPresence"];
 
-_bluforFob = param[1]; // blufor spawn 
-_opforFob = param[2]; //opfor spawn 
+_bluforFob = param[0]; // blufor spawn 
+_opforFob = param[1]; //opfor spawn 
 _initialBluforInfiPresence = param[3]; 
 _initialBluforVicPresence = param[4];
 
@@ -42,9 +42,9 @@ for "_i" from 1 to _numberOfCycles do {
 	// move orders 
 	_randomDir = selectRandom [270, 310, 00, 50, 90];
 	_randomDist = selectRandom [20, 22, 24, 26, 28, 30];
-	_unitDest = [RGG_patrol_obj, 5, 20] call BIS_fnc_findSafePos;
+	_unitDest = [_opforFob, 5, 20] call BIS_fnc_findSafePos;
 	_endPoint1 = _unitDest getPos [_randomDist,_randomDir];
 	_fireTeam doMove _endPoint1;
 	
-	spawnedIndiUnit = spawnedIndiUnit +5;
+	// spawnedIndiUnit = spawnedIndiUnit +5;
 };
