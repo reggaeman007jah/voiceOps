@@ -20,6 +20,9 @@ class RGG {
 		class 4c_spawnAmbientEffects {
 			Description = "This will generate a range of ambient fun";
 		};
+		class 5_spawnAmbientBuildings {
+			Description = "This will generate blu/opfor spawn tents and other small structures";
+		};
 	};
 };
 
