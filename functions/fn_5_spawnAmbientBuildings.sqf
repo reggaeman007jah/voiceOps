@@ -53,7 +53,7 @@ for "_i" from 1 to 2 do {
 	// _spawnPos = _randomCampLocation getPos [_random25, _randomDir];
 	_campItem2 = createVehicle [_campItem, _spawnPos];
 	_campItem2 setDir _randomDir;
-	campItems pushback _campItem2;
+	_campItems pushback _campItem2;
 };
 
 // crates 
@@ -76,6 +76,6 @@ for "_i" from 1 to _random5 do {
 	// _spawnPos = _randomCampLocation getPos [_random25, _randomDir];
 	_campItem2 = createVehicle [_campItem, _spawnPos];
 	_campItem2 setDir _randomDir;
-	campItems pushback _campItem2;
+	_campItems pushback _campItem2;
 };
 

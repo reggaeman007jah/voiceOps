@@ -2,6 +2,8 @@
 This function spawns opfor in the battlezone
 */
 
+
+
 // ** imports 
 private ["_bluforFob", "_opforFob", "_initialOpforInfiPresence", "_initialopforVicPresence"];
 _bluforFob = param[0]; // blufor FOB pos / spawn
@@ -11,6 +13,8 @@ _initialopforVicPresence = param[3]; // size of opfor vic force
 // ** imports 
 
 _opforGrp = createGroup east;
+
+_initialOpforInfiPresence = _initialOpforInfiPresence * 10; // this adds a multiplier to the parsed value 
 
 for "_i" from 1 to _initialOpforInfiPresence do {
 	_rndtype = selectRandom [

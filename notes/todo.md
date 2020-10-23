@@ -32,49 +32,44 @@ pick up on green smoke
 
 We need to enable both totally random skirmishes as well as more defined missions
 
+/\*
+we should determine what is happening on ground
+is it peaceful?
+peaceful until we show up?
+infi conflict?
+vehicles?
+Tanks?
+smoke?
+burning vics?
+defending or attacking?
 
+    ambush on approach
+    0 = zero chance
+    1 = yes small arms
+    2 = yes, AA
 
-/*
-	we should determine what is happening on ground 
-	is it peaceful?
-	peaceful until we show up?
-	infi conflict?
-	vehicles?
-	Tanks?
-	smoke?
-	burning vics?
-	defending or attacking?
+    defend / attack
+    0 = blufor based in center
+    1 = opfor based in center
 
+    type of blufor
+    0 = infi small
+    1 = infi medium
+    2 = infi large
+    3 = infi + vics small
+    4 = infi + vics med
+    5 = infi + vics large
 
+    type of opfor
+    0 = infi small
+    1 = infi medium
+    2 = infi large
+    3 = infi + vics small
+    4 = infi + vics med
+    5 = infi + vics large
 
-	ambush on approach
-	0 = zero chance 
-	1 = yes small arms 
-	2 = yes, AA 
-
-	defend / attack
-	0 = blufor based in center
-	1 = opfor based in center 
-
-	type of blufor 
-	0 = infi small 
-	1 = infi medium 
-	2 = infi large 
-	3 = infi + vics small 
-	4 = infi + vics med 
-	5 = infi + vics large 
-
-	type of opfor 
-	0 = infi small 
-	1 = infi medium 
-	2 = infi large 
-	3 = infi + vics small 
-	4 = infi + vics med 
-	5 = infi + vics large 
-
-*/
-
+\*/
 
 // old, maybe useful
-// _rndOp1 = selectRandom [0, 3, 4, 5, 6];
+// \_rndOp1 = selectRandom [0, 3, 4, 5, 6];
 // systemchat format ["1st wave: %1", _rndOp1];
