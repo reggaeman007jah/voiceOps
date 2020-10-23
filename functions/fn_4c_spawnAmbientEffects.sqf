@@ -1,8 +1,11 @@
-// just for efefcts
+/*
+This function manages all ambient effects in the battlezone, such as burning wrecks and helis/planes flying overhead
+*/
 
-[_battleZone, _burningVics];
-
+// ** imports 
 private ["_battleZone", "_burningVics"];
+_battleZone = param[0]; // main battlezone pos
+_burningVics = param[1]; // number of vics to burn
+// ** imports 
 
-_battleZone = param[0]; // main hub
-_burningVics = param[1];
+// to do: spawn vics, then reduce damage so they burn 

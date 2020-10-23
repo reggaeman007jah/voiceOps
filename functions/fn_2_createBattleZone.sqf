@@ -8,6 +8,10 @@ If a side unit gets to be within 10m of the enemy spawn point, then the losing s
 Units are spawned every 5 mins 
 */
 
+// ** imports 
+// none 
+// ** imports 
+
 // register main base as a blue marker
 _baseLocation = [6470,3839.96];
 _base = createMarker ["permaBase", _baseLocation];
@@ -47,14 +51,15 @@ _opforPosMarker setMarkerColor "ColorRed";
 _opforPosMarker setMarkerSize [50, 50];
 _opforPosMarker setMarkerAlpha 0.7;
 
+// ** exports 
+[_battleZone, _bluforPos, _opforPos] call RGG_fnc_3_determineAmbientConflict;
+// ** exports 
+
+
 // the above works like this:
 // create random 360, and opposite number from 360 (in degrees)
 // then using battlezone anchor point, find a point 750m away, both for 360 and opp360 
 // then using find safezone for each, select a suitable location within 100m of each point.
-
-
-
-
 
 // distance can vary potentially, with shorter distances meaning more intense fighting 
 // spawn frequency will also affect this 
@@ -72,5 +77,3 @@ select opposite degreee - assign to opfor
 
 
 
-// next stage...
-[_battleZone, _bluforPos, _opforPos] call RGG_fnc_3_determineAmbientConflict;

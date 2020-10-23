@@ -1,15 +1,14 @@
-// manages opfor spawning 
-// initial enemy infi presence / _initialOpforInfiPresence
-// 1 = a few / 1 - 10
-// 2 = quite a lot / 11 - 20
-// 3 = loads of dem / 21 - 30
+/*
+This function spawns opfor in the battlezone
+*/
 
+// ** imports 
 private ["_bluforFob", "_opforFob", "_initialOpforInfiPresence", "_initialopforVicPresence"];
-
-_bluforFob = param[0]; //opfor spawn 
-_opforFob = param[1]; //opfor spawn 
-_initialOpforInfiPresence = param[2];
-_initialopforVicPresence = param[3];
+_bluforFob = param[0]; // blufor FOB pos / spawn
+_opforFob = param[1]; // opfor FOB pos / spawn
+_initialOpforInfiPresence = param[2]; // size of opfor infi force
+_initialopforVicPresence = param[3]; // size of opfor vic force
+// ** imports 
 
 _opforGrp = createGroup east;
 
@@ -40,6 +39,3 @@ for "_i" from 1 to _initialOpforInfiPresence do {
 	sleep 0.5;						
 };
 
-// old, maybe useful
-// _rndOp1 = selectRandom [0, 3, 4, 5, 6];
-// systemchat format ["1st wave: %1", _rndOp1];
