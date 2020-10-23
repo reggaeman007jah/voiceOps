@@ -25,6 +25,7 @@ Issues:
 .. current bug - unable to generate opposite rand360 position!
 var angle = 210;
 var oppositeAngle = (angle + 180) % 360;
+
 */
 
 // register main base as a blue marker
@@ -44,11 +45,17 @@ _battleZoneMarker setMarkerAlpha 0.5;
 
 // generate 2 spawn locations 1km from centre
 _r360 = random 360;
-_random360 = _battleZone getPos [750, _r360]; // generate point 750m away 
-_bluforPos = [_random360, 1, 100, 3, 0, 0, 0] call BIS_fnc_findSafePos; // generate patrol obj between 1m and 100m away, and always over land
+_random360 = _battleZone getPos [750, _r360]; // generate point 750m away in random direction
+_bluforPos = [_random360, 1, 100, 3, 0, 0, 0] call BIS_fnc_findSafePos; // generate blufor FOB pos (respawn) 1m and 100m away, and always over land
 
 // _o360 = (_random360 + 180) % 360;
-_o360 = 090;
+// _o360 = 090;
+private _o360 = "_o360";
+if ((_r360 >=0) && (_r360 <179)) then {
+	_o360 = _r360 + 180;
+} else {
+	_o360 = _r360 - 180;
+};
 _opp360 = _battleZone getPos [750, _o360]; // generate point 750m away 
 _opforPos = [_opp360, 1, 100, 3, 0, 0, 0] call BIS_fnc_findSafePos; // generate patrol obj between 1m and 100m away, and always over land 
 
