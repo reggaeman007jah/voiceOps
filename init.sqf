@@ -30,3 +30,10 @@ If !(isServer) exitwith {};
 // http://www.armaholic.com/forums.php?m=posts&q=33056
 // source: Pierre MGI 
 // sleep 10;
+
+// // test
+// 						position isFlatEmpty [minDistance, mode, maxGradient, maxGradientRadius, overLandOrWater, shoreLine, ignoreObject]
+// _isFlatEmpty = !(position player isFlatEmpty  [15, -1, 0.1, 15, -1, false, player] isEqualTo []);
+
+// Find position minimum 1m from from player but not further than 150m, not closer than 3m to any other object, not in the water, maximum gradient of 20, not on the shoreline:
+// _pos = [player, 1, 150, 30, 0, 20, 0] call BIS_fnc_findSafePos;

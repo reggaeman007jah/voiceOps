@@ -46,7 +46,7 @@ _battleZoneMarker setMarkerAlpha 0.5;
 // generate 2 spawn locations 1km from centre
 _r360 = random 360;
 _random360 = _battleZone getPos [750, _r360]; // generate point 750m away in random direction
-_bluforPos = [_random360, 1, 100, 3, 0, 0, 0] call BIS_fnc_findSafePos; // generate blufor FOB pos (respawn) 1m and 100m away, and always over land
+_bluforPos = [_random360, 1, 500, 20, 0, 0, 0] call BIS_fnc_findSafePos; // generate blufor FOB pos (respawn) 1m and 100m away, and always over land
 
 // _o360 = (_random360 + 180) % 360;
 // _o360 = 090;
@@ -57,7 +57,7 @@ if ((_r360 >=0) && (_r360 <179)) then {
 	_o360 = _r360 - 180;
 };
 _opp360 = _battleZone getPos [750, _o360]; // generate point 750m away 
-_opforPos = [_opp360, 1, 100, 3, 0, 0, 0] call BIS_fnc_findSafePos; // generate patrol obj between 1m and 100m away, and always over land 
+_opforPos = [_opp360, 1, 100, 3, 0, 0, 0] call BIS_fnc_findSafePos; // generate pos between 1m and 100m away, and always over land 
 
 _bluforPosMarker = createMarker ["_bloforPos", _bluforPos];
 _bluforPosMarker setMarkerShape "ELLIPSE";
@@ -71,9 +71,25 @@ _opforPosMarker setMarkerColor "ColorRed";
 _opforPosMarker setMarkerSize [50, 50];
 _opforPosMarker setMarkerAlpha 0.7;
 
+systemChat "fn2 exports:";
+systemChat str _battleZone;
+
 // ** exports 
 [_battleZone, _bluforPos, _opforPos] call RGG_fnc_3_determineAmbientConflict;
 // ** exports 
+
+
+// while {TRUE} do {
+	
+// 	_pos = [_battleZone, 1, 500, 30, 0, 20, 0] call BIS_fnc_findSafePos;
+// 	deleteMarker "_testPos";
+// 	_testPosMarker = createMarker ["_testPos", _pos];
+// 	_testPosMarker setMarkerShape "ELLIPSE";
+// 	_testPosMarker setMarkerColor "ColorGreen";
+// 	_testPosMarker setMarkerSize [50, 50];
+// 	sleep 10;
+// 	systemChat "testmarker done";
+// };
 
 
 // the above works like this:

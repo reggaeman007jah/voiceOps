@@ -9,14 +9,26 @@ _opforFob = param[1]; // opfor FOB pos / spawn
 // ** imports 
 
 // build blufor base
+// _wall1 = Land_HBarrierWall6_F
+
+
 _buildLocation = _bluforFob findEmptyPosition [1,50,"B_Heli_Light_01_dynamicLoadout_F"];
 _baseBuilding1 = createVehicle ["Land_MedicalTent_01_tropic_closed_F", _buildLocation, [], 30, "none"]; 
+
+_heliPadPos = _baseBuilding1 getPos [20,90]; 
+_heliPad = createVehicle ["Land_HelipadCircle_F", _heliPadPos];
+
 _fobPos = _baseBuilding1 getPos [20,180];
 sleep 0.6;
 _ammoSup = createVehicle ["Box_NATO_Support_F", _fobPos];//ammmo 
 [ "AmmoboxInit", [_ammoSup, true, {true}] ] call BIS_fnc_arsenal;
 _repairPos = _fobPos findEmptyPosition [10,100,"B_Heli_Light_01_dynamicLoadout_F"];
 _ammoSup = createVehicle ["B_Slingload_01_Repair_F", _repairPos];//vehicle repair 
+
+// for "_i" from 1 to 5 do {
+	
+// };
+
 
 // build opfor base 
 _campItems = []; // to hold all camp items if we need to track them for deletion (although consider full destroy command for this also)

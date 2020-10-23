@@ -3,11 +3,12 @@ This function spawns blufor in the battlezone
 */  
 
 // ** imports 
-private ["_bluforFob", "_opforFob", "_initialBluforInfiPresence", "_initialBluforVicPresence"];
+private ["_bluforFob", "_opforFob", "_initialBluforInfiPresence", "_initialBluforVicPresence", "_battleZone"];
 _bluforFob = param[0]; // blufor FOB pos / spawn 
 _opforFob = param[1]; //opfor FOB pos / spawn 
-_initialBluforInfiPresence = param[3]; // size of blufor infi force
-_initialBluforVicPresence = param[4]; // size of blufor vic force
+_initialBluforInfiPresence = param[2]; // size of blufor infi force
+_initialBluforVicPresence = param[3]; // size of blufor vic force
+_battleZone = param[4];
 // ** imports 
 
 _spawnPos = _this select 0; // position parsed to this script on execution // IS THIS NEEDED?
@@ -41,11 +42,12 @@ for "_i" from 1 to _numberOfCycles do {
 	sleep _timer;
 
 	// move orders 
-	_randomDir = selectRandom [270, 310, 00, 50, 90];
-	_randomDist = selectRandom [20, 22, 24, 26, 28, 30];
-	_unitDest = [_opforFob, 5, 20] call BIS_fnc_findSafePos;
-	_endPoint1 = _unitDest getPos [_randomDist,_randomDir];
-	_fireTeam doMove _endPoint1;
+	// _randomDir = selectRandom [270, 310, 00, 50, 90];
+	// _randomDist = selectRandom [20, 22, 24, 26, 28, 30];
+	// _unitDest = [_battleZone, 5, 50] call BIS_fnc_findSafePos;
+	// _endPoint1 = _unitDest getPos [_randomDist,_randomDir];
+	// _fireTeam doMove _endPoint1;
+	_fireTeam doMove _battleZone;
 	
 	// spawnedIndiUnit = spawnedIndiUnit +5; // might be needed later?
 };

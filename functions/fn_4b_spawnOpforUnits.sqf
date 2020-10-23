@@ -5,11 +5,12 @@ This function spawns opfor in the battlezone
 
 
 // ** imports 
-private ["_bluforFob", "_opforFob", "_initialOpforInfiPresence", "_initialopforVicPresence"];
+private ["_bluforFob", "_opforFob", "_initialOpforInfiPresence", "_initialopforVicPresence", "_battleZone"];
 _bluforFob = param[0]; // blufor FOB pos / spawn
 _opforFob = param[1]; // opfor FOB pos / spawn
 _initialOpforInfiPresence = param[2]; // size of opfor infi force
 _initialopforVicPresence = param[3]; // size of opfor vic force
+_battleZone = param[4];
 // ** imports 
 
 _opforGrp = createGroup east;
@@ -38,7 +39,7 @@ for "_i" from 1 to _initialOpforInfiPresence do {
 	_pos = [_opforFob, 0, 30] call BIS_fnc_findSafePos; 
 	_unit = _opforGrp createUnit [_rndtype, _pos, [], 1, "none"]; 
 	_unit setBehaviour "COMBAT";
-	_unit doMove _bluforFob; 
+	_unit doMove _battleZone; 
 	// spawnedOpforUnit = spawnedOpforUnit + 1; // maybe giood for scoring?
 	sleep 0.5;						
 };
