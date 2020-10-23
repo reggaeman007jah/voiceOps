@@ -1,16 +1,31 @@
 /*
-This fnc and subsequent fncs will enable the creation of a random battlezone, with each side given a FOB 
-if fob A = 90 degrees, fob B will be 270 degrees 
-var angle = 210;
-var oppositeAngle = (angle + 180) % 360;
-On activation, units will spawn and go head to head, in an attempt to capture the other spawn position location
-If a side unit gets to be within 10m of the enemy spawn point, then the losing side cannot spawn any more units 
-Units are spawned every 5 mins 
-*/
+This function creates initial positions and markers for a randonly generated skirmish
+*/  
 
 // ** imports 
 // none 
 // ** imports 
+
+/*
+Notes:
+Creates marker for main base - this could be done separately, but felt it was just easy to manage markers in one place 
+Creates marker for main battlezone 
+Creates markers for both blufor and opfor fobs 
+Blufor fob is created using a rand360 
+Opfor fob is also created, however currently hardcoded (see issues below)
+This fnc and subsequent fncs will enable the creation of a random battlezone, with each side given a FOB 
+if fob A = 90 degrees, fob B will be 270 degrees 
+On activation, units will spawn and go head to head, in an attempt to capture the other spawn position location
+
+To do:
+If a side unit gets to be within 10m of the enemy spawn point, then the losing side cannot spawn any more units 
+Units are spawned every 5 mins 
+
+Issues:
+.. current bug - unable to generate opposite rand360 position!
+var angle = 210;
+var oppositeAngle = (angle + 180) % 360;
+*/
 
 // register main base as a blue marker
 _baseLocation = [6470,3839.96];
@@ -21,11 +36,9 @@ _base setMarkerSize [100, 100];
 _base setMarkerAlpha 0.5;
 
 // generate conflict zone as a large grey marker
-// note: must be more than 2 but less than 5 away 
-_battleZone = [_baseLocation, 2000, 5000, 3, 0, 0, 0] call BIS_fnc_findSafePos; // generate patrol obj between 600m and 900m away, and always over land 
+_battleZone = [_baseLocation, 2000, 5000, 3, 0, 0, 0] call BIS_fnc_findSafePos; // generate point between 2000m and 5000m away from main base, and always over land 
 _battleZoneMarker = createMarker ["battleZone", _battleZone];
 _battleZoneMarker setMarkerShape "ELLIPSE";
-// _battleZoneMarker setMarkerColor "ColorRed";
 _battleZoneMarker setMarkerSize [1000, 1000];
 _battleZoneMarker setMarkerAlpha 0.5;
 
