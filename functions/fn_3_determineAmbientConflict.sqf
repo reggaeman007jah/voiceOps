@@ -47,8 +47,9 @@ _burningVics = selectRandom [0,1,2,3,4];
 
 
 // ** exports 
+[_bluforFob, _opforFob] call RGG_fnc_5_spawnAmbientBuildings;
 [_bluforFob, _opforFob, _initialBluforInfiPresence, _initialBluforVicPresence, _battleZone] call RGG_fnc_4a_spawnBluforUnits;
 [_bluforFob, _opforFob, _initialOpforInfiPresence, _initialopforVicPresence, _battleZone] call RGG_fnc_4b_spawnOpforUnits;
 [_battleZone, _burningVics] call RGG_fnc_4c_spawnAmbientEffects;
-[_bluforFob, _opforFob] call RGG_fnc_5_spawnAmbientBuildings;
+
 // ** exports 
