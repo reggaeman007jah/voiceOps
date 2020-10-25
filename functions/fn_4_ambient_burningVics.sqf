@@ -1,5 +1,5 @@
 /*
-This function manages all ambient effects in the battlezone, such as burning wrecks and helis/planes flying overhead
+This function manages creation of ambient burning wrecks
 */
 
 // ** imports 

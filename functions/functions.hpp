@@ -3,7 +3,7 @@ class RGG {
 	class functions {
 		file = "functions";
 		class 0_init_removeWeapons {
-			Description = "This will remove player weapons on join";
+			Description = "This function will remove player's weapons on join";
 		};
 		class 1_setup_createMainBaseMarker {
 			Description = "This function creates initial main base marker position";
@@ -24,7 +24,7 @@ class RGG {
 			Description = "This function spawns opfor in the battlezone";
 		};
 		class 4_ambient_burningVics {
-			Description = "This function manages all ambient effects in the battlezone, such as burning wrecks and helis/planes flying overhead";
+			Description = "This function manages creation of ambient burning wrecks";
 		};
 		class 4_ambient_flybys {
 			Description = "This function manages all ambient effects in the battlezone, such as burning wrecks and helis/planes flying overhead";
