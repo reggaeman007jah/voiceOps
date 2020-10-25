@@ -4,7 +4,7 @@ This function manages creation of opfor camp
 
 // ** imports 
 private ["_opforCampLocation"];
-_opforCampLocation = param[0]; // blufor FOB pos / spawn
+_opforCampLocation = param[0]; // opfor camp spawn point 
 // ** imports 
 
 _campItems = []; // to hold all camp items if we need to track them for deletion (although consider full destroy command for this also)
