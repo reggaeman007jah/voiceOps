@@ -1,4 +1,13 @@
 
+[6470,3839.96] call RGG_fnc_1_setup_createMainBaseMarker; // hardcoded initial main base pos in Livonia 
+
+while {true} do {
+	{ deleteVehicle _x } forEach allDead;
+	systemChat "cleanup";
+	sleep 300;
+};
+
+
 // Voice Activation Global Declaration 
 // VAA_Activate = true;
 
@@ -20,13 +29,6 @@
 // initialise para spawner script 
 // execVM "autoPatrolSystem\pickupSystems\spawnParas.sqf";
 
-call RGG_fnc_2_createBattleZone;
-
-while {true} do {
-	{ deleteVehicle _x } forEach allDead;
-	systemChat "cleanup";
-	sleep 30;
-};
 
 // to avoid errors 
 // ???

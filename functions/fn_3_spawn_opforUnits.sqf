@@ -5,17 +5,20 @@ This function spawns opfor in the battlezone
 
 
 // ** imports 
-private ["_bluforFob", "_opforFob", "_initialOpforInfiPresence", "_initialopforVicPresence", "_battleZone"];
-_bluforFob = param[0]; // blufor FOB pos / spawn
-_opforFob = param[1]; // opfor FOB pos / spawn
-_initialOpforInfiPresence = param[2]; // size of opfor infi force
-_initialopforVicPresence = param[3]; // size of opfor vic force
-_battleZone = param[4];
+// private ["_bluforFob", "_opforFob", "_initialOpforInfiPresence", "_initialopforVicPresence", "_battleZone"];
+private ["_opforCampLocation"];
+// _bluforFob = param[0]; // blufor FOB pos / spawn
+// _opforFob = param[1]; // opfor FOB pos / spawn
+// _initialOpforInfiPresence = param[2]; // size of opfor infi force
+// _initialopforVicPresence = param[3]; // size of opfor vic force
+// _battleZone = param[4];
+_opforCampLocation = param[0]; // opfor spawn pos 
 // ** imports 
 
 _opforGrp = createGroup east;
 
-_initialOpforInfiPresence = _initialOpforInfiPresence * 10; // this adds a multiplier to the parsed value 
+// _initialOpforInfiPresence = _initialOpforInfiPresence * 10; // this adds a multiplier to the parsed value 
+_initialOpforInfiPresence = 30; // hardcoded opfor force value for now 
 
 for "_i" from 1 to _initialOpforInfiPresence do {
 	_rndtype = selectRandom [
@@ -36,10 +39,10 @@ for "_i" from 1 to _initialOpforInfiPresence do {
 		"O_G_Soldier_TL_F",
 		"O_G_Offroad_01_armed_F"
 	];
-	_pos = [_opforFob, 0, 30] call BIS_fnc_findSafePos; 
+	_pos = [_opforCampLocation, 0, 30] call BIS_fnc_findSafePos; 
 	_unit = _opforGrp createUnit [_rndtype, _pos, [], 1, "none"]; 
 	_unit setBehaviour "COMBAT";
-	_unit doMove _battleZone; 
+	// _unit doMove _battleZone; 
 	// spawnedOpforUnit = spawnedOpforUnit + 1; // maybe giood for scoring?
 	sleep 0.5;						
 };

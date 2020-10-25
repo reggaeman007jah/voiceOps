@@ -3,15 +3,18 @@ This function spawns blufor in the battlezone
 */  
 
 // ** imports 
-private ["_bluforFob", "_opforFob", "_initialBluforInfiPresence", "_initialBluforVicPresence", "_battleZone"];
-_bluforFob = param[0]; // blufor FOB pos / spawn 
-_opforFob = param[1]; //opfor FOB pos / spawn 
-_initialBluforInfiPresence = param[2]; // size of blufor infi force
-_initialBluforVicPresence = param[3]; // size of blufor vic force
-_battleZone = param[4];
+// _fobBaseLocation
+private ["_fobBaseLocation"];
+// private ["_bluforFob", "_opforFob", "_initialBluforInfiPresence", "_initialBluforVicPresence", "_battleZone"];
+// _bluforFob = param[0]; // blufor FOB pos / spawn 
+// _opforFob = param[1]; //opfor FOB pos / spawn 
+// _initialBluforInfiPresence = param[2]; // size of blufor infi force
+// _initialBluforVicPresence = param[3]; // size of blufor vic force
+// _battleZone = param[4];
+_fobBaseLocation = param[0];
 // ** imports 
 
-_spawnPos = _this select 0; // position parsed to this script on execution // IS THIS NEEDED?
+// _spawnPos = _this select 0; // position parsed to this script on execution // IS THIS NEEDED?
 // _numberOfCycles = _this select 1; // number of times we run this // 4 = 4 fire teams  
 _numberOfCycles = 5; //   
 _area = 60; // distribution of units on spawn  
@@ -19,7 +22,7 @@ _timer = 0.3; // spawn cycle gap
 
 for "_i" from 1 to _numberOfCycles do {
 	_indiGroup = createGroup independent;
-	_pos = [_spawnPos, 20, _area] call BIS_fnc_findSafePos;
+	_pos = [_fobBaseLocation, 20, _area] call BIS_fnc_findSafePos;
 	// _pos1 = _pos getPos [1,180];
 	// _pos2 = _pos getPos [2,180];
 	// _pos3 = _pos getPos [3,180];
@@ -47,7 +50,8 @@ for "_i" from 1 to _numberOfCycles do {
 	// _unitDest = [_battleZone, 5, 50] call BIS_fnc_findSafePos;
 	// _endPoint1 = _unitDest getPos [_randomDist,_randomDir];
 	// _fireTeam doMove _endPoint1;
-	_fireTeam doMove _battleZone;
+
+	// _fireTeam doMove _battleZone;
 	
 	// spawnedIndiUnit = spawnedIndiUnit +5; // might be needed later?
 };

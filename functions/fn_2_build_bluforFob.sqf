@@ -1,20 +1,23 @@
 /*
-This function manages creation of blufor and opfor buildings (fobs)
+This function manages creation of blufor fob
 */
 
 // ** imports 
-private ["_bluforFob", "_opforFob"];
-_bluforFob = param[0]; // blufor FOB pos / spawn
-_opforFob = param[1]; // opfor FOB pos / spawn
+private ["_fobBaseLocation"];
+_fobBaseLocation = param[0]; // blufor FOB pos / spawn
 // ** imports 
 
 // build blufor base
 // _wall1 = Land_HBarrierWall6_F
 
-sleep 20;
+// generate conflict zone as a large grey marker
+// _battleZone = [_fobBaseLocation, 2000, 5000, 3, 0, 0, 0] call BIS_fnc_findSafePos; // generate point between 2000m and 5000m away from main base, and always over land 
+
+
+sleep 20; // using this to enable camera capture 
 
 // build blufor base 
-_buildLocation = _bluforFob findEmptyPosition [1,50,"B_Heli_Light_01_dynamicLoadout_F"];
+// _buildLocation = _fobBaseLocation findEmptyPosition [1,50,"B_Heli_Light_01_dynamicLoadout_F"];
 // _baseBuilding1 = createVehicle ["Land_MedicalTent_01_tropic_closed_F", _buildLocation, [], 30, "none"]; 
 
 // _heliPadPos = _baseBuilding1 getPos [20,90]; 
@@ -28,7 +31,7 @@ _buildLocation = _bluforFob findEmptyPosition [1,50,"B_Heli_Light_01_dynamicLoad
 // _ammoSup = createVehicle ["B_Slingload_01_Repair_F", _repairPos];//vehicle repair 
 
 
-_rootPos = _buildLocation; 
+_rootPos = _fobBaseLocation; 
 
 _genesisPos = _rootPos getPos [-20,20];
 _spawnSpeed = 0.3;
@@ -90,8 +93,6 @@ for "_i" from 1 to 5 do {
 	sleep _spawnSpeed;	
 };
 
-sleep 1;
-
 _startPosition = _genesisPos;
 for "_i" from 1 to 5 do {
 	_wallBlock = "Land_HBarrierWall6_F" createVehicle _startPosition;
@@ -130,6 +131,12 @@ for "_i" from 1 to 5 do {
 	_startPosition set [1, _newPos];
 	sleep _spawnSpeed;	
 };
+
+// ** exports 
+[_fobBaseLocation] call RGG_fnc_3_spawn_bluforUnits;
+// ** exports 
+
+
 
 
 
@@ -363,88 +370,11 @@ for "_i" from 1 to 2 do {
 // end exp 
 
 
-// build opfor base 
 
-/*
-Opfor Base Classes:
-B_Heli_Light_01_dynamicLoadout_F
-Land_TentDome_F
-"Land_BarrelSand_F",
-"Land_BarrelSand_F",
-"Land_BarrelSand_grey_F",
-"Land_BarrelWater_grey_F",
-"Land_TransferSwitch_01_F",
-"Land_RotorCoversBag_01_F",
-"Land_MetalBarrel_F",
-"Land_WaterTank_F"
-"Land_WoodenCrate_01_stack_x3_F",
-"Weapon_launch_O_Vorona_brown_F",
-"Box_T_East_Wps_F",
-"Box_East_AmmoOrd_F",
-"Box_East_WpsLaunch_F",
-"Land_CratesWooden_F",
-"Land_Pallet_MilBoxes_F",
-*/
 
-_campItems = []; // to hold all camp items if we need to track them for deletion (although consider full destroy command for this also)
-_randomCampLocation = _opforFob findEmptyPosition [1,50,"B_Heli_Light_01_dynamicLoadout_F"];
-_random5 = random 5;
-_random3 = random 3;
 
-// tents 
-for "_i" from 1 to _random5 do {
-	_randomDir = random 359;
-	_random30 = random 30;
-	_spawnPos = _randomCampLocation getPos [_random30, _randomDir];
-	_campItem = createVehicle ["Land_TentDome_F", _spawnPos];
-	_campItem setDir _randomDir;
-	_campItems pushback _campItem;
-};
 
-_random5 = random 5; // yes, we run this again 
-// barrels and other camp stuff 
-for "_i" from 1 to _random5 do {
-	_randomDir = random 359;
-	_random25 = random 25;
-	_spawnPos = _randomCampLocation getPos [_random3, _randomDir];
-	_campItem = selectRandom [
-		"Land_BarrelSand_F",
-		"Land_BarrelSand_F",
-		"Land_BarrelSand_grey_F",
-		"Land_BarrelWater_grey_F",
-		"Land_TransferSwitch_01_F",
-		"Land_TentDome_F",
-		"Land_RotorCoversBag_01_F",
-		"Land_MetalBarrel_F",
-		"Land_WaterTank_F"
-	];
-	// _spawnPos = _randomCampLocation getPos [_random25, _randomDir];
-	_campItem2 = createVehicle [_campItem, _spawnPos];
-	_campItem2 setDir _randomDir;
-	_campItems pushback _campItem2;
-};
 
-_random5 = random 5; // and yes, we run this again 
-// crates 
-for "_i" from 1 to _random5 do {
-	_randomDir = random 359;
-	_random5 = random 5;
-	_random25 = random 25;
-	_spawnPos = _randomCampLocation getPos [_random5, _randomDir];
-	_campItem = selectRandom [
-		"Land_WoodenCrate_01_stack_x3_F",
-		"Weapon_launch_O_Vorona_brown_F",
-		"Box_T_East_Wps_F",
-		"Box_East_AmmoOrd_F",
-		"Box_East_WpsLaunch_F",
-		"Land_CratesWooden_F",
-		"Land_Pallet_MilBoxes_F",
-		"Land_MetalBarrel_F",
-		"Land_WaterTank_F"
-	];
-	// _spawnPos = _randomCampLocation getPos [_random25, _randomDir];
-	_campItem2 = createVehicle [_campItem, _spawnPos];
-	_campItem2 setDir _randomDir;
-	_campItems pushback _campItem2;
-};
+
+
 

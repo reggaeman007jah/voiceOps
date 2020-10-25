@@ -2,27 +2,34 @@ class RGG {
 	tag = "RGG";
 	class functions {
 		file = "functions";
-		class 1_removeWeapons {
+		class 0_init_removeWeapons {
 			Description = "This will remove player weapons on join";
 		};
-		class 2_createBattleZone {
-			Description = "This will create a random conflict zone, as well as two outer points for opfor and blufor fobs";
+		class 1_setup_createMainBaseMarker {
+			Description = "This function creates initial main base marker position";
 		};
-		class 3_determineAmbientConflict {
-			Description = "This will define what is happening on ground";
+		class 1_setup_findLocation {
+			Description = "This function identifies suitable location for blufor FOB + marker creation ";
 		};
-		class 4a_spawnBluforUnits {
-			Description = "This will generate blufor units and move them towards enemy";
+		class 2_build_bluforFob {
+			Description = "This function manages creation of blufor fob";
 		};
-		class 4b_spawnOpforUnits {
-			Description = "This will generate opfor units and move them towards enemy";
+		class 2_build_opforCamp {
+			Description = "This function manages creation of opfor camp";
 		};
-		class 4c_spawnAmbientEffects {
-			Description = "This will generate a range of ambient fun";
+		class 3_spawn_bluforUnits {
+			Description = "This function spawns blufor in the battlezone";
 		};
-		class 5_spawnAmbientBuildings {
-			Description = "This will generate blu/opfor spawn tents and other small structures";
+		class 3_spawn_opforUnits {
+			Description = "This function spawns opfor in the battlezone";
+		};
+		class 4_ambient_burningVics {
+			Description = "This function manages all ambient effects in the battlezone, such as burning wrecks and helis/planes flying overhead";
+		};
+		class 4_ambient_flybys {
+			Description = "This function manages all ambient effects in the battlezone, such as burning wrecks and helis/planes flying overhead";
 		};
 	};
 };
 
+build_opforCamp

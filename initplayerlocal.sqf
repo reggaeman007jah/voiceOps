@@ -2,11 +2,11 @@ _unit = _this select 0;
 _isJIP = _this select 1;
 
 if (!_isJIP) then {
-	[_unit] call RGG_fnc_1_removeWeapons;
+	[_unit] call RGG_fnc_0_init_removeWeapons;
 };
 
 if (_isJIP) then {
-	[_unit] call RGG_fnc_1_removeWeapons;
+	[_unit] call RGG_fnc_0_init_removeWeapons;
 };
 
 
