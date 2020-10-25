@@ -8,16 +8,28 @@ _baseLocation = param[0]; // blufor FOB pos / spawn
 // ** imports 
 
 // find suitable build location for blufor FOB 
-_fobBaseLocation = [_baseLocation, 1000, 8000, 40, 0, 5, 0] call BIS_fnc_findSafePos;
+_fobBaseLocation = [_baseLocation, 1000, 3000, 40, 0, 5, 0] call BIS_fnc_findSafePos;
  
- // mark fob area 
+// mark main area 
 _battleZoneMarker = createMarker ["battleZone", _fobBaseLocation];
 _battleZoneMarker setMarkerShape "ELLIPSE";
 _battleZoneMarker setMarkerSize [1000, 1000];
 _battleZoneMarker setMarkerAlpha 0.5;
 
+// mark main area 
+_battleZoneMarker = createMarker ["battleZone", _fobBaseLocation];
+_battleZoneMarker setMarkerShape "ELLIPSE";
+_battleZoneMarker setMarkerSize [100, 100];
+_battleZoneMarker setMarkerAlpha 0.7;
+
 // find suitable build location for blufor FOB 
 _opforCampLocation = [_fobBaseLocation, 400, 1500, 10, 0, 0, 0] call BIS_fnc_findSafePos;
+
+// mark camp area - delete veentually 
+_battleZoneMarker = createMarker ["battleZone", _opforCampLocation];
+_battleZoneMarker setMarkerShape "ELLIPSE";
+_battleZoneMarker setMarkerSize [100, 100];
+_battleZoneMarker setMarkerAlpha 0.7;
 
 // ** exports 
 [_fobBaseLocation] call RGG_fnc_2_build_bluforFob;

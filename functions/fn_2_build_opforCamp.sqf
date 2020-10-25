@@ -51,7 +51,7 @@ for "_i" from 1 to _random5 do {
 	_randomDir = random 359;
 	_random5 = random 5;
 	_random25 = random 25;
-	_spawnPos = _randomCampLocation getPos [_random5, _randomDir];
+	_spawnPos = _opforCampLocation getPos [_random5, _randomDir];
 	_campItem = selectRandom [
 		"Land_WoodenCrate_01_stack_x3_F",
 		"Weapon_launch_O_Vorona_brown_F",

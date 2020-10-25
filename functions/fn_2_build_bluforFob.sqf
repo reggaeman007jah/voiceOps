@@ -14,7 +14,7 @@ _fobBaseLocation = param[0]; // blufor FOB pos / spawn
 // _battleZone = [_fobBaseLocation, 2000, 5000, 3, 0, 0, 0] call BIS_fnc_findSafePos; // generate point between 2000m and 5000m away from main base, and always over land 
 
 
-sleep 20; // using this to enable camera capture 
+sleep 25; // using this to enable camera capture 
 
 // build blufor base 
 // _buildLocation = _fobBaseLocation findEmptyPosition [1,50,"B_Heli_Light_01_dynamicLoadout_F"];
@@ -36,47 +36,6 @@ _rootPos = _fobBaseLocation;
 _genesisPos = _rootPos getPos [-20,20];
 _spawnSpeed = 0.3;
 _wallSpacing = 8.7;
-
-// Land_HelipadSquare_F
-_heliPadPos = _rootPos getPos [10,10];
-_heliPad = "Land_HelipadSquare_F" createVehicle _heliPadPos;
-sleep _spawnSpeed;
-
-// Land_Medevac_house_V1_F
-_medicHutPos = _heliPadPos getPos [10,180];
-_medicHut = "Land_Medevac_house_V1_F" createVehicle _medicHutPos;
-sleep _spawnSpeed;
-
-//Land_MedicalTent_01_NATO_tropic_generic_outer_F
-_tentPos = _medicHutPos getPos [25,90];
-_tent = "Land_MedicalTent_01_NATO_tropic_generic_outer_F" createVehicle _tentPos;
-sleep _spawnSpeed;
-
-//Land_MedicalTent_01_NATO_tropic_generic_outer_F
-_tentPos = _tentPos getPos [10,180];
-_tent = "Land_MedicalTent_01_NATO_tropic_generic_outer_F" createVehicle _tentPos;
-sleep _spawnSpeed;
-
-// Land_MobileRadar_01_radar_F
-_radarPos = _tentPos getPos [15,260];
-_radar = "Land_MobileRadar_01_radar_F" createVehicle _radarPos;
-sleep _spawnSpeed;
-
-//Land_MobileRadar_01_generator_F
-_gennyPos = _radarPos getPos [6,0];
-_genny = "Land_MobileRadar_01_generator_F" createVehicle _gennyPos;
-sleep _spawnSpeed;
-
-// Land_Cargo_House_V2_F
-_hqPos = _gennyPos getPos [25,0];
-_hq = "Land_Cargo_House_V2_F" createVehicle _hqPos;
-sleep _spawnSpeed;
-
-// Land_Cargo_Patrol_V2_F
-_towerPos = _hqPos getPos [10,90];
-_hq = "Land_Cargo_Patrol_V2_F" createVehicle _towerPos;
-_hq setDir 180;
-sleep _spawnSpeed;
 
 
 // _wallBlock = "Land_HBarrierWall6_F" createVehicle _genesisPos;
@@ -131,6 +90,49 @@ for "_i" from 1 to 5 do {
 	_startPosition set [1, _newPos];
 	sleep _spawnSpeed;	
 };
+
+// Land_HelipadSquare_F
+_heliPadPos = _rootPos getPos [10,10];
+_heliPad = "Land_HelipadSquare_F" createVehicle _heliPadPos;
+sleep _spawnSpeed;
+
+// Land_Medevac_house_V1_F
+_medicHutPos = _heliPadPos getPos [10,180];
+_medicHut = "Land_Medevac_house_V1_F" createVehicle _medicHutPos;
+sleep _spawnSpeed;
+
+//Land_MedicalTent_01_NATO_tropic_generic_outer_F
+_tentPos = _medicHutPos getPos [25,90];
+_tent = "Land_MedicalTent_01_NATO_tropic_generic_outer_F" createVehicle _tentPos;
+sleep _spawnSpeed;
+
+//Land_MedicalTent_01_NATO_tropic_generic_outer_F
+_tentPos = _tentPos getPos [10,180];
+_tent = "Land_MedicalTent_01_NATO_tropic_generic_outer_F" createVehicle _tentPos;
+sleep _spawnSpeed;
+
+// Land_MobileRadar_01_radar_F
+_radarPos = _tentPos getPos [15,260];
+_radar = "Land_MobileRadar_01_radar_F" createVehicle _radarPos;
+sleep _spawnSpeed;
+
+//Land_MobileRadar_01_generator_F
+_gennyPos = _radarPos getPos [6,0];
+_genny = "Land_MobileRadar_01_generator_F" createVehicle _gennyPos;
+sleep _spawnSpeed;
+
+// Land_Cargo_House_V2_F
+_hqPos = _gennyPos getPos [25,0];
+_hq = "Land_Cargo_House_V2_F" createVehicle _hqPos;
+sleep _spawnSpeed;
+
+// Land_Cargo_Patrol_V2_F
+_towerPos = _hqPos getPos [10,90];
+_hq = "Land_Cargo_Patrol_V2_F" createVehicle _towerPos;
+_hq setDir 180;
+sleep _spawnSpeed;
+
+
 
 // ** exports 
 [_fobBaseLocation] call RGG_fnc_3_spawn_bluforUnits;

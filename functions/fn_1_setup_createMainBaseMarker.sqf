@@ -3,9 +3,11 @@ This function creates initial main base marker position
 */  
 
 // ** imports 
-private ["_mainBaseLocation"];
-_mainBaseLocation = param[0]; // blufor FOB pos / spawn
+// private ["_mainBaseLocation"];
+// _mainBaseLocation = param[0]; // blufor FOB pos / spawn
 // ** imports 
+
+_mainBaseLocation = [6470,3839];
 
 // register main base as a blue marker
 _base = createMarker ["permaBase", _mainBaseLocation];
@@ -16,7 +18,7 @@ _base setMarkerAlpha 0.5;
 
 // ** exports 
 // [_battleZone, _bluforPos, _opforPos] call RGG_fnc_3_determineAmbientConflict;
-[_baseLocation] call RGG_fnc_setup_findLocation;
+[_mainBaseLocation] call RGG_fnc_1_setup_findLocation;
 // ** exports 
 
 

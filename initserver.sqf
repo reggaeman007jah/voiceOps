@@ -1,5 +1,5 @@
 
-[6470,3839.96] call RGG_fnc_1_setup_createMainBaseMarker; // hardcoded initial main base pos in Livonia 
+call RGG_fnc_1_setup_createMainBaseMarker; 
 
 while {true} do {
 	{ deleteVehicle _x } forEach allDead;
