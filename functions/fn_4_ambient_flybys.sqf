@@ -7,21 +7,138 @@ private ["_fobBaseLocation"];
 _fobBaseLocation = param[0]; // focus point for flybys 
 // ** imports 
 
-// sleep 300; // initial delay
-
 while {true} do {
-	_sleep = selectRandom [60, 90, 120, 180, 240, 300]; // determines how long between each batch of ambients 
-	sleep _sleep; // random sleep between spawn batches 
-	_number = selectRandom [1,2,3,4,5]; // determines how many ambients per spawn event 
-	_type = selectRandom ["B_Plane_CAS_01_dynamicLoadout_F", "B_Heli_Transport_01_F", "B_Heli_Transport_03_F", "B_Heli_Light_01_dynamicLoadout_F"]; // 4 types, each batch is always the same type - you wont get a jet and an MH6 together 
-	_startPos = _fobBaseLocation getPos [5000, 90]; // starts east of the patrol point 
-	_endPos = _fobBaseLocation getPos [5000, 270]; // ends west of the patrol point 
-	_height = selectRandom [100,300,500,700,900];
-	// _formation = selectRandom [1,2,3]
-	for "_i" from 1 to _number do {
-		[_startPos, _endPos, _height, "FULL", _type, west] call BIS_fnc_ambientFlyby;
-		sleep 5; // spacer sleep between each iteration to prevent spawn overlaps 	
+	// _sleep = selectRandom [30, 60, 90, 120, 180, 240, 300]; // determines how long between each batch of ambients 
+	// sleep _sleep; // random sleep between spawn batches 
+
+	// manual low sleep for testing 
+	_sleep = 5;
+
+	// set number of ambients per spawn 
+	_number = selectRandom [1,2,3,4,5,6]; 
+	
+	// confirmed type of ambient 
+	_type = selectRandom ["B_Plane_CAS_01_dynamicLoadout_F", "B_Heli_Transport_01_F", "B_Heli_Transport_03_F", "B_Heli_Light_01_dynamicLoadout_F"]; 
+	// note: 4 types, each batch is always the same type - you wont get a jet and an MH6 together 
+
+	// local vars declared 
+	private ["_n","_ne","_s","_se","_s","_sw","_w","_nw","_ambientOrigin","_ambientDestination"];
+
+	// determine origin (heading)
+	_origin = selectRandom [_n,_ne,_s,_se,_s,_sw,_w,_nw]; 
+
+	// determines start and end headings for ambients 
+	switch (_origin) do {
+		case _n: 	{ _ambientOrigin = 0, _ambientDestination = 180 };
+		case _ne: 	{ _ambientOrigin = 45, _ambientDestination = 225 };
+		case _e: 	{ _ambientOrigin = 90, _ambientDestination = 270 };
+		case _se: 	{ _ambientOrigin = 135, _ambientDestination = 315 };
+		case _s: 	{ _ambientOrigin = 180, _ambientDestination = 0 };
+		case _sw: 	{ _ambientOrigin = 225, _ambientDestination = 45 };
+		case _w: 	{ _ambientOrigin = 270, _ambientDestination = 90 };
+		case _nw: 	{ _ambientOrigin = 315, _ambientDestination = 135 };
+		default 	{ hint "default" };
 	};
+
+	// calculates ambient start and end points 
+	_startPos = _fobBaseLocation getPos [5000, _ambientOrigin]; 
+	_endPos = _fobBaseLocation getPos [5000, _ambientDestination]; 
+
+	// set ambient height 
+	_height = selectRandom [100,300,500,700,900];
+
+	// declare vars 
+	private ["_formationType","_singleAmbient","_line","_echelon","_vee","_wedge","_parallel"];
+
+	// determine formation 
+	switch (_number) do {
+		case 1: 	{ _formationType = selectRandom [_singleAmbient] };
+		case 2: 	{ _formationType = selectRandom [_line, _echelon] };
+		case 3: 	{ _formationType = selectRandom [_line, _echelon, _vee, _wedge] };
+		case 4: 	{ _formationType = selectRandom [_line, _echelon, _parallel] };
+		case 5: 	{ _formationType = selectRandom [_line, _echelon, _vee, _wedge] };
+		case 6: 	{ _formationType = selectRandom [_line, _echelon, _parallel] };
+		default 	{ hint "default" };
+	};
+
+	// spawn formation 
+	switch (_formationType) do {
+
+		// single ambient 
+		case _singleAmbient: { [_startPos, _endPos, _height, "FULL", _type, west] call BIS_fnc_ambientFlyby; };
+
+		// 2 - 6 ambients 
+		case _line: {
+			for "_i" from 1 to _number do {
+				[_startPos, _endPos, _height, "FULL", _type, west] call BIS_fnc_ambientFlyby;
+				sleep 5; // spacer sleep between each iteration to prevent spawn overlaps 	
+			};
+		};
+
+		// 2 - 6 ambients 
+		case _echelon: {
+			_spacerDist = 5; // test this to ensure echelon looks nice - too small and it just looks like a line formation
+			_spacerTime = 1; // test this to ensure echelon looks nice - too small and it just looks like a line formation 
+			for "_i" from 1 to _number do {
+				[_startPos, _endPos, _height, "FULL", _type, west] call BIS_fnc_ambientFlyby;
+
+				switch (_origin) do {
+					case _n: 	{ _startPos = _startPos getPos [_spacerDist, 90] };
+					case _ne: 	{ _startPos = _startPos getPos [_spacerDist, 135] };
+					case _e: 	{ _startPos = _startPos getPos [_spacerDist, 180] };
+					case _se: 	{ _startPos = _startPos getPos [_spacerDist, 225] };
+					case _s: 	{ _startPos = _startPos getPos [_spacerDist, 270] };
+					case _sw: 	{ _startPos = _startPos getPos [_spacerDist, 315] };
+					case _w: 	{ _startPos = _startPos getPos [_spacerDist, 0] };
+					case _nw: 	{ _startPos = _startPos getPos [_spacerDist, 45] };
+					default 	{ hint "default" };
+				};
+				sleep _spacerTime; // spacer sleep between each iteration to prevent spawn overlaps 	
+			};
+		};
+
+		// 3 or 5 ambients 
+		// case _vee: {
+		// 	if (_number == 5) then {
+		// 		// 
+		// 	} else {
+				
+		// 	};
+		// };
+
+		// 3 or 5 ambients 
+		case _wedge: {
+			[_startPos, _endPos, _height, "FULL", _type, west] call BIS_fnc_ambientFlyby; // lead ambient 
+			_spacerDist = 5; // test this to ensure echelon looks nice - too small and it just looks like a line formation
+			_spacerTime = 1; // test this to ensure echelon looks nice - too small and it just looks like a line formation 
+			
+			for "_i" from 1 to _number do {
+
+				switch (_origin) do {
+					case _n: 	{ _startPos = _startPos getPos [_spacerDist, 90] };
+					case _ne: 	{ _startPos = _startPos getPos [_spacerDist, 135] };
+					case _e: 	{ _startPos = _startPos getPos [_spacerDist, 180] };
+					case _se: 	{ _startPos = _startPos getPos [_spacerDist, 225] };
+					case _s: 	{ _startPos = _startPos getPos [_spacerDist, 270] };
+					case _sw: 	{ _startPos = _startPos getPos [_spacerDist, 315] };
+					case _w: 	{ _startPos = _startPos getPos [_spacerDist, 0] };
+					case _nw: 	{ _startPos = _startPos getPos [_spacerDist, 45] };
+					default 	{ hint "default" };
+				};
+				sleep _spacerTime; // spacer sleep between each iteration to prevent spawn overlaps 	
+			};
+
+
+		};
+
+		// 4 or 6 ambients 
+		case _parallel: {
+
+		};
+
+		default 	{ hint "default" };
+	};
+
 };
 
 
