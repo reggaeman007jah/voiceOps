@@ -136,6 +136,7 @@ sleep _spawnSpeed;
 
 // ** exports 
 [_fobBaseLocation] call RGG_fnc_3_spawn_bluforUnits;
+[_fobBaseLocation] call RGG_fnc_4_ambient_flybys; 
 // ** exports 
 
 
