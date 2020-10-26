@@ -6,7 +6,7 @@ generating opfor
 generating blufor
 pitching against eachother - move orders
 checking for blufor win/lose status
-running mission clock - end mission after x mins
+running mission clock - end mission after x mins .. test
 
 types of missions
 CAS
