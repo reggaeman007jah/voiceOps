@@ -1,35 +1,11 @@
 /*
-This function manages creation of blufor fob
+This function manages creation of a basic blufor fob - walls and interior buildings 
 */
 
 // ** imports 
 private ["_fobBaseLocation"];
 _fobBaseLocation = param[0]; // blufor FOB pos / spawn
 // ** imports 
-
-// build blufor base
-// _wall1 = Land_HBarrierWall6_F
-
-// generate conflict zone as a large grey marker
-// _battleZone = [_fobBaseLocation, 2000, 5000, 3, 0, 0, 0] call BIS_fnc_findSafePos; // generate point between 2000m and 5000m away from main base, and always over land 
-
-
-sleep 25; // using this to enable camera capture 
-
-// build blufor base 
-// _buildLocation = _fobBaseLocation findEmptyPosition [1,50,"B_Heli_Light_01_dynamicLoadout_F"];
-// _baseBuilding1 = createVehicle ["Land_MedicalTent_01_tropic_closed_F", _buildLocation, [], 30, "none"]; 
-
-// _heliPadPos = _baseBuilding1 getPos [20,90]; 
-// _heliPad = createVehicle ["Land_HelipadCircle_F", _heliPadPos];
-
-// _fobPos = _baseBuilding1 getPos [20,180];
-// sleep 0.6;
-// _ammoSup = createVehicle ["Box_NATO_Support_F", _fobPos];//ammmo 
-// [ "AmmoboxInit", [_ammoSup, true, {true}] ] call BIS_fnc_arsenal;
-// _repairPos = _fobPos findEmptyPosition [10,100,"B_Heli_Light_01_dynamicLoadout_F"];
-// _ammoSup = createVehicle ["B_Slingload_01_Repair_F", _repairPos];//vehicle repair 
-
 
 _rootPos = _fobBaseLocation; 
 
@@ -133,12 +109,32 @@ _hq setDir 180;
 sleep _spawnSpeed;
 
 
-
 // ** exports 
 [_fobBaseLocation] call RGG_fnc_3_spawn_bluforUnits;
 [_fobBaseLocation] call RGG_fnc_4_ambient_flybys; 
 // ** exports 
 
+// build blufor base
+// _wall1 = Land_HBarrierWall6_F
+
+// generate conflict zone as a large grey marker
+// _battleZone = [_fobBaseLocation, 2000, 5000, 3, 0, 0, 0] call BIS_fnc_findSafePos; // generate point between 2000m and 5000m away from main base, and always over land 
+
+
+
+// build blufor base 
+// _buildLocation = _fobBaseLocation findEmptyPosition [1,50,"B_Heli_Light_01_dynamicLoadout_F"];
+// _baseBuilding1 = createVehicle ["Land_MedicalTent_01_tropic_closed_F", _buildLocation, [], 30, "none"]; 
+
+// _heliPadPos = _baseBuilding1 getPos [20,90]; 
+// _heliPad = createVehicle ["Land_HelipadCircle_F", _heliPadPos];
+
+// _fobPos = _baseBuilding1 getPos [20,180];
+// sleep 0.6;
+// _ammoSup = createVehicle ["Box_NATO_Support_F", _fobPos];//ammmo 
+// [ "AmmoboxInit", [_ammoSup, true, {true}] ] call BIS_fnc_arsenal;
+// _repairPos = _fobPos findEmptyPosition [10,100,"B_Heli_Light_01_dynamicLoadout_F"];
+// _ammoSup = createVehicle ["B_Slingload_01_Repair_F", _repairPos];//vehicle repair 
 
 
 
