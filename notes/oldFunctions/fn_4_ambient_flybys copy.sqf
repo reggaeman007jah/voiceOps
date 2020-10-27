@@ -1,5 +1,5 @@
 /*
-This function manages all ambient flybys - TEST FNC 
+This function manages all ambient flybys 
 */
 
 // ** imports 
@@ -43,11 +43,11 @@ while {true} do {
 	};
 
 	// calculates ambient start and end points to fly over FOB 
-	_startPos = _fobBaseLocation getPos [3000, _ambientOrigin]; 
-	_endPos = _fobBaseLocation getPos [3000, _ambientDestination]; 
+	_startPos = _fobBaseLocation getPos [5000, _ambientOrigin]; 
+	_endPos = _fobBaseLocation getPos [5000, _ambientDestination]; 
 
 	// set ambient height 
-	_height = selectRandom [100,300,500];
+	_height = selectRandom [100,300,500,700,900];
 
 	// declare vars 
 	private ["_formationType","_singleAmbient","_line","_echelon","_vee","_wedge","_parallel"];
@@ -124,52 +124,32 @@ while {true} do {
 			private ["_startPosLeft","_endPosLeft","_startPosRight","_endPosRight"];
 
 			_spacerDist = 10; // test this to ensure echelon looks nice - too small and it just looks like a line formation
-			_spacerTime = 1; // test this to ensure echelon looks nice - too small and it just looks like a line formation 
-
-			_ambi1StartPos = _startPos;
-			_ambi1EndPos = _endPos;
-
-			_ambi2StartPos = _startPos getPos [25, 90]; 
-			_ambi2EndPos = _endPos getPos [25, 90]; 
-
-			_ambi3StartPos = _startPos getPos [50, 90]; 
-			_ambi3EndPos = _endPos getPos [50, 90]; 
-
-			_ambi4StartPos = _startPos getPos [75, 90]; 
-			_ambi4EndPos = _endPos getPos [75, 90]; 
+			_spacerTime = 2; // test this to ensure echelon looks nice - too small and it just looks like a line formation 
 
 			// lead ambient 
-			[_ambi1StartPos, _ambi1EndPos, _height, "FULL", _type, west] call BIS_fnc_ambientFlyby; 
-			// sleep _spacerTime;
-			[_ambi2StartPos, _ambi2EndPos, _height, "FULL", _type, west] call BIS_fnc_ambientFlyby; 
-			// sleep _spacerTime;
-			[_ambi3StartPos, _ambi3EndPos, _height, "FULL", _type, west] call BIS_fnc_ambientFlyby; 
-			// sleep _spacerTime;
-			[_ambi4StartPos, _ambi4EndPos, _height, "FULL", _type, west] call BIS_fnc_ambientFlyby; 
-			// sleep _spacerTime;
-
-
+			[_startPos, _endPos, _height, "FULL", _type, west] call BIS_fnc_ambientFlyby; 
+			
 			// pair ambients - pos creation
-			// for "_i" from 1 to (_number -1) do {
-			// 	switch (_origin) do {
-			// 		case 1: { _startPosLeft = _startPos getPos [_spacerDist, 90]; _endPosLeft = _endPos getPos [_spacerDist, 90]; _startPosRight = _startPos getPos [_spacerDist, 270]; _endPosRight = _endPos getPos [_spacerDist, 270]; };
-			// 		case 2: { _startPosLeft = _startPos getPos [_spacerDist, 135]; _endPosLeft = _endPos getPos [_spacerDist, 135]; _startPosRight = _startPos getPos [_spacerDist, 315]; _endPosRight = _endPos getPos [_spacerDist, 315]; };
-			// 		case 3: { _startPosLeft = _startPos getPos [_spacerDist, 180]; _endPosLeft = _endPos getPos [_spacerDist, 180]; _startPosRight = _startPos getPos [_spacerDist, 0]; _endPosRight = _endPos getPos [_spacerDist, 0]; };
-			// 		case 4: { _startPosLeft = _startPos getPos [_spacerDist, 225]; _endPosLeft = _endPos getPos [_spacerDist, 225]; _startPosRight = _startPos getPos [_spacerDist, 45]; _endPosRight = _endPos getPos [_spacerDist, 45]; };
-			// 		case 5: { _startPosLeft = _startPos getPos [_spacerDist, 270]; _endPosLeft = _endPos getPos [_spacerDist, 270]; _startPosRight = _startPos getPos [_spacerDist, 90]; _endPosRight = _endPos getPos [_spacerDist, 90]; };
-			// 		case 6: { _startPosLeft = _startPos getPos [_spacerDist, 315]; _endPosLeft = _endPos getPos [_spacerDist, 315]; _startPosRight = _startPos getPos [_spacerDist, 135]; _endPosRight = _endPos getPos [_spacerDist, 135]; };
-			// 		case 7: { _startPosLeft = _startPos getPos [_spacerDist, 0]; _endPosLeft = _endPos getPos [_spacerDist, 0]; _startPosRight = _startPos getPos [_spacerDist, 180]; _endPosRight = _endPos getPos [_spacerDist, 180]; };
-			// 		case 8: { _startPosLeft = _startPos getPos [_spacerDist, 45]; _endPosLeft = _endPos getPos [_spacerDist, 45]; _startPosRight = _startPos getPos [_spacerDist, 225]; _endPosRight = _endPos getPos [_spacerDist, 225]; };
-			// 		default { systemChat "error: ambient wedge formation selection broken / _origin / _startPosleft / _startPosRight / switch" };
-			// 	};
+			for "_i" from 1 to (_number -1) do {
+				switch (_origin) do {
+					case 1: { _startPosLeft = _startPos getPos [_spacerDist, 90]; _endPosLeft = _endPos getPos [_spacerDist, 90]; _startPosRight = _startPos getPos [_spacerDist, 270]; _endPosRight = _endPos getPos [_spacerDist, 270]; };
+					case 2: { _startPosLeft = _startPos getPos [_spacerDist, 135]; _endPosLeft = _endPos getPos [_spacerDist, 135]; _startPosRight = _startPos getPos [_spacerDist, 315]; _endPosRight = _endPos getPos [_spacerDist, 315]; };
+					case 3: { _startPosLeft = _startPos getPos [_spacerDist, 180]; _endPosLeft = _endPos getPos [_spacerDist, 180]; _startPosRight = _startPos getPos [_spacerDist, 0]; _endPosRight = _endPos getPos [_spacerDist, 0]; };
+					case 4: { _startPosLeft = _startPos getPos [_spacerDist, 225]; _endPosLeft = _endPos getPos [_spacerDist, 225]; _startPosRight = _startPos getPos [_spacerDist, 45]; _endPosRight = _endPos getPos [_spacerDist, 45]; };
+					case 5: { _startPosLeft = _startPos getPos [_spacerDist, 270]; _endPosLeft = _endPos getPos [_spacerDist, 270]; _startPosRight = _startPos getPos [_spacerDist, 90]; _endPosRight = _endPos getPos [_spacerDist, 90]; };
+					case 6: { _startPosLeft = _startPos getPos [_spacerDist, 315]; _endPosLeft = _endPos getPos [_spacerDist, 315]; _startPosRight = _startPos getPos [_spacerDist, 135]; _endPosRight = _endPos getPos [_spacerDist, 135]; };
+					case 7: { _startPosLeft = _startPos getPos [_spacerDist, 0]; _endPosLeft = _endPos getPos [_spacerDist, 0]; _startPosRight = _startPos getPos [_spacerDist, 180]; _endPosRight = _endPos getPos [_spacerDist, 180]; };
+					case 8: { _startPosLeft = _startPos getPos [_spacerDist, 45]; _endPosLeft = _endPos getPos [_spacerDist, 45]; _startPosRight = _startPos getPos [_spacerDist, 225]; _endPosRight = _endPos getPos [_spacerDist, 225]; };
+					default { systemChat "error: ambient wedge formation selection broken / _origin / _startPosleft / _startPosRight / switch" };
+				};
 
-			// 	// pair ambients - spawn 
-			// 	[_startPosLeft, _endPosLeft, _height, "FULL", _type, west] call BIS_fnc_ambientFlyby; // left ambient 
-			// 	[_startPosRight, _endPosRight, _height, "FULL", _type, west] call BIS_fnc_ambientFlyby; // right ambient 
+				// pair ambients - spawn 
+				[_startPosLeft, _endPosLeft, _height, "FULL", _type, west] call BIS_fnc_ambientFlyby; // left ambient 
+				[_startPosRight, _endPosRight, _height, "FULL", _type, west] call BIS_fnc_ambientFlyby; // right ambient 
 
-			// 	// spacer sleep
-			// 	sleep _spacerTime; 	
-			// };
+				// spacer sleep
+				sleep _spacerTime; 	
+			};
 		};
 
 		// 4 or 6 ambients - parallel formation - to do
@@ -178,7 +158,7 @@ while {true} do {
 		// default 	{ hint "default" };
 	};
 
-	sleep 30;
+	sleep 10;
 };
 
 
