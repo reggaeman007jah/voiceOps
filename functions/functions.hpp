@@ -23,12 +23,12 @@ class RGG {
 		class 3_spawn_opforUnits {
 			Description = "This function spawns opfor in the battlezone";
 		};
-		class 4_ambient_burningVics {
-			Description = "This function manages creation of ambient burning wrecks";
-		};
-		class 4_ambient_flybys {
-			Description = "This function manages all ambient effects in the battlezone, such as burning wrecks and helis/planes flying overhead";
-		};
+		// class 4_ambient_burningVics {
+		// 	Description = "This function manages creation of ambient burning wrecks";
+		// };
+		// class 4_ambient_flybys {
+		// 	Description = "This function manages all ambient effects in the battlezone, such as burning wrecks and helis/planes flying overhead";
+		// };
 	};
 };
 

@@ -22,6 +22,7 @@ allowFunctionsLog = 0;
 
 class cfgFunctions {
 	#include "functions\functions.hpp"
+	#include "functions_Ambient\functions_Ambient.hpp"
 }
 
 

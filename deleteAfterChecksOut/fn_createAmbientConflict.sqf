@@ -1,9 +1,11 @@
 // note - not needed now I think
 
 
-[_battleZone, _bluforFob, _opforFob, _initialBluforInfiPresence, _initialBluforVicPresence, _initialOpforInfiPresence, _initialopforVicPresence, _burningVics]
+// [_battleZone, _bluforFob, _opforFob, _initialBluforInfiPresence, _initialBluforVicPresence, _initialOpforInfiPresence, _initialopforVicPresence, _burningVics]
+[_battleZone, _bluforFob, _opforFob, _initialBluforInfiPresence, _initialBluforVicPresence, _initialOpforInfiPresence, _initialopforVicPresence]
 
-private ["_battleZone", "_bluforFob", "_opforFob", "_initialBluforInfiPresence", "_initialBluforVicPresence", "_initialOpforInfiPresence", "_initialopforVicPresence", "_burningVics"];
+// private ["_battleZone", "_bluforFob", "_opforFob", "_initialBluforInfiPresence", "_initialBluforVicPresence", "_initialOpforInfiPresence", "_initialopforVicPresence", "_burningVics"];
+private ["_battleZone", "_bluforFob", "_opforFob", "_initialBluforInfiPresence", "_initialBluforVicPresence", "_initialOpforInfiPresence", "_initialopforVicPresence"];
 
 _battleZone = param[0]; // main hub
 _bluforFob = param[1]; // blujfor spawn 
@@ -12,7 +14,7 @@ _initialBluforInfiPresence = param[3];
 _initialBluforVicPresence = param[4];
 _initialOpforInfiPresence = param[5];
 _initialopforVicPresence = param[6];
-_burningVics = param[7];
+// _burningVics = param[7];
 
 // initial friendly infi presence / _initialBluforInfiPresence
 // 1 = a few / 1 - 10
