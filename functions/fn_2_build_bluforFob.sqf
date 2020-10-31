@@ -9,104 +9,215 @@ _fobBaseLocation = param[0]; // blufor FOB pos / spawn
 
 _rootPos = _fobBaseLocation; 
 
-_genesisPos = _rootPos getPos [-20,20];
-_spawnSpeed = 0.3;
-_wallSpacing = 8.7;
+// _genesisPos = _rootPos getPos [-20,20];
+// _spawnSpeed = 0.3;
+// _wallSpacing = 8.7;
+
+
+sleep 1;
+
+_rootPos = _fobBaseLocation; 
+
+_genesisPos = _rootPos getPos [10,0];
+_spawnSpeed = 0.1;
+// _wallSpacing = 8.7; 8.4
+
+_NWCorner = _genesisPos getPos [1.7,180];
+_northBlock1 = _genesisPos getPos [5.5,90];
+_northBlock2 = _genesisPos getPos [13.9,90];
+_northBlock3 = _genesisPos getPos [22.3,90];
+_northBlock4 = _genesisPos getPos [30.7,90];
+_NECorner = _genesisPos getPos [38.2,90];
+_NECorner = _NECorner getPos [1.2,180];
+_eastBlock1 = _NECorner getPos [5.6,180];
+_eastBlock1 = _eastBlock1 getPos [2,90];
+_eastBlock2 = _eastBlock1 getPos [13.5,180];
+_eastBlock3 = _eastBlock1 getPos [21.9,180];
+_eastBlock4 = _eastBlock1 getPos [30.4,180];
+
+
+_wallBlock = "Land_HBarrierWall_corner_F" createVehicle _NWCorner;
+_wallBlock enableSimulation false;
+_wallBlock setDir 271.068;
+_NWCorner set [2,0]; 
+_wallBlock setPos _NWCorner;
+_wallBlock enableSimulation true;
+sleep _spawnSpeed;
+
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _northBlock1;
+_wallBlock enableSimulation false;
+_wallBlock setDir 1.4;
+_northBlock1 set [2,0]; 
+_wallBlock setPos _northBlock1;
+_wallBlock enableSimulation true;
+sleep _spawnSpeed;
+
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _northBlock2;
+_wallBlock enableSimulation false;
+_wallBlock setDir 1.4;
+_northBlock2 set [2,0]; 
+_wallBlock setPos _northBlock2;
+_wallBlock enableSimulation true;
+sleep _spawnSpeed;
+
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _northBlock3;
+_wallBlock enableSimulation false;
+_wallBlock setDir 1.4;
+_northBlock3 set [2,0]; 
+_wallBlock setPos _northBlock3;
+_wallBlock enableSimulation true;
+sleep _spawnSpeed;
+
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _northBlock4;
+_wallBlock enableSimulation false;
+_wallBlock setDir 1.4;
+_northBlock4 set [2,0]; 
+_wallBlock setPos _northBlock4;
+_wallBlock enableSimulation true;
+sleep _spawnSpeed;
+
+_wallBlock = "Land_HBarrierWall_corner_F" createVehicle _NECorner;
+_wallBlock enableSimulation false;
+_wallBlock setDir 0.483;
+_NECorner set [2,0]; 
+_wallBlock setPos _NECorner;
+_wallBlock enableSimulation true;
+sleep _spawnSpeed;
+
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _eastBlock1;
+_wallBlock enableSimulation false;
+_wallBlock setDir 91.703;
+_eastBlock1 set [2,0]; 
+_wallBlock setPos _eastBlock1;
+_wallBlock enableSimulation true;
+sleep _spawnSpeed;
+
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _eastBlock2;
+_wallBlock enableSimulation false;
+_wallBlock setDir 91.703;
+_eastBlock2 set [2,0]; 
+_wallBlock setPos _eastBlock2;
+_wallBlock enableSimulation true;
+sleep _spawnSpeed;
+
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _eastBlock3;
+_wallBlock enableSimulation false;
+_wallBlock setDir 91.703;
+_eastBlock3 set [2,0]; 
+_wallBlock setPos _eastBlock3;
+_wallBlock enableSimulation true;
+sleep _spawnSpeed;
+
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _eastBlock4;
+_wallBlock enableSimulation false;
+_wallBlock setDir 91.703;
+_eastBlock4 set [2,0]; 
+_wallBlock setPos _eastBlock4;
+_wallBlock enableSimulation true;
+sleep _spawnSpeed;
 
 
 // _wallBlock = "Land_HBarrierWall6_F" createVehicle _genesisPos;
-_startPosition = _genesisPos;
-for "_i" from 1 to 5 do {
-	_wallBlock = "Land_HBarrierWall6_F" createVehicle _startPosition;
-	_wallBlock setDir 180;
-	_wallBlockPos = getPos _wallBlock;
-	_wallBlockPos set [2,0]; 
-	_wallBlock setPos _wallBlockPos;
-	_pos = _startPosition select 0;	
-	_newPos = _pos + _wallSpacing;				
-	_startPosition set [0, _newPos];
-	sleep _spawnSpeed;	
-};
+// _startPosition = _genesisPos;
+// for "_i" from 1 to 5 do {
+// 	_wallBlock = "Land_HBarrierWall6_F" createVehicle _startPosition;
+// 	_wallBlock enableSimulation false;
+// 	_wallBlock setDir 180;
+// 	_wallBlockPos = getPos _wallBlock;
+// 	_wallBlockPos set [2,0]; 
+// 	_wallBlock setPos _wallBlockPos;
+// 	_pos = _startPosition select 0;	
+// 	_newPos = _pos + _wallSpacing;				
+// 	_startPosition set [0, _newPos];
+// 	_wallBlock enableSimulation true;
+// 	sleep _spawnSpeed;	
+// };
 
-_startPosition = _genesisPos;
-for "_i" from 1 to 5 do {
-	_wallBlock = "Land_HBarrierWall6_F" createVehicle _startPosition;
-	_wallBlock setDir 90;
-	_wallBlockPos = getPos _wallBlock;
-	_wallBlockPos set [2,0]; 
-	_wallBlock setPos _wallBlockPos;
-	_pos = _startPosition select 1;	
-	_newPos = _pos + _wallSpacing;				
-	_startPosition set [1, _newPos];
-	sleep _spawnSpeed;	
-};
+// _startPosition = _genesisPos;
+// for "_i" from 1 to 5 do {
+// 	_wallBlock = "Land_HBarrierWall6_F" createVehicle _startPosition;
+// 	_wallBlock enableSimulation false;
+// 	_wallBlock setDir 90;
+// 	_wallBlockPos = getPos _wallBlock;
+// 	_wallBlockPos set [2,0]; 
+// 	_wallBlock setPos _wallBlockPos;
+// 	_pos = _startPosition select 1;	
+// 	_newPos = _pos + _wallSpacing;				
+// 	_startPosition set [1, _newPos];
+// 	_wallBlock enableSimulation true;
+// 	sleep _spawnSpeed;	
+// };
 
-_startPosition = _genesisPos;
-for "_i" from 1 to 5 do {
-	_wallBlock = "Land_HBarrierWall6_F" createVehicle _startPosition;
-	_wallBlock setDir 0;
-	_wallBlockPos = getPos _wallBlock;
-	_wallBlockPos set [2,0]; 
-	_wallBlock setPos _wallBlockPos;
-	_pos = _startPosition select 0;	
-	_newPos = _pos - _wallSpacing;				
-	_startPosition set [0, _newPos];
-	sleep _spawnSpeed;	
-};
+// _startPosition = _genesisPos;
+// for "_i" from 1 to 5 do {
+// 	_wallBlock = "Land_HBarrierWall6_F" createVehicle _startPosition;
+// 	_wallBlock enableSimulation false;
+// 	_wallBlock setDir 0;
+// 	_wallBlockPos = getPos _wallBlock;
+// 	_wallBlockPos set [2,0]; 
+// 	_wallBlock setPos _wallBlockPos;
+// 	_pos = _startPosition select 0;	
+// 	_newPos = _pos - _wallSpacing;				
+// 	_startPosition set [0, _newPos];
+// 	_wallBlock enableSimulation true;
+// 	sleep _spawnSpeed;	
+// };
 
-_startPosition = _genesisPos;
-for "_i" from 1 to 5 do {
-	_wallBlock = "Land_HBarrierWall6_F" createVehicle _startPosition;
-	_wallBlock setDir 270;
-	_wallBlockPos = getPos _wallBlock;
-	_wallBlockPos set [2,0]; 
-	_wallBlock setPos _wallBlockPos;
-	_pos = _startPosition select 1;	
-	_newPos = _pos - _wallSpacing;				
-	_startPosition set [1, _newPos];
-	sleep _spawnSpeed;	
-};
+// _startPosition = _genesisPos;
+// for "_i" from 1 to 5 do {
+// 	_wallBlock = "Land_HBarrierWall6_F" createVehicle _startPosition;
+// 	_wallBlock setDir 270;
+// 	_wallBlockPos = getPos _wallBlock;
+// 	_wallBlockPos set [2,0]; 
+// 	_wallBlock setPos _wallBlockPos;
+// 	_pos = _startPosition select 1;	
+// 	_newPos = _pos - _wallSpacing;				
+// 	_startPosition set [1, _newPos];
+// 	sleep _spawnSpeed;	
+// };
+
+sleep 5;
 
 // Land_HelipadSquare_F
-_heliPadPos = _rootPos getPos [10,10];
-_heliPad = "Land_HelipadSquare_F" createVehicle _heliPadPos;
-sleep _spawnSpeed;
+// _heliPadPos = _rootPos getPos [10,10];
+// _heliPad = "Land_HelipadSquare_F" createVehicle _heliPadPos;
+// sleep _spawnSpeed;
 
-// Land_Medevac_house_V1_F
-_medicHutPos = _heliPadPos getPos [10,180];
-_medicHut = "Land_Medevac_house_V1_F" createVehicle _medicHutPos;
-sleep _spawnSpeed;
+// // Land_Medevac_house_V1_F
+// _medicHutPos = _heliPadPos getPos [10,180];
+// _medicHut = "Land_Medevac_house_V1_F" createVehicle _medicHutPos;
+// sleep _spawnSpeed;
 
-//Land_MedicalTent_01_NATO_tropic_generic_outer_F
-_tentPos = _medicHutPos getPos [25,90];
-_tent = "Land_MedicalTent_01_NATO_tropic_generic_outer_F" createVehicle _tentPos;
-sleep _spawnSpeed;
+// //Land_MedicalTent_01_NATO_tropic_generic_outer_F
+// _tentPos = _medicHutPos getPos [25,90];
+// _tent = "Land_MedicalTent_01_NATO_tropic_generic_outer_F" createVehicle _tentPos;
+// sleep _spawnSpeed;
 
-//Land_MedicalTent_01_NATO_tropic_generic_outer_F
-_tentPos = _tentPos getPos [10,180];
-_tent = "Land_MedicalTent_01_NATO_tropic_generic_outer_F" createVehicle _tentPos;
-sleep _spawnSpeed;
+// //Land_MedicalTent_01_NATO_tropic_generic_outer_F
+// _tentPos = _tentPos getPos [10,180];
+// _tent = "Land_MedicalTent_01_NATO_tropic_generic_outer_F" createVehicle _tentPos;
+// sleep _spawnSpeed;
 
-// Land_MobileRadar_01_radar_F
-_radarPos = _tentPos getPos [15,260];
-_radar = "Land_MobileRadar_01_radar_F" createVehicle _radarPos;
-sleep _spawnSpeed;
+// // Land_MobileRadar_01_radar_F
+// _radarPos = _tentPos getPos [15,260];
+// _radar = "Land_MobileRadar_01_radar_F" createVehicle _radarPos;
+// sleep _spawnSpeed;
 
-//Land_MobileRadar_01_generator_F
-_gennyPos = _radarPos getPos [6,0];
-_genny = "Land_MobileRadar_01_generator_F" createVehicle _gennyPos;
-sleep _spawnSpeed;
+// //Land_MobileRadar_01_generator_F
+// _gennyPos = _radarPos getPos [6,0];
+// _genny = "Land_MobileRadar_01_generator_F" createVehicle _gennyPos;
+// sleep _spawnSpeed;
 
-// Land_Cargo_House_V2_F
-_hqPos = _gennyPos getPos [25,0];
-_hq = "Land_Cargo_House_V2_F" createVehicle _hqPos;
-sleep _spawnSpeed;
+// // Land_Cargo_House_V2_F
+// _hqPos = _gennyPos getPos [25,0];
+// _hq = "Land_Cargo_House_V2_F" createVehicle _hqPos;
+// sleep _spawnSpeed;
 
-// Land_Cargo_Patrol_V2_F
-_towerPos = _hqPos getPos [10,90];
-_hq = "Land_Cargo_Patrol_V2_F" createVehicle _towerPos;
-_hq setDir 180;
-sleep _spawnSpeed;
+// // Land_Cargo_Patrol_V2_F
+// _towerPos = _hqPos getPos [10,90];
+// _hq = "Land_Cargo_Patrol_V2_F" createVehicle _towerPos;
+// _hq setDir 180;
+// sleep _spawnSpeed;
 
 
 // ** exports 
