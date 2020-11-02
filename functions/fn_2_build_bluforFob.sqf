@@ -13,14 +13,14 @@ _rootPos = _fobBaseLocation;
 // _spawnSpeed = 0.3;
 // _wallSpacing = 8.7;
 
-
+sleep 30;
 
 // _rootPos = getPos Player; 
 
-// _genesisPos = _rootPos getPos [10,0];
-_genesisPos = _rootPos;
+_genesisPos = _rootPos getPos [10,0];
+
 _spawnSpeed = 0.5;
-sleep 15;
+
 
 
 _NWCorner = _genesisPos getPos [1.7,180]; 			// NW Corner
@@ -39,7 +39,7 @@ _eastBlock2 = _eastBlock1 getPos [8.3,180];  		// east 2
 _eastBlock3 = _eastBlock1 getPos [16.7,180];		// east 3
 _eastBlock4 = _eastBlock1 getPos [25.1,180];		// east 4
 
-_SECorner = _eastBlock1 getPos [32.5, 180];		// SE Corner
+_SECorner = _eastBlock1 getPos [32.5, 180];			// SE Corner
 _SECorner = _SECorner getPos [1.38, 270];			// SE Corner v2
 
 _southBlock1 = _SECorner getPos [1.53,180];			// south 1
@@ -56,6 +56,21 @@ _westBlock1 = _westBlock1 getPos [1.8,270];			// west 1
 _westBlock2 = _westBlock1 getPos [8.32,0];			// west 2
 _westBlock3 = _westBlock1 getPos [16.7,0];			// west 3
 _westBlock4 = _westBlock1 getPos [25,0];			// west 4
+
+_gateBlock1 = _westBlock4 getPos [5.7,270];			// gateblock 1
+_gateBlock1 = _gateBlock1 getPos [2.5,180];			// gateblock 1
+_gateBlock2 = _gateBlock1 getPos [11,180];			// gateblock 1
+
+_bunker1 = _gateBlock1 getPos [3.6,180];
+_bunker1 = _bunker1 getPos [4,270];
+_bunker2 = _bunker1 getPos [16,90];
+_bunker2 = _bunker2 getPos [5,180];
+
+_gateBlock3 = _bunker2 getPos [7,45];
+_gateBlock3 = _gateBlock3 getPos [5,0];
+_gateBlock3 = _gateBlock3 getPos [4.5,90];
+// _bunker3 = _northBlock4 getPos [10,180];
+
 
 
 _wallBlock = "Land_HBarrierWall_corner_F" createVehicle _NWCorner; // NW Corner 
@@ -201,6 +216,7 @@ _westBlock2 set [2,0];
 _wallBlock setPos _westBlock2;
 _wallBlock enableSimulation true;
 sleep _spawnSpeed;
+sleep _spawnSpeed;
 
 // _wallBlock = "Land_HBarrierWall6_F" createVehicle _westBlock3; // west 3
 // _wallBlock enableSimulation false;
@@ -216,6 +232,86 @@ _wallBlock setDir 271.703;
 _westBlock4 set [2,0]; 
 _wallBlock setPos _westBlock4;
 _wallBlock enableSimulation true;
+sleep _spawnSpeed;
+
+// gates 
+_wallBlock = "Land_HBarrier_Big_F" createVehicle _gateBlock1; // gate 1
+_wallBlock enableSimulation false;
+_wallBlock setDir 181.703;
+_gateBlock1 set [2,0]; 
+_wallBlock setPos _gateBlock1;
+_wallBlock enableSimulation true;
+sleep _spawnSpeed;
+
+_wallBlock = "Land_HBarrier_Big_F" createVehicle _gateBlock2; // gate 2
+_wallBlock enableSimulation false;
+_wallBlock setDir 181.703;
+_gateBlock2 set [2,0]; 
+_wallBlock setPos _gateBlock2;
+_wallBlock enableSimulation true;
+sleep _spawnSpeed;
+
+// bunkers 
+_wallBlock = "Land_BagBunker_Small_F" createVehicle _bunker1; // bunker 1
+_wallBlock enableSimulation false;
+_wallBlock setDir 91.703;
+_bunker1 set [2,0]; 
+_wallBlock setPos _bunker1;
+_wallBlock enableSimulation true;
+sleep _spawnSpeed;
+
+// _wallBlock = "Land_BagBunker_Small_F" createVehicle _bunker2; // bunker 2
+// _wallBlock enableSimulation false;
+// _wallBlock setDir 91.703;
+// _bunker2 set [2,0]; 
+// _wallBlock setPos _bunker2;
+// _wallBlock enableSimulation true;
+// sleep _spawnSpeed;
+
+_wallBlock = "Land_HBarrierTower_F" createVehicle _bunker2; // bunker 3
+_wallBlock enableSimulation false;
+_wallBlock setDir 91.703;
+_bunker2 set [2,0]; 
+_wallBlock setPos _bunker2;
+_wallBlock enableSimulation true;
+sleep _spawnSpeed;
+
+_wallBlock = "Land_HBarrier_Big_F" createVehicle _gateBlock3; // bunker 3
+_wallBlock enableSimulation false;
+_wallBlock setDir 90;
+_gateBlock3 set [2,0]; 
+_wallBlock setPos _gateBlock3;
+_wallBlock enableSimulation true;
+sleep _spawnSpeed;
+
+
+// Land_HelipadSquare_F
+_heliPadPos = _SECorner getPos [15,315];
+_heliPad = "Land_HelipadSquare_F" createVehicle _heliPadPos;
+sleep _spawnSpeed;
+
+// Land_Medevac_house_V1_F
+_medicHutPos = _heliPadPos getPos [10,270];
+_medicHutPos = _medicHutPos getPos [5,270];
+_medicHutPos = _medicHutPos getPos [2,180];
+_medicHut = "Land_Medevac_house_V1_F" createVehicle _medicHutPos;
+_medicHut setDir 270;
+sleep _spawnSpeed;
+
+// OFFICE 
+_officePos = _medicHutPos getPos [7,270];
+_office = "Land_Cargo_House_V3_F" createVehicle _officePos;
+_medicHut setDir 0;
+sleep _spawnSpeed;
+
+// medic tent 
+_medicTentPos = _heliPad getPos [18,0];
+_medicTentPos = _medicTentPos getPos [3,90];
+_medicTent = "Land_MedicalTent_01_MTP_closed_F" createVehicle _medicTentPos;
+sleep _spawnSpeed;
+
+_medicTentPos = _medicTentPos getPos [10,270];
+_medicTent = "Land_MedicalTent_01_MTP_closed_F" createVehicle _medicTentPos;
 sleep _spawnSpeed;
 
 

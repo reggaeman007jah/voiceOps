@@ -8,7 +8,7 @@ _baseLocation = param[0]; // blufor FOB pos / spawn
 // ** imports 
 
 // find suitable build location for blufor FOB 
-_fobBaseLocation = [_baseLocation, 1000, 3000, 40, 0, 2, 0] call BIS_fnc_findSafePos;
+_fobBaseLocation = [_baseLocation, 1000, 3000, 40, 0, 1, 0] call BIS_fnc_findSafePos;
  
 // mark main area 
 _battleZoneMarker = createMarker ["battleZone", _fobBaseLocation];
