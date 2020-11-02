@@ -14,29 +14,51 @@ _rootPos = _fobBaseLocation;
 // _wallSpacing = 8.7;
 
 
-sleep 1;
 
-_rootPos = _fobBaseLocation; 
+// _rootPos = getPos Player; 
 
-_genesisPos = _rootPos getPos [10,0];
-_spawnSpeed = 0.1;
-// _wallSpacing = 8.7; 8.4
-
-_NWCorner = _genesisPos getPos [1.7,180];
-_northBlock1 = _genesisPos getPos [5.5,90];
-_northBlock2 = _genesisPos getPos [13.9,90];
-_northBlock3 = _genesisPos getPos [22.3,90];
-_northBlock4 = _genesisPos getPos [30.7,90];
-_NECorner = _genesisPos getPos [38.2,90];
-_NECorner = _NECorner getPos [1.2,180];
-_eastBlock1 = _NECorner getPos [5.6,180];
-_eastBlock1 = _eastBlock1 getPos [2,90];
-_eastBlock2 = _eastBlock1 getPos [13.5,180];
-_eastBlock3 = _eastBlock1 getPos [21.9,180];
-_eastBlock4 = _eastBlock1 getPos [30.4,180];
+// _genesisPos = _rootPos getPos [10,0];
+_genesisPos = _rootPos;
+_spawnSpeed = 0.5;
+sleep 15;
 
 
-_wallBlock = "Land_HBarrierWall_corner_F" createVehicle _NWCorner;
+_NWCorner = _genesisPos getPos [1.7,180]; 			// NW Corner
+
+_northBlock1 = _genesisPos getPos [5.5,90];			// north 1
+_northBlock2 = _genesisPos getPos [13.9,90];		// north 2
+_northBlock3 = _genesisPos getPos [22.3,90];		// north 3
+_northBlock4 = _genesisPos getPos [30.7,90];		// north 4
+
+_NECorner = _genesisPos getPos [38.2,90];			// NE Corner
+_NECorner = _NECorner getPos [1.2,180];				// NE Corner v2
+
+_eastBlock1 = _NECorner getPos [5.6,180];			// east 1
+_eastBlock1 = _eastBlock1 getPos [2,90];			// east 1 v2
+_eastBlock2 = _eastBlock1 getPos [8.3,180];  		// east 2
+_eastBlock3 = _eastBlock1 getPos [16.7,180];		// east 3
+_eastBlock4 = _eastBlock1 getPos [25.1,180];		// east 4
+
+_SECorner = _eastBlock1 getPos [32.5, 180];		// SE Corner
+_SECorner = _SECorner getPos [1.38, 270];			// SE Corner v2
+
+_southBlock1 = _SECorner getPos [1.53,180];			// south 1
+_southBlock1 = _southBlock1 getPos [5.7,270];		// south 1 v2
+_southBlock2 = _southBlock1 getPos [8.47,270];		// south 2
+_southBlock3 = _southBlock1 getPos [16.8,270];		// south 3
+_southBlock4 = _southBlock1 getPos [25.1,270];		// south 4
+
+_SWCorner = _southBlock1 getPos [32.5,270];			// SW Corner
+_SWCorner = _SWCorner getPos [1.2,00];				// SW Corner v2
+
+_westBlock1 = _SWCorner getPos [5.68,00];			// west 1
+_westBlock1 = _westBlock1 getPos [1.8,270];			// west 1
+_westBlock2 = _westBlock1 getPos [8.32,0];			// west 2
+_westBlock3 = _westBlock1 getPos [16.7,0];			// west 3
+_westBlock4 = _westBlock1 getPos [25,0];			// west 4
+
+
+_wallBlock = "Land_HBarrierWall_corner_F" createVehicle _NWCorner; // NW Corner 
 _wallBlock enableSimulation false;
 _wallBlock setDir 271.068;
 _NWCorner set [2,0]; 
@@ -44,7 +66,7 @@ _wallBlock setPos _NWCorner;
 _wallBlock enableSimulation true;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrierWall6_F" createVehicle _northBlock1;
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _northBlock1; // north 1
 _wallBlock enableSimulation false;
 _wallBlock setDir 1.4;
 _northBlock1 set [2,0]; 
@@ -52,7 +74,7 @@ _wallBlock setPos _northBlock1;
 _wallBlock enableSimulation true;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrierWall6_F" createVehicle _northBlock2;
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _northBlock2; // north 2
 _wallBlock enableSimulation false;
 _wallBlock setDir 1.4;
 _northBlock2 set [2,0]; 
@@ -60,7 +82,7 @@ _wallBlock setPos _northBlock2;
 _wallBlock enableSimulation true;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrierWall6_F" createVehicle _northBlock3;
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _northBlock3; // north 3
 _wallBlock enableSimulation false;
 _wallBlock setDir 1.4;
 _northBlock3 set [2,0]; 
@@ -68,7 +90,7 @@ _wallBlock setPos _northBlock3;
 _wallBlock enableSimulation true;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrierWall6_F" createVehicle _northBlock4;
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _northBlock4; // north 4
 _wallBlock enableSimulation false;
 _wallBlock setDir 1.4;
 _northBlock4 set [2,0]; 
@@ -76,7 +98,7 @@ _wallBlock setPos _northBlock4;
 _wallBlock enableSimulation true;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrierWall_corner_F" createVehicle _NECorner;
+_wallBlock = "Land_HBarrierWall_corner_F" createVehicle _NECorner; // NE Corner 
 _wallBlock enableSimulation false;
 _wallBlock setDir 0.483;
 _NECorner set [2,0]; 
@@ -84,7 +106,7 @@ _wallBlock setPos _NECorner;
 _wallBlock enableSimulation true;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrierWall6_F" createVehicle _eastBlock1;
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _eastBlock1; // east 1
 _wallBlock enableSimulation false;
 _wallBlock setDir 91.703;
 _eastBlock1 set [2,0]; 
@@ -92,7 +114,7 @@ _wallBlock setPos _eastBlock1;
 _wallBlock enableSimulation true;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrierWall6_F" createVehicle _eastBlock2;
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _eastBlock2; // east 2
 _wallBlock enableSimulation false;
 _wallBlock setDir 91.703;
 _eastBlock2 set [2,0]; 
@@ -100,7 +122,7 @@ _wallBlock setPos _eastBlock2;
 _wallBlock enableSimulation true;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrierWall6_F" createVehicle _eastBlock3;
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _eastBlock3; // east 3
 _wallBlock enableSimulation false;
 _wallBlock setDir 91.703;
 _eastBlock3 set [2,0]; 
@@ -108,11 +130,91 @@ _wallBlock setPos _eastBlock3;
 _wallBlock enableSimulation true;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrierWall6_F" createVehicle _eastBlock4;
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _eastBlock4; // east 4
 _wallBlock enableSimulation false;
 _wallBlock setDir 91.703;
 _eastBlock4 set [2,0]; 
 _wallBlock setPos _eastBlock4;
+_wallBlock enableSimulation true;
+sleep _spawnSpeed;
+
+_wallBlock = "Land_HBarrierWall_corner_F" createVehicle _SECorner; // SE Corner 
+_wallBlock enableSimulation false;
+_wallBlock setDir 91.703;
+_SECorner set [2,0]; 
+_wallBlock setPos _SECorner;
+_wallBlock enableSimulation true;
+sleep _spawnSpeed;
+
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _southBlock1; // south 1
+_wallBlock enableSimulation false;
+_wallBlock setDir 181.4;
+_southBlock1 set [2,0]; 
+_wallBlock setPos _southBlock1;
+_wallBlock enableSimulation true;
+sleep _spawnSpeed;
+
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _southBlock2; // south 2
+_wallBlock enableSimulation false;
+_wallBlock setDir 181.4;
+_southBlock2 set [2,0]; 
+_wallBlock setPos _southBlock2;
+_wallBlock enableSimulation true;
+sleep _spawnSpeed;
+
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _southBlock3; // south 3
+_wallBlock enableSimulation false;
+_wallBlock setDir 181.4;
+_southBlock3 set [2,0]; 
+_wallBlock setPos _southBlock3;
+_wallBlock enableSimulation true;
+sleep _spawnSpeed;
+
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _southBlock4; // south 4
+_wallBlock enableSimulation false;
+_wallBlock setDir 181.4;
+_southBlock4 set [2,0]; 
+_wallBlock setPos _southBlock4;
+_wallBlock enableSimulation true;
+sleep _spawnSpeed;
+
+_wallBlock = "Land_HBarrierWall_corner_F" createVehicle _SWCorner; // SW Corner
+_wallBlock enableSimulation false;
+_wallBlock setDir 181.4;
+_SWCorner set [2,0]; 
+_wallBlock setPos _SWCorner;
+_wallBlock enableSimulation true;
+sleep _spawnSpeed;
+
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _westBlock1; // west 1
+_wallBlock enableSimulation false;
+_wallBlock setDir 271.703;
+_westBlock1 set [2,0]; 
+_wallBlock setPos _westBlock1;
+_wallBlock enableSimulation true;
+sleep _spawnSpeed;
+
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _westBlock2; // west 2
+_wallBlock enableSimulation false;
+_wallBlock setDir 271.703;
+_westBlock2 set [2,0]; 
+_wallBlock setPos _westBlock2;
+_wallBlock enableSimulation true;
+sleep _spawnSpeed;
+
+// _wallBlock = "Land_HBarrierWall6_F" createVehicle _westBlock3; // west 3
+// _wallBlock enableSimulation false;
+// _wallBlock setDir 271.703;
+// _westBlock3 set [2,0]; 
+// _wallBlock setPos _westBlock3;
+// _wallBlock enableSimulation true;
+// sleep _spawnSpeed;
+
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _westBlock4; // west 4
+_wallBlock enableSimulation false;
+_wallBlock setDir 271.703;
+_westBlock4 set [2,0]; 
+_wallBlock setPos _westBlock4;
 _wallBlock enableSimulation true;
 sleep _spawnSpeed;
 
