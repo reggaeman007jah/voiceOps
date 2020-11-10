@@ -1,5 +1,7 @@
 
-call RGG_fnc_1_setup_createMainBaseMarker; 
+// call RGG_fnc_1_setup_createMainBaseMarker; 
+
+execVM "eventHandlers\slingLoadMonitor.sqf";
 
 while {true} do {
 	{ deleteVehicle _x } forEach allDead;

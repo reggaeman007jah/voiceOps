@@ -17,6 +17,12 @@ class RGG {
 		class 2_build_opforCamp {
 			Description = "This function manages creation of opfor camp";
 		};
+		class 2_build_bluforMedbase {
+			Description = "This function manages creation of blufor med-base";
+		};
+		class 2_build_bluforBarracks {
+			Description = "This function manages creation of blufor barracks";
+		};
 		class 3_spawn_bluforUnits {
 			Description = "This function spawns blufor in the battlezone";
 		};
