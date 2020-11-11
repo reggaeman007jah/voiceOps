@@ -1,3 +1,4 @@
+// RGGa - Ambient Classes
 class RGGa {
 	tag = "RGGa";
 	class functions_Ambient {
