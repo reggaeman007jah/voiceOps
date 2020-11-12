@@ -1,15 +1,23 @@
+/*
+Build med base FOB
+*/
+
+// -------------------------------------------------------------------------------------------
+// setup 
+
 sleep 10;
-// setAccTime 4;
-// _rootPos = getPos Player; 
-// _rootPos = _this select 0;
-_object2 = _this select 0;
-
-_rootPos = getPos _object2;
-deleteVehicle _object2;
-
-_genesisPos = _rootPos getPos [20,315];
-
 _spawnSpeed = 0.5;
+_mapCorner = [0,0]; // corner pos for initial spawning to hide glitching 
+_object2 = _this select 0; // reference to the item dropped 
+_rootPos = getPos _object2; // reference to the position of the item dropped 
+
+[_object2] spawn RGGb_fnc_build_blockSinker;
+
+
+// -------------------------------------------------------------------------------------------
+// positions 
+
+_genesisPos = _rootPos getPos [20,315];				// 20m NW of root pos 
 
 _NWCorner = _genesisPos getPos [1.7,180]; 			// NW Corner
 
@@ -59,150 +67,181 @@ _gateBlock3 = _gateBlock3 getPos [5,0];
 _gateBlock3 = _gateBlock3 getPos [4.5,90];
 // _bunker3 = _northBlock4 getPos [10,180];
 
+_heliPadPos = _SECorner getPos [15,315];
 
+_medicHutPos = _heliPadPos getPos [10,270];
+_medicHutPos = _medicHutPos getPos [5,270];
+_medicHutPos = _medicHutPos getPos [2,180];
 
-_wallBlock = "Land_HBarrierWall_corner_F" createVehicle _NWCorner; // NW Corner 
-_wallBlock enableSimulation false;
-_wallBlock setDir 271.068;
-_NWCorner set [2,0]; 
-_wallBlock setPos _NWCorner;
-_wallBlock enableSimulation true;
+_officePos = _medicHutPos getPos [7,270];
+
+_medicTentPos = _heliPadPos getPos [18,0];
+_medicTentPos = _medicTentPos getPos [3,90];
+_medicTentPos = _medicTentPos getPos [10,270];
+
+// -------------------------------------------------------------------------------------------
+// block creation 
+
+_wallBlock = "Land_HBarrierWall_corner_F" createVehicle _mapCorner; // NW Corner 
+[_wallBlock, _NWCorner, 271.068] spawn RGGb_fnc_build_blockManager;
+// _wallBlock enableSimulation false;
+// _wallBlock setDir 271.068;
+// _NWCorner set [2,0]; 
+// _wallBlock setPos _NWCorner;
+// _wallBlock enableSimulation true;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrierWall6_F" createVehicle _northBlock1; // north 1
-_wallBlock enableSimulation false;
-_wallBlock setDir 1.4;
-_northBlock1 set [2,0]; 
-_wallBlock setPos _northBlock1;
-_wallBlock enableSimulation true;
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _mapCorner; // north 1
+[_wallBlock, _northBlock1, 1.4] spawn RGGb_fnc_build_blockManager;
+// _wallBlock enableSimulation false;
+// _wallBlock setDir 1.4;
+// _northBlock1 set [2,0]; 
+// _wallBlock setPos _northBlock1;
+// _wallBlock enableSimulation true;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrierWall6_F" createVehicle _northBlock2; // north 2
-_wallBlock enableSimulation false;
-_wallBlock setDir 1.4;
-_northBlock2 set [2,0]; 
-_wallBlock setPos _northBlock2;
-_wallBlock enableSimulation true;
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _mapCorner; // north 2
+[_wallBlock, _northBlock2, 1.4] spawn RGGb_fnc_build_blockManager;
+// _wallBlock enableSimulation false;
+// _wallBlock setDir 1.4;
+// _northBlock2 set [2,0]; 
+// _wallBlock setPos _northBlock2;
+// _wallBlock enableSimulation true;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrierWall6_F" createVehicle _northBlock3; // north 3
-_wallBlock enableSimulation false;
-_wallBlock setDir 1.4;
-_northBlock3 set [2,0]; 
-_wallBlock setPos _northBlock3;
-_wallBlock enableSimulation true;
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _mapCorner; // north 3
+[_wallBlock, _northBlock3, 1.4] spawn RGGb_fnc_build_blockManager;
+// _wallBlock enableSimulation false;
+// _wallBlock setDir 1.4;
+// _northBlock3 set [2,0]; 
+// _wallBlock setPos _northBlock3;
+// _wallBlock enableSimulation true;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrierWall6_F" createVehicle _northBlock4; // north 4
-_wallBlock enableSimulation false;
-_wallBlock setDir 1.4;
-_northBlock4 set [2,0]; 
-_wallBlock setPos _northBlock4;
-_wallBlock enableSimulation true;
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _mapCorner; // north 4
+[_wallBlock, _northBlock4, 1.4] spawn RGGb_fnc_build_blockManager;
+// _wallBlock enableSimulation false;
+// _wallBlock setDir 1.4;
+// _northBlock4 set [2,0]; 
+// _wallBlock setPos _northBlock4;
+// _wallBlock enableSimulation true;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrierWall_corner_F" createVehicle _NECorner; // NE Corner 
-_wallBlock enableSimulation false;
-_wallBlock setDir 0.483;
-_NECorner set [2,0]; 
-_wallBlock setPos _NECorner;
-_wallBlock enableSimulation true;
+_wallBlock = "Land_HBarrierWall_corner_F" createVehicle _mapCorner; // NE Corner 
+[_wallBlock, _NECorner, 0.483] spawn RGGb_fnc_build_blockManager;
+// _wallBlock enableSimulation false;
+// _wallBlock setDir 0.483;
+// _NECorner set [2,0]; 
+// _wallBlock setPos _NECorner;
+// _wallBlock enableSimulation true;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrierWall6_F" createVehicle _eastBlock1; // east 1
-_wallBlock enableSimulation false;
-_wallBlock setDir 91.703;
-_eastBlock1 set [2,0]; 
-_wallBlock setPos _eastBlock1;
-_wallBlock enableSimulation true;
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _mapCorner; // east 1
+[_wallBlock, _eastBlock1, 91.703] spawn RGGb_fnc_build_blockManager;
+// _wallBlock enableSimulation false;
+// _wallBlock setDir 91.703;
+// _eastBlock1 set [2,0]; 
+// _wallBlock setPos _eastBlock1;
+// _wallBlock enableSimulation true;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrierWall6_F" createVehicle _eastBlock2; // east 2
-_wallBlock enableSimulation false;
-_wallBlock setDir 91.703;
-_eastBlock2 set [2,0]; 
-_wallBlock setPos _eastBlock2;
-_wallBlock enableSimulation true;
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _mapCorner; // east 2
+[_wallBlock, _eastBlock2, 91.703] spawn RGGb_fnc_build_blockManager;
+// _wallBlock enableSimulation false;
+// _wallBlock setDir 91.703;
+// _eastBlock2 set [2,0]; 
+// _wallBlock setPos _eastBlock2;
+// _wallBlock enableSimulation true;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrierWall6_F" createVehicle _eastBlock3; // east 3
-_wallBlock enableSimulation false;
-_wallBlock setDir 91.703;
-_eastBlock3 set [2,0]; 
-_wallBlock setPos _eastBlock3;
-_wallBlock enableSimulation true;
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _mapCorner; // east 3
+[_wallBlock, _eastBlock3, 91.703] spawn RGGb_fnc_build_blockManager;
+// _wallBlock enableSimulation false;
+// _wallBlock setDir 91.703;
+// _eastBlock3 set [2,0]; 
+// _wallBlock setPos _eastBlock3;
+// _wallBlock enableSimulation true;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrierWall6_F" createVehicle _eastBlock4; // east 4
-_wallBlock enableSimulation false;
-_wallBlock setDir 91.703;
-_eastBlock4 set [2,0]; 
-_wallBlock setPos _eastBlock4;
-_wallBlock enableSimulation true;
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _mapCorner; // east 4
+[_wallBlock, _eastBlock4, 91.703] spawn RGGb_fnc_build_blockManager;
+// _wallBlock enableSimulation false;
+// _wallBlock setDir 91.703;
+// _eastBlock4 set [2,0]; 
+// _wallBlock setPos _eastBlock4;
+// _wallBlock enableSimulation true;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrierWall_corner_F" createVehicle _SECorner; // SE Corner 
-_wallBlock enableSimulation false;
-_wallBlock setDir 91.703;
-_SECorner set [2,0]; 
-_wallBlock setPos _SECorner;
-_wallBlock enableSimulation true;
+_wallBlock = "Land_HBarrierWall_corner_F" createVehicle _mapCorner; // SE Corner 
+[_wallBlock, _SECorner, 91.703] spawn RGGb_fnc_build_blockManager;
+// _wallBlock enableSimulation false;
+// _wallBlock setDir 91.703;
+// _SECorner set [2,0]; 
+// _wallBlock setPos _SECorner;
+// _wallBlock enableSimulation true;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrierWall6_F" createVehicle _southBlock1; // south 1
-_wallBlock enableSimulation false;
-_wallBlock setDir 181.4;
-_southBlock1 set [2,0]; 
-_wallBlock setPos _southBlock1;
-_wallBlock enableSimulation true;
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _mapCorner; // south 1
+[_wallBlock, _southBlock1, 181.4] spawn RGGb_fnc_build_blockManager;
+// _wallBlock enableSimulation false;
+// _wallBlock setDir 181.4;
+// _southBlock1 set [2,0]; 
+// _wallBlock setPos _southBlock1;
+// _wallBlock enableSimulation true;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrierWall6_F" createVehicle _southBlock2; // south 2
-_wallBlock enableSimulation false;
-_wallBlock setDir 181.4;
-_southBlock2 set [2,0]; 
-_wallBlock setPos _southBlock2;
-_wallBlock enableSimulation true;
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _mapCorner; // south 2
+[_wallBlock, _southBlock2, 181.4] spawn RGGb_fnc_build_blockManager;
+// _wallBlock enableSimulation false;
+// _wallBlock setDir 181.4;
+// _southBlock2 set [2,0]; 
+// _wallBlock setPos _southBlock2;
+// _wallBlock enableSimulation true;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrierWall6_F" createVehicle _southBlock3; // south 3
-_wallBlock enableSimulation false;
-_wallBlock setDir 181.4;
-_southBlock3 set [2,0]; 
-_wallBlock setPos _southBlock3;
-_wallBlock enableSimulation true;
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _mapCorner; // south 3
+[_wallBlock, _southBlock3, 181.4] spawn RGGb_fnc_build_blockManager;
+// _wallBlock enableSimulation false;
+// _wallBlock setDir 181.4;
+// _southBlock3 set [2,0]; 
+// _wallBlock setPos _southBlock3;
+// _wallBlock enableSimulation true;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrierWall6_F" createVehicle _southBlock4; // south 4
-_wallBlock enableSimulation false;
-_wallBlock setDir 181.4;
-_southBlock4 set [2,0]; 
-_wallBlock setPos _southBlock4;
-_wallBlock enableSimulation true;
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _mapCorner; // south 4
+[_wallBlock, _southBlock4, 181.4] spawn RGGb_fnc_build_blockManager;
+// _wallBlock enableSimulation false;
+// _wallBlock setDir 181.4;
+// _southBlock4 set [2,0]; 
+// _wallBlock setPos _southBlock4;
+// _wallBlock enableSimulation true;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrierWall_corner_F" createVehicle _SWCorner; // SW Corner
-_wallBlock enableSimulation false;
-_wallBlock setDir 181.4;
-_SWCorner set [2,0]; 
-_wallBlock setPos _SWCorner;
-_wallBlock enableSimulation true;
+_wallBlock = "Land_HBarrierWall_corner_F" createVehicle _mapCorner; // SW Corner
+[_wallBlock, _SWCorner, 181.4] spawn RGGb_fnc_build_blockManager;
+// _wallBlock enableSimulation false;
+// _wallBlock setDir 181.4;
+// _SWCorner set [2,0]; 
+// _wallBlock setPos _SWCorner;
+// _wallBlock enableSimulation true;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrierWall6_F" createVehicle _westBlock1; // west 1
-_wallBlock enableSimulation false;
-_wallBlock setDir 271.703;
-_westBlock1 set [2,0]; 
-_wallBlock setPos _westBlock1;
-_wallBlock enableSimulation true;
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _mapCorner; // west 1
+[_wallBlock, _westBlock1, 271.703] spawn RGGb_fnc_build_blockManager;
+// _wallBlock enableSimulation false;
+// _wallBlock setDir 271.703;
+// _westBlock1 set [2,0]; 
+// _wallBlock setPos _westBlock1;
+// _wallBlock enableSimulation true;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrierWall6_F" createVehicle _westBlock2; // west 2
-_wallBlock enableSimulation false;
-_wallBlock setDir 271.703;
-_westBlock2 set [2,0]; 
-_wallBlock setPos _westBlock2;
-_wallBlock enableSimulation true;
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _mapCorner; // west 2
+[_wallBlock, _westBlock2, 271.703] spawn RGGb_fnc_build_blockManager;
+// _wallBlock enableSimulation false;
+// _wallBlock setDir 271.703;
+// _westBlock2 set [2,0]; 
+// _wallBlock setPos _westBlock2;
+// _wallBlock enableSimulation true;
 sleep _spawnSpeed;
 
 // _wallBlock = "Land_HBarrierWall6_F" createVehicle _westBlock3; // west 3
@@ -213,38 +252,42 @@ sleep _spawnSpeed;
 // _wallBlock enableSimulation true;
 // sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrierWall6_F" createVehicle _westBlock4; // west 4
-_wallBlock enableSimulation false;
-_wallBlock setDir 271.703;
-_westBlock4 set [2,0]; 
-_wallBlock setPos _westBlock4;
-_wallBlock enableSimulation true;
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _mapCorner; // west 4
+[_wallBlock, _westBlock4, 271.703] spawn RGGb_fnc_build_blockManager;
+// _wallBlock enableSimulation false;
+// _wallBlock setDir 271.703;
+// _westBlock4 set [2,0]; 
+// _wallBlock setPos _westBlock4;
+// _wallBlock enableSimulation true;
 sleep _spawnSpeed;
 
 // gates 
-_wallBlock = "Land_HBarrier_Big_F" createVehicle _gateBlock1; // gate 1
-_wallBlock enableSimulation false;
-_wallBlock setDir 181.703;
-_gateBlock1 set [2,0]; 
-_wallBlock setPos _gateBlock1;
-_wallBlock enableSimulation true;
+_wallBlock = "Land_HBarrier_Big_F" createVehicle _mapCorner; // gate 1
+[_wallBlock, _gateBlock1, 181.703] spawn RGGb_fnc_build_blockManager;
+// _wallBlock enableSimulation false;
+// _wallBlock setDir 181.703;
+// _gateBlock1 set [2,0]; 
+// _wallBlock setPos _gateBlock1;
+// _wallBlock enableSimulation true;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrier_Big_F" createVehicle _gateBlock2; // gate 2
-_wallBlock enableSimulation false;
-_wallBlock setDir 181.703;
-_gateBlock2 set [2,0]; 
-_wallBlock setPos _gateBlock2;
-_wallBlock enableSimulation true;
+_wallBlock = "Land_HBarrier_Big_F" createVehicle _mapCorner; // gate 2
+[_wallBlock, _gateBlock2, 181.703] spawn RGGb_fnc_build_blockManager;
+// _wallBlock enableSimulation false;
+// _wallBlock setDir 181.703;
+// _gateBlock2 set [2,0]; 
+// _wallBlock setPos _gateBlock2;
+// _wallBlock enableSimulation true;
 sleep _spawnSpeed;
 
 // bunkers 
-_wallBlock = "Land_BagBunker_Small_F" createVehicle _bunker1; // bunker 1
-_wallBlock enableSimulation false;
-_wallBlock setDir 91.703;
-_bunker1 set [2,0]; 
-_wallBlock setPos _bunker1;
-_wallBlock enableSimulation true;
+_wallBlock = "Land_BagBunker_Small_F" createVehicle _mapCorner; // bunker 1
+[_wallBlock, _bunker1, 91.703] spawn RGGb_fnc_build_blockManager;
+// _wallBlock enableSimulation false;
+// _wallBlock setDir 91.703;
+// _bunker1 set [2,0]; 
+// _wallBlock setPos _bunker1;
+// _wallBlock enableSimulation true;
 sleep _spawnSpeed;
 
 // _wallBlock = "Land_BagBunker_Small_F" createVehicle _bunker2; // bunker 2
@@ -255,51 +298,54 @@ sleep _spawnSpeed;
 // _wallBlock enableSimulation true;
 // sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrierTower_F" createVehicle _bunker2; // bunker 3
-_wallBlock enableSimulation false;
-_wallBlock setDir 91.703;
-_bunker2 set [2,0]; 
-_wallBlock setPos _bunker2;
-_wallBlock enableSimulation true;
+_wallBlock = "Land_HBarrierTower_F" createVehicle _mapCorner; // bunker 3
+[_wallBlock, _bunker2, 91.703] spawn RGGb_fnc_build_blockManager;
+// _wallBlock enableSimulation false;
+// _wallBlock setDir 91.703;
+// _bunker2 set [2,0]; 
+// _wallBlock setPos _bunker2;
+// _wallBlock enableSimulation true;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrier_Big_F" createVehicle _gateBlock3; // bunker 3
-_wallBlock enableSimulation false;
-_wallBlock setDir 90;
-_gateBlock3 set [2,0]; 
-_wallBlock setPos _gateBlock3;
-_wallBlock enableSimulation true;
+_wallBlock = "Land_HBarrier_Big_F" createVehicle _mapCorner; // bunker 3
+[_wallBlock, _gateBlock3, 90] spawn RGGb_fnc_build_blockManager;
+// _wallBlock enableSimulation false;
+// _wallBlock setDir 90;
+// _gateBlock3 set [2,0]; 
+// _wallBlock setPos _gateBlock3;
+// _wallBlock enableSimulation true;
 sleep _spawnSpeed;
-
+ 
 
 // Land_HelipadSquare_F
-_heliPadPos = _SECorner getPos [15,315];
-_heliPad = "Land_HelipadSquare_F" createVehicle _heliPadPos;
+_heliPad = "Land_HelipadSquare_F" createVehicle _mapCorner;
+[_heliPad, _heliPadPos, 0] spawn RGGb_fnc_build_blockManager;
 sleep _spawnSpeed;
 
 // Land_Medevac_house_V1_F
-_medicHutPos = _heliPadPos getPos [10,270];
-_medicHutPos = _medicHutPos getPos [5,270];
-_medicHutPos = _medicHutPos getPos [2,180];
-_medicHut = "Land_Medevac_house_V1_F" createVehicle _medicHutPos;
-_medicHut setDir 270;
+_medicHut = "Land_Medevac_house_V1_F" createVehicle _mapCorner;
+[_medicHut, _medicHutPos, 270] spawn RGGb_fnc_build_blockManager;
+// _medicHut setDir 270;
 sleep _spawnSpeed;
 
 // OFFICE 
-_officePos = _medicHutPos getPos [7,270];
-_office = "Land_Cargo_House_V3_F" createVehicle _officePos;
-_medicHut setDir 0;
+
+_office = "Land_Cargo_House_V3_F" createVehicle _mapCorner;
+[_office, _officePos, 0] spawn RGGb_fnc_build_blockManager;
+// _medicHut setDir 0;
 sleep _spawnSpeed;
 
 // medic tent 
-_medicTentPos = _heliPad getPos [18,0];
-_medicTentPos = _medicTentPos getPos [3,90];
-_medicTent = "Land_MedicalTent_01_MTP_closed_F" createVehicle _medicTentPos;
-sleep _spawnSpeed;
 
-_medicTentPos = _medicTentPos getPos [10,270];
-_medicTent = "Land_MedicalTent_01_MTP_closed_F" createVehicle _medicTentPos;
-sleep _spawnSpeed;
+_medicTent = "Land_MedicalTent_01_MTP_closed_F" createVehicle _mapCorner;
+[_medicTent, _medicTentPos, 0] spawn RGGb_fnc_build_blockManager;
+// sleep _spawnSpeed;
+// -------------------------------------------------------------------------------------------
+
+
+// _medicTent = "Land_MedicalTent_01_MTP_closed_F" createVehicle _medicTentPos;
+// [_medicTent, _medicTentPos, 0] spawn RGGb_fnc_build_blockManager;
+// sleep _spawnSpeed;
 
 /*
 //Land_MedicalTent_01_NATO_tropic_generic_outer_F
