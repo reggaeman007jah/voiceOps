@@ -2,7 +2,7 @@
 class RGGb {
 	tag = "RGGb";
 	class functions_Build {
-		file = "functions_Ambient";
+		file = "functions_Ambient"; // what is this ??
 
 		class build_bluforBarracks {
 			Description = "This function will deploy blufor barracks from seed (container) position";
