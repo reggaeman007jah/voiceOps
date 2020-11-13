@@ -15,7 +15,7 @@ _rootPos = getPos _object2; // reference to the position of the item dropped
 
 
 // -------------------------------------------------------------------------------------------
-// positions 
+// block and asset positions 
 
 _genesisPos = _rootPos getPos [20,315];				// 20m NW of root pos 
 
@@ -342,6 +342,21 @@ _medicTent = "Land_MedicalTent_01_MTP_closed_F" createVehicle _mapCorner;
 // sleep _spawnSpeed;
 // -------------------------------------------------------------------------------------------
 
+MEDICAL = true;
+
+// register main base as a blue marker
+_base = createMarker ["Medical", _rootPos];
+_base setMarkerShape "ELLIPSE";
+_base setMarkerColor "ColorBlue";
+_base setMarkerSize [50, 50];
+_base setMarkerAlpha 0.5;
+
+// create invisible marker for supply drops 
+_medicalDZ = createMarker ["Medical_DZ", _heliPadPos];
+_medicalDZ setMarkerShape "ELLIPSE";
+_medicalDZ setMarkerColor "ColorRed";
+_medicalDZ setMarkerSize [15, 15];
+_medicalDZ setMarkerAlpha 0.5;
 
 // _medicTent = "Land_MedicalTent_01_MTP_closed_F" createVehicle _medicTentPos;
 // [_medicTent, _medicTentPos, 0] spawn RGGb_fnc_build_blockManager;

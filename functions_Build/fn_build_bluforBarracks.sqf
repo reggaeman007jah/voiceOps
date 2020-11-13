@@ -1,53 +1,69 @@
-// -------------------------------------------------------------------------------------------
-
-RGG_riseUp = {
-	params ["_block", "_pos", "_dir"];
-	_block enableSimulation false;
-	_pos set [2,-5];
-	_block setPos _pos;
-	_block setDir _dir; // ?
-	
-	for [{_i = -5}, {_i < 0.2}, {_i = _i + 0.1}] do {
-		_pos set [2,_i]; 
-		
-		_block setPos _pos;
-		sleep 0.1;
-	};
-
-	_pos set [2,0];
-	_block setPos _pos;
-	_block enableSimulation true;
-};
+/*
+Build Barracks FOB
+*/
 
 // -------------------------------------------------------------------------------------------
+// setup
 
 sleep 10;
-
-_object2 = _this select 0;
-_object2 enableSimulation false;
-_seedPos = getPos _object2;
-
-_rootPos = getPos _object2;
-
-for [{_i = 0}, {_i > -5}, {_i = _i - 0.1}] do {
-	_seedPos set [2,_i]; 
-	_object2 setPos _seedPos;
-	sleep 0.1;
-};
-
-_object2 setPos [0,0];
-
-deleteVehicle _object2;
-
-_genesisPos = _rootPos getPos [50,0];
-
 _spawnSpeed = 2;
+_mapCorner = [0,0]; // corner pos for initial spawning to hide glitching 
+_object2 = _this select 0; // reference to the item dropped 
+_rootPos = getPos _object2; // reference to the position of the item dropped 
+
+[_object2] spawn RGGb_fnc_build_blockSinker;
+
+
+// RGG_riseUp = {
+// 	params ["_block", "_pos", "_dir"];
+// 	_block enableSimulation false;
+// 	_pos set [2,-5];
+// 	_block setPos _pos;
+// 	_block setDir _dir; // ?
+	
+// 	for [{_i = -5}, {_i < 0.2}, {_i = _i + 0.1}] do {
+// 		_pos set [2,_i]; 
+		
+// 		_block setPos _pos;
+// 		sleep 0.1;
+// 	};
+
+// 	_pos set [2,0];
+// 	_block setPos _pos;
+// 	_block enableSimulation true;
+// };
+
+// -------------------------------------------------------------------------------------------
+
+// sleep 10;
+
+// _object2 = _this select 0;
+// _object2 enableSimulation false;
+// _seedPos = getPos _object2;
+
+// _rootPos = getPos _object2;
+
+// for [{_i = 0}, {_i > -5}, {_i = _i - 0.1}] do {
+// 	_seedPos set [2,_i]; 
+// 	_object2 setPos _seedPos;
+// 	sleep 0.1;
+// };
+
+// _object2 setPos _mapCorner;
+
+// deleteVehicle _object2;
+
+
+
+
 // _spawnSpeedLong = 1.5;
 
 
 
 // -------------------------------------------------------------------------------------------
 // block and asset positions 
+
+_genesisPos = _rootPos getPos [50,0];
 
 _northCentralBunker = _genesisPos;
 
@@ -167,181 +183,181 @@ _helipad = _genesisPos getPos [51,180];
 // -------------------------------------------------------------------------------------------
 // block creation 
 
-_wallBlock = "Land_BagBunker_Large_F" createVehicle [0,0];
+_wallBlock = "Land_BagBunker_Large_F" createVehicle _mapCorner;
 [_wallBlock, _northCentralBunker, 180] spawn RGGb_fnc_build_blockManager;
 sleep 4;
 
-_wallBlock = "Land_HBarrierTower_F" createVehicle [0,0]; //  
+_wallBlock = "Land_HBarrierTower_F" createVehicle _mapCorner; //  
 [_wallBlock, _northTowerLeft, 180] spawn RGGb_fnc_build_blockManager;
 
-_wallBlock = "Land_HBarrierTower_F" createVehicle [0,0]; //  
+_wallBlock = "Land_HBarrierTower_F" createVehicle _mapCorner; //  
 [_wallBlock, _northTowerRight, 180] spawn RGGb_fnc_build_blockManager;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrier_Big_F" createVehicle [0,0]; // 
+_wallBlock = "Land_HBarrier_Big_F" createVehicle _mapCorner; // 
 [_wallBlock, _northWallLeft, 181.068] spawn RGGb_fnc_build_blockManager; 
 
-_wallBlock = "Land_HBarrier_Big_F" createVehicle [0,0]; // 
+_wallBlock = "Land_HBarrier_Big_F" createVehicle _mapCorner; // 
 [_wallBlock, _northWallRight, 181.068] spawn RGGb_fnc_build_blockManager; 
 sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrierWall_corner_F" createVehicle [0,0]; //  
+_wallBlock = "Land_HBarrierWall_corner_F" createVehicle _mapCorner; //  
 [_wallBlock, _northWestCorner, 271.068] spawn RGGb_fnc_build_blockManager;
 
-_wallBlock = "Land_HBarrierWall_corner_F" createVehicle [0,0];  
+_wallBlock = "Land_HBarrierWall_corner_F" createVehicle _mapCorner;  
 [_wallBlock, _northEastCorner, 1.068] spawn RGGb_fnc_build_blockManager;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrier_Big_F" createVehicle [0,0];  
+_wallBlock = "Land_HBarrier_Big_F" createVehicle _mapCorner;  
 [_wallBlock, _westWall1, 91.5] spawn RGGb_fnc_build_blockManager;
 
-_wallBlock = "Land_HBarrier_Big_F" createVehicle [0,0];  
+_wallBlock = "Land_HBarrier_Big_F" createVehicle _mapCorner;  
 [_wallBlock, _eastWall1, 91.5] spawn RGGb_fnc_build_blockManager;
 sleep 4;
 
-_wallBlock = "Land_HBarrierTower_F" createVehicle [0,0]; 
+_wallBlock = "Land_HBarrierTower_F" createVehicle _mapCorner; 
 [_wallBlock, _westTower1, 90] spawn RGGb_fnc_build_blockManager; 
 
-_wallBlock = "Land_HBarrierTower_F" createVehicle [0,0];  
+_wallBlock = "Land_HBarrierTower_F" createVehicle _mapCorner;  
 [_wallBlock, _eastTower1, 270] spawn RGGb_fnc_build_blockManager;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrierWall6_F" createVehicle [0,0];  
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _mapCorner;  
 [_wallBlock, _westWall2, 271.5] spawn RGGb_fnc_build_blockManager;
 
-_wallBlock = "Land_HBarrierWall6_F" createVehicle [0,0];  
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _mapCorner;  
 [_wallBlock, _eastWall2, 91.5] spawn RGGb_fnc_build_blockManager;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_BagBunker_Large_F" createVehicle [0,0];  
+_wallBlock = "Land_BagBunker_Large_F" createVehicle _mapCorner;  
 [_wallBlock, _westBunker, 90] spawn RGGb_fnc_build_blockManager;
 
-_wallBlock = "Land_BagBunker_Large_F" createVehicle [0,0];  
+_wallBlock = "Land_BagBunker_Large_F" createVehicle _mapCorner;  
 [_wallBlock, _eastBunker, 270] spawn RGGb_fnc_build_blockManager;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrierWall6_F" createVehicle [0,0];  
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _mapCorner;  
 [_wallBlock, _westWall3, 271.5] spawn RGGb_fnc_build_blockManager;
 
-_wallBlock = "Land_HBarrierWall6_F" createVehicle [0,0]; 
+_wallBlock = "Land_HBarrierWall6_F" createVehicle _mapCorner; 
 [_wallBlock, _eastWall3, 91.5] spawn RGGb_fnc_build_blockManager; 
 sleep 4;
 
-_wallBlock = "Land_HBarrierTower_F" createVehicle [0,0];  
+_wallBlock = "Land_HBarrierTower_F" createVehicle _mapCorner;  
 [_wallBlock, _westTower2, 90] spawn RGGb_fnc_build_blockManager;
 
-_wallBlock = "Land_HBarrierTower_F" createVehicle [0,0];  
+_wallBlock = "Land_HBarrierTower_F" createVehicle _mapCorner;  
 [_wallBlock, _eastTower2, 270] spawn RGGb_fnc_build_blockManager;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrier_Big_F" createVehicle [0,0];
+_wallBlock = "Land_HBarrier_Big_F" createVehicle _mapCorner;
 [_wallBlock, _westWall4, 93.5] spawn RGGb_fnc_build_blockManager;  
 
-_wallBlock = "Land_HBarrier_Big_F" createVehicle [0,0];  
+_wallBlock = "Land_HBarrier_Big_F" createVehicle _mapCorner;  
 [_wallBlock, _eastWall4, 91.5] spawn RGGb_fnc_build_blockManager;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrierWall_corner_F" createVehicle [0,0];  
+_wallBlock = "Land_HBarrierWall_corner_F" createVehicle _mapCorner;  
 [_wallBlock, _southWestCorner, 182.5] spawn RGGb_fnc_build_blockManager;
 
-_wallBlock = "Land_HBarrierWall_corner_F" createVehicle [0,0];  
+_wallBlock = "Land_HBarrierWall_corner_F" createVehicle _mapCorner;  
 [_wallBlock, _southEastCorner, 92.5] spawn RGGb_fnc_build_blockManager;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrier_Big_F" createVehicle [0,0];  
+_wallBlock = "Land_HBarrier_Big_F" createVehicle _mapCorner;  
 [_wallBlock, _southWallLeft, 182.5] spawn RGGb_fnc_build_blockManager;
 
-_wallBlock = "Land_HBarrier_Big_F" createVehicle [0,0];  
+_wallBlock = "Land_HBarrier_Big_F" createVehicle _mapCorner;  
 [_wallBlock, _southWallRight, 182.5] spawn RGGb_fnc_build_blockManager;
 sleep 4;
 
-_wallBlock = "Land_HBarrierTower_F" createVehicle [0,0];  
+_wallBlock = "Land_HBarrierTower_F" createVehicle _mapCorner;  
 [_wallBlock, _southTowerLeft, 0] spawn RGGb_fnc_build_blockManager;
 
-_wallBlock = "Land_HBarrierTower_F" createVehicle [0,0];  
+_wallBlock = "Land_HBarrierTower_F" createVehicle _mapCorner;  
 [_wallBlock, _southTowerRight, 0] spawn RGGb_fnc_build_blockManager;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrier_Big_F" createVehicle [0,0];  
+_wallBlock = "Land_HBarrier_Big_F" createVehicle _mapCorner;  
 [_wallBlock, _leftEntranceWall, 0] spawn RGGb_fnc_build_blockManager;
 
-_wallBlock = "Land_HBarrier_Big_F" createVehicle [0,0];  
+_wallBlock = "Land_HBarrier_Big_F" createVehicle _mapCorner;  
 [_wallBlock, _rightEntranceWall, 0] spawn RGGb_fnc_build_blockManager;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_Mil_WiredFence_Gate_F" createVehicle [0,0];  
+_wallBlock = "Land_Mil_WiredFence_Gate_F" createVehicle _mapCorner;  
 [_wallBlock, _fence, 0] spawn RGGb_fnc_build_blockManager;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_BagBunker_Small_F" createVehicle [0,0];  
+_wallBlock = "Land_BagBunker_Small_F" createVehicle _mapCorner;  
 [_wallBlock, _gateHouse, 0] spawn RGGb_fnc_build_blockManager;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrier_Big_F" createVehicle [0,0];  
+_wallBlock = "Land_HBarrier_Big_F" createVehicle _mapCorner;  
 [_wallBlock, _innerDefenceCentral, 0] spawn RGGb_fnc_build_blockManager;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_HBarrier_Big_F" createVehicle [0,0];  
+_wallBlock = "Land_HBarrier_Big_F" createVehicle _mapCorner;  
 [_wallBlock, _innerDefenceLeft, 0] spawn RGGb_fnc_build_blockManager;
 
-_wallBlock = "Land_HBarrier_Big_F" createVehicle [0,0];  
+_wallBlock = "Land_HBarrier_Big_F" createVehicle _mapCorner;  
 [_wallBlock, _innerDefenceRight, 0] spawn RGGb_fnc_build_blockManager;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_MedicalTent_01_NATO_generic_open_F" createVehicle [0,0];  
+_wallBlock = "Land_MedicalTent_01_NATO_generic_open_F" createVehicle _mapCorner;  
 [_wallBlock, _northCentralTent, 0] spawn RGGb_fnc_build_blockManager;
 
-_wallBlock = "Land_MedicalTent_01_NATO_generic_open_F" createVehicle [0,0];  
+_wallBlock = "Land_MedicalTent_01_NATO_generic_open_F" createVehicle _mapCorner;  
 [_wallBlock, _southCentralTent, 0] spawn RGGb_fnc_build_blockManager;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_MedicalTent_01_NATO_generic_open_F" createVehicle [0,0];  
+_wallBlock = "Land_MedicalTent_01_NATO_generic_open_F" createVehicle _mapCorner;  
 [_wallBlock, _northWestTent, 0] spawn RGGb_fnc_build_blockManager;
 
-_wallBlock = "Land_MedicalTent_01_NATO_generic_open_F" createVehicle [0,0];  
+_wallBlock = "Land_MedicalTent_01_NATO_generic_open_F" createVehicle _mapCorner;  
 [_wallBlock, _southWestTent, 0] spawn RGGb_fnc_build_blockManager;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_MedicalTent_01_NATO_generic_open_F" createVehicle [0,0];  
+_wallBlock = "Land_MedicalTent_01_NATO_generic_open_F" createVehicle _mapCorner;  
 [_wallBlock, _northEastTent, 0] spawn RGGb_fnc_build_blockManager;
 
-_wallBlock = "Land_MedicalTent_01_NATO_generic_open_F" createVehicle [0,0];  
+_wallBlock = "Land_MedicalTent_01_NATO_generic_open_F" createVehicle _mapCorner;  
 [_wallBlock, _southEastTent, 0] spawn RGGb_fnc_build_blockManager;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_SilageWall_01_l_5m_F" createVehicle [0,0];  
+_wallBlock = "Land_SilageWall_01_l_5m_F" createVehicle _mapCorner;  
 [_wallBlock, _downwashWall1, 0] spawn RGGb_fnc_build_blockManager;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_SilageWall_01_l_5m_F" createVehicle [0,0];  
+_wallBlock = "Land_SilageWall_01_l_5m_F" createVehicle _mapCorner;  
 [_wallBlock, _downwashWall2, 0] spawn RGGb_fnc_build_blockManager;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_SilageWall_01_l_5m_F" createVehicle [0,0]; 
+_wallBlock = "Land_SilageWall_01_l_5m_F" createVehicle _mapCorner; 
 [_wallBlock, _downwashWall3, 0] spawn RGGb_fnc_build_blockManager; 
 sleep _spawnSpeed;
 
-_wallBlock = "Land_SilageWall_01_l_5m_F" createVehicle [0,0];  
+_wallBlock = "Land_SilageWall_01_l_5m_F" createVehicle _mapCorner;  
 [_wallBlock, _downwashWall4, 0] spawn RGGb_fnc_build_blockManager;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_SilageWall_01_l_5m_F" createVehicle [0,0];  
+_wallBlock = "Land_SilageWall_01_l_5m_F" createVehicle _mapCorner;  
 [_wallBlock, _downwashWall5, 0] spawn RGGb_fnc_build_blockManager;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_SilageWall_01_l_5m_F" createVehicle [0,0];  
+_wallBlock = "Land_SilageWall_01_l_5m_F" createVehicle _mapCorner;  
 [_wallBlock, _downwashWall6, 0] spawn RGGb_fnc_build_blockManager;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_SilageWall_01_l_5m_F" createVehicle [0,0];  
+_wallBlock = "Land_SilageWall_01_l_5m_F" createVehicle _mapCorner;  
 [_wallBlock, _downwashWall7, 0] spawn RGGb_fnc_build_blockManager;
 sleep _spawnSpeed;
 
-_wallBlock = "Land_SilageWall_01_l_5m_F" createVehicle [0,0];  
+_wallBlock = "Land_SilageWall_01_l_5m_F" createVehicle _mapCorner;  
 [_wallBlock, _downwashWall8, 0] spawn RGGb_fnc_build_blockManager;
 sleep 5;
 
-_wallBlock = "Land_HelipadSquare_F" createVehicle [0,0];  
+_wallBlock = "Land_HelipadSquare_F" createVehicle _mapCorner;  
 [_wallBlock, _heliPad, 0] spawn RGGb_fnc_build_blockManager;
 
 
@@ -350,11 +366,18 @@ _wallBlock = "Land_HelipadSquare_F" createVehicle [0,0];
 [_northCentralTent] call RGG_fnc_3_spawn_bluforUnits;
 
 // register main base as a blue marker
-_base = createMarker ["Barracks", _seedPos];
+_base = createMarker ["Barracks", _rootPos];
 _base setMarkerShape "ELLIPSE";
 _base setMarkerColor "ColorBlue";
 _base setMarkerSize [50, 50];
 _base setMarkerAlpha 0.5;
+
+// create invisible marker for supply drops 
+_barracksDZ = createMarker ["Barracks_DZ", _heliPad];
+_barracksDZ setMarkerShape "ELLIPSE";
+_barracksDZ setMarkerColor "ColorRed";
+_barracksDZ setMarkerSize [15, 15];
+_barracksDZ setMarkerAlpha 0.5;
 
 // systemChat "there is an enemy attack on your barracks FOB";
 // [_heliPad] call RGG_fnc_3_spawn_opforUnits;
@@ -368,26 +391,26 @@ _indiFor = [];
 // defence locations 
 _defenceLocations = [_northCentralBunker, _northTowerLeft, _northTowerRight, _northWestCorner, _northEastCorner, _westTower1, _eastTower1, _westBunker, _eastBunker, _westTower2, _eastTower2, _southWestCorner, _southEastCorner, _southTowerLeft, _southTowerRight, _gateHouse];
 
-// while {true} do {
-	{
-		// _randomMovePos = [["Barracks"]] call BIS_fnc_randomPos;
-		// _behaviour = selectRandom ["safe", "aware"];
-		// _x setBehaviour _behaviour;
-		// _x doMove _randomMovePos;
-		_randomPos = selectRandom _defenceLocations;
-		_building = nearestObjects [_randomPos, ["House", "Building"], 5] select 0;
-		// systemChat str _building;
-		// _nBuilding = nearestBuilding _randomPos;
-		_x doMove (_building buildingPos 1);
-		// _x doMove _nBuilding;
-		systemChat format ["indifor unit moving to: %1", _building];
-		
-		sleep 5;
-		
-	} forEach _indiFor;
 
-	// sleep 30;
-// };
+{
+	// _randomMovePos = [["Barracks"]] call BIS_fnc_randomPos;
+	// _behaviour = selectRandom ["safe", "aware"];
+	// _x setBehaviour _behaviour;
+	// _x doMove _randomMovePos;
+	_randomPos = selectRandom _defenceLocations;
+	_building = nearestObjects [_randomPos, ["House", "Building"], 5] select 0;
+	// systemChat str _building;
+	// _nBuilding = nearestBuilding _randomPos;
+	_x doMove (_building buildingPos 1);
+	// _x doMove _nBuilding;
+	systemChat format ["indifor unit moving to: %1", _building];
+	
+	sleep 5;
+	
+} forEach _indiFor;
 
 
+
+// confirm existance to enable counting of supplies 
+BARRACKS = true;
 
