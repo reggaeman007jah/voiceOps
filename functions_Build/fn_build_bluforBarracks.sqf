@@ -6,7 +6,7 @@ Build Barracks FOB
 // setup
 
 sleep 10;
-_spawnSpeed = 2;
+_spawnSpeed = 0.1;
 _mapCorner = [0,0]; // corner pos for initial spawning to hide glitching 
 _object2 = _this select 0; // reference to the item dropped 
 _rootPos = getPos _object2; // reference to the position of the item dropped 
@@ -362,9 +362,8 @@ _wallBlock = "Land_HelipadSquare_F" createVehicle _mapCorner;
 
 
 
-// spawn baseline units from main tent
-[_northCentralTent] call RGG_fnc_3_spawn_bluforUnits;
 
+// ["_spawnPoint", "_spawnNumber", "_markerArea"];
 // register main base as a blue marker
 _base = createMarker ["Barracks", _rootPos];
 _base setMarkerShape "ELLIPSE";
@@ -384,30 +383,33 @@ _barracksDZ setMarkerAlpha 0.5;
 
 // this manages ambient movement within the base
 
-_units = allUnits inAreaArray "Barracks";
-_indiFor = [];
-{ if ((side _x) == independent) then {_indiFor pushBack _x} } forEach _units;
+// spawn baseline units from main tent
+[_northCentralTent, 6, "Barracks"] call RGGs_fnc_spawn_bluforBaseMinCrew;
 
-// defence locations 
-_defenceLocations = [_northCentralBunker, _northTowerLeft, _northTowerRight, _northWestCorner, _northEastCorner, _westTower1, _eastTower1, _westBunker, _eastBunker, _westTower2, _eastTower2, _southWestCorner, _southEastCorner, _southTowerLeft, _southTowerRight, _gateHouse];
+// _units = allUnits inAreaArray "Barracks";
+// _indiFor = [];
+// { if ((side _x) == independent) then {_indiFor pushBack _x} } forEach _units;
+
+// // defence locations 
+// _defenceLocations = [_northCentralBunker, _northTowerLeft, _northTowerRight, _northWestCorner, _northEastCorner, _westTower1, _eastTower1, _westBunker, _eastBunker, _westTower2, _eastTower2, _southWestCorner, _southEastCorner, _southTowerLeft, _southTowerRight, _gateHouse];
 
 
-{
-	// _randomMovePos = [["Barracks"]] call BIS_fnc_randomPos;
-	// _behaviour = selectRandom ["safe", "aware"];
-	// _x setBehaviour _behaviour;
-	// _x doMove _randomMovePos;
-	_randomPos = selectRandom _defenceLocations;
-	_building = nearestObjects [_randomPos, ["House", "Building"], 5] select 0;
-	// systemChat str _building;
-	// _nBuilding = nearestBuilding _randomPos;
-	_x doMove (_building buildingPos 1);
-	// _x doMove _nBuilding;
-	systemChat format ["indifor unit moving to: %1", _building];
+// {
+// 	// _randomMovePos = [["Barracks"]] call BIS_fnc_randomPos;
+// 	// _behaviour = selectRandom ["safe", "aware"];
+// 	// _x setBehaviour _behaviour;
+// 	// _x doMove _randomMovePos;
+// 	_randomPos = selectRandom _defenceLocations;
+// 	_building = nearestObjects [_randomPos, ["House", "Building"], 5] select 0;
+// 	// systemChat str _building;
+// 	// _nBuilding = nearestBuilding _randomPos;
+// 	_x doMove (_building buildingPos 1);
+// 	// _x doMove _nBuilding;
+// 	systemChat format ["indifor unit moving to: %1", _building];
 	
-	sleep 5;
+// 	sleep 5;
 	
-} forEach _indiFor;
+// } forEach _indiFor;
 
 
 

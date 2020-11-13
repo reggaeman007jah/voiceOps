@@ -358,6 +358,10 @@ _medicalDZ setMarkerColor "ColorRed";
 _medicalDZ setMarkerSize [15, 15];
 _medicalDZ setMarkerAlpha 0.5;
 
+// base troops 
+[_officePos, 3, "Medical"] call RGGs_fnc_spawn_bluforBaseMinCrew;
+
+
 // _medicTent = "Land_MedicalTent_01_MTP_closed_F" createVehicle _medicTentPos;
 // [_medicTent, _medicTentPos, 0] spawn RGGb_fnc_build_blockManager;
 // sleep _spawnSpeed;
