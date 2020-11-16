@@ -8,9 +8,9 @@ class RGGs {
 			Description = "This function will create minimum base crew of 8 units";
 		};
 
-		// class count_monitorSupplies {
-		// 	Description = "This function will count / monitor blufor base supplies";
-		// };
+		class spawn_bluforSentries {
+			Description = "This function will create wall and tower AI sentries";
+		};
 
 		// class count_depleteSupplies {
 		// 	Description = "This function will slowly reduce base supplies";

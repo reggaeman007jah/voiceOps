@@ -384,7 +384,33 @@ _barracksDZ setMarkerAlpha 0.5;
 // this manages ambient movement within the base
 
 // spawn baseline units from main tent
-[_northCentralTent, 6, "Barracks"] call RGGs_fnc_spawn_bluforBaseMinCrew;
+// [_northCentralTent, 6, "Barracks"] call RGGs_fnc_spawn_bluforBaseMinCrew;
+
+systemChat "sentries...";
+
+[_northTowerLeft, 0, "tower"] call RGGs_fnc_spawn_bluforSentries;
+sleep 1;
+[_northTowerRight, 0, "tower"] call RGGs_fnc_spawn_bluforSentries;
+sleep 1;
+[_westTower1, 270, "tower"] call RGGs_fnc_spawn_bluforSentries;
+sleep 1;
+[_eastTower1, 90, "tower"] call RGGs_fnc_spawn_bluforSentries;
+sleep 1;
+[_westTower2, 270, "tower"] call RGGs_fnc_spawn_bluforSentries;
+sleep 1;
+[_eastTower2, 90, "tower"] call RGGs_fnc_spawn_bluforSentries;
+sleep 1;
+[_southTowerLeft, 180, "tower"] call RGGs_fnc_spawn_bluforSentries;
+sleep 1;
+[_southTowerRight, 180, "tower"] call RGGs_fnc_spawn_bluforSentries;
+
+
+
+
+
+
+
+
 
 // _units = allUnits inAreaArray "Barracks";
 // _indiFor = [];
