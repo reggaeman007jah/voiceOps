@@ -1,11 +1,11 @@
-// RGGb - Spawn Classes
+// RGGb - Build Classes
 class RGGb {
 	tag = "RGGb";
 	class functions_Build {
 		file = "functions_Build"; 
 
 		class build_blockManager {
-			Description = "This function will manage rising up and setting of base building blocks";
+			Description = "This function will manage rising up and setting of individual base building blocks";
 		};
 
 		class build_blockSinker {
@@ -19,6 +19,5 @@ class RGGb {
 		class build_bluforMedbase {
 			Description = "This function will deploy blufor medical base from seed (container) position";
 		};
-
 	};
 };

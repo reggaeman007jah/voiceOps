@@ -379,7 +379,7 @@ _barracksDZ setMarkerSize [15, 15];
 _barracksDZ setMarkerAlpha 0.5;
 
 // systemChat "there is an enemy attack on your barracks FOB";
-// [_heliPad] call RGG_fnc_3_spawn_opforUnits;
+[_heliPad] call RGG_fnc_3_spawn_opforUnits;
 
 // this manages ambient movement within the base
 
@@ -404,6 +404,15 @@ sleep 1;
 sleep 1;
 [_southTowerRight, 180, "tower"] call RGGs_fnc_spawn_bluforSentries;
 
+
+sleep 1;
+[_westWall2, 270, "wall"] call RGGs_fnc_spawn_bluforSentries;
+sleep 1;
+[_westWall3, 270, "wall"] call RGGs_fnc_spawn_bluforSentries;
+sleep 1;
+[_eastWall2, 90, "wall"] call RGGs_fnc_spawn_bluforSentries;
+sleep 1;
+[_eastWall3, 90, "wall"] call RGGs_fnc_spawn_bluforSentries;
 
 
 
