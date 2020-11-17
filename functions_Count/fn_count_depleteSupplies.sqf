@@ -1,3 +1,11 @@
+/*
+This function manages the depletion of base supplies over time 
+
+to-do:
+add system that captures when a base has zero of something, so we can remove the base perk 
+
+*/
+
 while {true} do {
 
 	if (BARRACKS) then {

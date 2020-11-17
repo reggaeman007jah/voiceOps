@@ -1,4 +1,5 @@
-// RGGb - Counting Classes
+// RGGc - Counting Classes
+
 class RGGc {
 	tag = "RGGc";
 	class functions_Count {

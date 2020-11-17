@@ -1,5 +1,6 @@
 /*
-creates minimum base crew, can be used when base is made 
+This function generates minimum base ground crew  
+
 requires: spawn location 
 */
 

@@ -1,5 +1,5 @@
 /*
-This script managed the construction of the blocks, rising them up from the ground and resetting z-axis 
+This function manages the construction of blocks, rising them up from the ground and resetting the z-axis 
 */
 
 // -------------------------------------------------------------------------------------------

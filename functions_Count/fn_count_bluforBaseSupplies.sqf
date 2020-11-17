@@ -1,36 +1,28 @@
 /*
-This script regularly checks the base supplies of all blufor FOBS 
+This function regularly checks the base supplies of all blufor FOBs
 
-Todo:
-ID all live bases 
-Get supply scores 
-Adjust supply scores 
-
-*/
-
-
-
-		// athiraMilBaseVirtualUnits = athiraMilBaseVirtualUnits + _deployedUnits;
-		// publicVariable "athiraMilBaseVirtualUnits";
-		// systemChat format ["Athira Mil-Base now has %1 virtual units", athiraMilBaseVirtualUnits];
-
-/*
-Each helipad needs an invisible marker 
+Notes:
+This function is triggered by a rope break and must be holding a relevant supply crate 
+Barracks_DZ = marker name 
+_playerIsInside = player inArea _myTrigger;
+Each helipad has an invisible marker 
 When a box is dropped and this script is run, we need to check ... is the box resting in any of the helipad arrays (i.e. dropzones)? 
 If so, then apply a score to that base depending on the item dropped, then sink the block.
-
 So, the creation of any base should enable creation of a global marker - both for visual purposes, but a second invisible dropzone marker for this system (small circle)
-
 Think about validation ... what happens when you miss your target?
 If after dropping, item is 'not' in dropzone after a few seconds ... inform pilot to try again 
 
-Barracks_DZ = marker name 
+To-do:
+ID all live bases 
+Get supply scores 
+Adjust supply scores 
+test if this can be run as a switch, with nested switch 
 
-_playerIsInside = player inArea _myTrigger;
-
+notes from old scripts:
+athiraMilBaseVirtualUnits = athiraMilBaseVirtualUnits + _deployedUnits;
+publicVariable "athiraMilBaseVirtualUnits";
+systemChat format ["Athira Mil-Base now has %1 virtual units", athiraMilBaseVirtualUnits];
 */
-
-// script is triggered by rope break and must be holding a supply crate 
 
 // -------------------------------------------------------------------------------------------
 params ["_object2", "_className"];
@@ -69,26 +61,13 @@ if (_seedPos inArea "Barracks_DZ") then {
 	};
 
 	[_object2] spawn RGGb_fnc_build_blockSinker;
-
-	// _seedPos = getPos _object2;
-	// _object2 enableSimulation false;
-	// for [{_i = 0}, {_i > -5}, {_i = _i - 0.1}] do {
-	// 	_seedPos set [2,_i]; 
-	// 	_object2 setPos _seedPos;
-	// 	sleep 0.1;
-	// };
-	// _object2 setPos [0,0];
-	// deleteVehicle _object2;
 };
 
 // } else {
 // 	systemChat "Supplies dropped in wrong place - try again pilot !!";
 // };
 
-
-
 // ------------------------------------------------------------------------------------------
-
 if (_seedPos inArea "Medical_DZ") then {
 	systemChat "well done, supplies dropped successfully";
 	sleep 10;
@@ -115,14 +94,4 @@ if (_seedPos inArea "Medical_DZ") then {
 	};
 
 	[_object2] spawn RGGb_fnc_build_blockSinker;
-
-	// _seedPos = getPos _object2;
-	// _object2 enableSimulation false;
-	// for [{_i = 0}, {_i > -5}, {_i = _i - 0.1}] do {
-	// 	_seedPos set [2,_i]; 
-	// 	_object2 setPos _seedPos;
-	// 	sleep 0.1;
-	// };
-	// _object2 setPos [0,0];
-	// deleteVehicle _object2;
 };

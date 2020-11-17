@@ -1,4 +1,5 @@
 // RGGb - Build Classes
+
 class RGGb {
 	tag = "RGGb";
 	class functions_Build {
@@ -19,5 +20,6 @@ class RGGb {
 		class build_bluforMedbase {
 			Description = "This function will deploy blufor medical base from seed (container) position";
 		};
+		
 	};
 };

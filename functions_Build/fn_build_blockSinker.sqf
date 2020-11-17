@@ -1,5 +1,5 @@
 /*
-This script managed the sinking and deleting of blocks
+This function manages the sinking and deleting of blocks passed to it
 */
 
 // -------------------------------------------------------------------------------------------

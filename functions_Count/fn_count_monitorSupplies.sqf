@@ -1,3 +1,10 @@
+/*
+This function counts / monitors / displays base supplies in a systemchat
+
+To-do:
+make this only appear while in map mode
+
+*/
 
 while {true} do {
 	
@@ -72,6 +79,5 @@ while {true} do {
 		systemChat format ["Ammo: %1", RGG_Training_Ammo];
 		systemChat format ["Fuel: %1", RGG_Training_Fuel];	
 	};
-
 };
 

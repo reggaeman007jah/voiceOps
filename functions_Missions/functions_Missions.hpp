@@ -1,4 +1,5 @@
-// RGGb - Counting Classes
+// RGGm - Mission Classes
+
 class RGGm {
 	tag = "RGGm";
 	class functions_Missions {
@@ -7,14 +8,6 @@ class RGGm {
 		class mission_extractInjured {
 			Description = "This function will create a medevac mission";
 		};
-
-		// class count_monitorSupplies {
-		// 	Description = "This function will count / monitor blufor base supplies";
-		// };
-
-		// class count_depleteSupplies {
-		// 	Description = "This function will slowly reduce base supplies";
-		// };
-
+		
 	};
 };

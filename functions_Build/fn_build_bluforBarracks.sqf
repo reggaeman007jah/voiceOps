@@ -1,5 +1,5 @@
 /*
-Build Barracks FOB
+This function builds a barracks FOB complex
 */
 
 // -------------------------------------------------------------------------------------------

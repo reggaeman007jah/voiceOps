@@ -1,3 +1,11 @@
+/*
+This function generates a random medevac mission 
+
+To-do:
+This is nowhere near finished!!
+
+*/
+
 // gen random pos 
 // gen units + injured units 
 // gen marker 

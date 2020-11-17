@@ -1,4 +1,5 @@
-// RGGb - Counting Classes
+// RGGs - Spawning Classes
+
 class RGGs {
 	tag = "RGGs";
 	class functions_Spawn {
@@ -11,10 +12,6 @@ class RGGs {
 		class spawn_bluforSentries {
 			Description = "This function will create wall and tower AI sentries";
 		};
-
-		// class count_depleteSupplies {
-		// 	Description = "This function will slowly reduce base supplies";
-		// };
-
+		
 	};
 };

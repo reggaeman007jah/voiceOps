@@ -1,5 +1,6 @@
 /*
-creates wall and tower sentries 
+this function creates wall and tower sentries 
+
 takes location and direction and block type (for height) as args 
 
 */
@@ -111,7 +112,5 @@ switch (_wallType) do {
 	};
 	default { systemChat "error, no wall type specified" };
 };
-
-
 
 // -------------------------------------------------------------------------------
