@@ -67,3 +67,52 @@ when sling loading - snipers are nearby?? CAS as an escort?
 TODO:
 Determine how to create a base score for MP, that decreases as time goes by and is boosted when containers are brought in.
 
+17 November 
+
+BARRACKS
+Unlocks the auto generation (slowly) of sentries on bases. also generates VA at all live bases.
+food rate: high 
+Ammo rate: high 
+Fuel rate: high
+
+TRAINING:
+Spawns units at training post, and enables ablity to pick up and deploy units
+food rate: high 
+Ammo rate: high 
+Fuel rate: low
+
+HELI:
+Unlocks heli missions. These missions can be aggressive or defensive. + heli flybys
+food rate: low 
+Ammo rate: high 
+Fuel rate: high
+
+MEDICAL:
+Unlocks medevac missions and healing posts at all live bases 
+food rate: high 
+Ammo rate: low 
+Fuel rate: low
+
+RADAR:
+Unlocks ability to receive advanced warning of some attacks (not all) + jet flybys
+food rate: low 
+Ammo rate: low 
+Fuel rate: high
+
+OBSERVATION = 
+food rate: low 
+Ammo rate: low 
+Fuel rate: low
+
+CAR = 
+food rate: low 
+Ammo rate: high 
+Fuel rate: high
+
+WORKSHOP:
+Unlocks repair stations at all live bases
+food rate: low 
+Ammo rate: low 
+Fuel rate: high
+
+Base-perks cease when any base score reaches 0
