@@ -359,7 +359,32 @@ _medicalDZ setMarkerSize [15, 15];
 _medicalDZ setMarkerAlpha 0.5;
 
 // base troops 
-[_officePos, 3, "Medical"] call RGGs_fnc_spawn_bluforBaseMinCrew;
+// [_officePos, 3, "Medical"] call RGGs_fnc_spawn_bluforBaseMinCrew;
+
+// sentries 
+systemChat "sentries...";
+
+[_bunker2, 0, "tower"] call RGGs_fnc_spawn_bluforSentries;
+sleep 1;
+
+// [_westWall2, 270, "wall"] call RGGs_fnc_spawn_bluforSentries;
+// sleep 1;
+// [_westWall3, 270, "wall"] call RGGs_fnc_spawn_bluforSentries;
+// sleep 1;
+// [_eastWall2, 90, "wall"] call RGGs_fnc_spawn_bluforSentries;
+// sleep 1;
+// [_eastWall3, 90, "wall"] call RGGs_fnc_spawn_bluforSentries;
+
+sleep 1;
+[_SWCorner, 270, "corner"] call RGGs_fnc_spawn_bluforSentries;
+sleep 1;
+[_SECorner, 90, "corner"] call RGGs_fnc_spawn_bluforSentries;
+sleep 1;
+[_NECorner, 270, "corner"] call RGGs_fnc_spawn_bluforSentries;
+sleep 1;
+[_NWCorner, 90, "corner"] call RGGs_fnc_spawn_bluforSentries;
+
+
 
 
 // _medicTent = "Land_MedicalTent_01_MTP_closed_F" createVehicle _medicTentPos;

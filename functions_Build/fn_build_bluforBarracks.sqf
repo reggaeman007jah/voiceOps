@@ -13,6 +13,13 @@ _rootPos = getPos _object2; // reference to the position of the item dropped
 
 [_object2] spawn RGGb_fnc_build_blockSinker;
 
+// ["_spawnPoint", "_spawnNumber", "_markerArea"];
+// register main base as a blue marker
+_base = createMarker ["Barracks", _rootPos];
+_base setMarkerShape "ELLIPSE";
+_base setMarkerColor "ColorGreen";
+_base setMarkerSize [50, 50];
+_base setMarkerAlpha 0.5;
 
 // RGG_riseUp = {
 // 	params ["_block", "_pos", "_dir"];
@@ -179,6 +186,8 @@ _downwashWall7 = _downwashWall1 getPos [30,90];
 _downwashWall8 = _downwashWall1 getPos [35,90];
 
 _helipad = _genesisPos getPos [51,180];
+
+[_heliPad] call RGGs_fnc_spawn_opforCamp;
 
 // -------------------------------------------------------------------------------------------
 // block creation 
@@ -360,23 +369,12 @@ sleep 5;
 _wallBlock = "Land_HelipadSquare_F" createVehicle _mapCorner;  
 [_wallBlock, _heliPad, 0] spawn RGGb_fnc_build_blockManager;
 
-
-
-
-// ["_spawnPoint", "_spawnNumber", "_markerArea"];
-// register main base as a blue marker
-_base = createMarker ["Barracks", _rootPos];
-_base setMarkerShape "ELLIPSE";
-_base setMarkerColor "ColorBlue";
-_base setMarkerSize [50, 50];
-_base setMarkerAlpha 0.5;
-
 // create invisible marker for supply drops 
 _barracksDZ = createMarker ["Barracks_DZ", _heliPad];
 _barracksDZ setMarkerShape "ELLIPSE";
-_barracksDZ setMarkerColor "ColorRed";
+// _barracksDZ setMarkerColor "ColorRed";
 _barracksDZ setMarkerSize [15, 15];
-_barracksDZ setMarkerAlpha 0.5;
+// _barracksDZ setMarkerAlpha 0.5;
 
 // systemChat "there is an enemy attack on your barracks FOB";
 [_heliPad] call RGG_fnc_3_spawn_opforUnits;
@@ -403,9 +401,8 @@ sleep 1;
 [_southTowerLeft, 180, "tower"] call RGGs_fnc_spawn_bluforSentries;
 sleep 1;
 [_southTowerRight, 180, "tower"] call RGGs_fnc_spawn_bluforSentries;
-
-
 sleep 1;
+
 [_westWall2, 270, "wall"] call RGGs_fnc_spawn_bluforSentries;
 sleep 1;
 [_westWall3, 270, "wall"] call RGGs_fnc_spawn_bluforSentries;
@@ -413,6 +410,15 @@ sleep 1;
 [_eastWall2, 90, "wall"] call RGGs_fnc_spawn_bluforSentries;
 sleep 1;
 [_eastWall3, 90, "wall"] call RGGs_fnc_spawn_bluforSentries;
+
+sleep 1;
+[_northWestCorner, 270, "corner"] call RGGs_fnc_spawn_bluforSentries;
+sleep 1;
+[_northEastCorner, 90, "corner"] call RGGs_fnc_spawn_bluforSentries;
+sleep 1;
+[_southWestCorner, 270, "corner"] call RGGs_fnc_spawn_bluforSentries;
+sleep 1;
+[_southEastCorner, 270, "corner"] call RGGs_fnc_spawn_bluforSentries;
 
 
 

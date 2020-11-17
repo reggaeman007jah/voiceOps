@@ -14,7 +14,7 @@ _base = createMarker ["permaBase", _mainBaseLocation];
 _base setMarkerShape "ELLIPSE";
 _base setMarkerColor "ColorBlue";
 _base setMarkerSize [200, 200];
-_base setMarkerAlpha 0.5;
+// _base setMarkerAlpha 0.5;
 
 // ** exports 
 // [_battleZone, _bluforPos, _opforPos] call RGG_fnc_3_determineAmbientConflict;
