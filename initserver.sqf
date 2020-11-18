@@ -30,9 +30,11 @@ TRAINING = false;
 RGG_Barracks_Food = 0;
 RGG_Barracks_Ammo = 0;
 RGG_Barracks_Fuel = 0;
+RGG_Barracks_Sentries = 0;
 publicVariable "RGG_Barracks_Food";
 publicVariable "RGG_Barracks_Ammo";
 publicVariable "RGG_Barracks_Fuel";
+publicVariable "RGG_Barracks_Sentries";
 
 
 // Medical

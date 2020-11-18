@@ -42,6 +42,9 @@ _spawnPoint = param[0];
 _spawnDirection = param[1];
 _wallType = param[2];
 
+RGG_Barracks_Sentries = RGG_Barracks_Sentries + 1;
+publicVariable "RGG_Barracks_Sentries";
+
 // private ["_spawnHeight"]; // may not be needed now, as switch is more defined and explicit based on walltype 
 
 // -------------------------------------------------------------------------------
@@ -82,6 +85,13 @@ switch (_wallType) do {
 		_unit1 setUnitPos "UP";
 		_unit1 setFormDir _spawnDirection;
 		systemChat str _spawnDirection;
+		_unit1 addEventHandler ["Killed", {
+			params ["_unit", "_killer", "_instigator", "_useEffects"];
+			systemChat "A WALL SENTRY IS DEAD";
+			RGG_Barracks_Sentries = RGG_Barracks_Sentries - 1;
+			publicVariable "RGG_Barracks_Sentries";
+			systemChat format ["There are currently %1 Sentries at the Barracks FOB", RGG_Barracks_Sentries];
+		}];
 		deleteVehicle _vrWallBlock;
 	};
 	case "tower": { 
@@ -108,6 +118,15 @@ switch (_wallType) do {
 		_unit1 enableSimulation true;
 		_unit1 setUnitPos "UP";
 		_unit1 setFormDir _spawnDirection;
+
+		_unit1 addEventHandler ["Killed", {
+			params ["_unit", "_killer", "_instigator", "_useEffects"];
+			systemChat "A TOWER SENTRY IS DEAD";
+			RGG_Barracks_Sentries = RGG_Barracks_Sentries - 1;
+			publicVariable "RGG_Barracks_Sentries";
+			systemChat format ["There are currently %1 Sentries at the Barracks FOB", RGG_Barracks_Sentries];
+		}];
+
 		systemChat str _spawnDirection;
 	};
 	case "corner": { 
@@ -125,7 +144,7 @@ switch (_wallType) do {
 		_vrBlock set [2, _spawnHeight];
 		_vrBlock = _vrBlock getPos [0.1, _shift]; // shift away so unit is not on top block 
 		_vrWallBlock = "Land_VR_Shape_01_cube_1m_F" createVehicle _vrBlock; 
-		systemChat "block created";
+		// systemChat "block created";
 		_vrWallBlock enableSimulation false;
 		_vrWallBlock setPos _vrBlock;
 
@@ -144,8 +163,19 @@ switch (_wallType) do {
 		_unit1 enableSimulation true;
 		_unit1 setUnitPos "UP";
 		_unit1 setFormDir _spawnDirection;
-		systemChat str _spawnDirection;
+		_unit1 setVariable ["sentryAlive", [_spawnPoint, _spawnDirection, _wallType], TRUE]; // attempt 1 to see if we can use main spawn point as unique ID for unit
+		// systemChat str _spawnDirection;
+		_testVariable = _unit1 getVariable "sentryAlive";
+		_unit1 addEventHandler ["Killed", {
+			params ["_unit", "_killer", "_instigator", "_useEffects"];
+			systemChat "A CORNER SENTRY IS DEAD";
+			RGG_Barracks_Sentries = RGG_Barracks_Sentries - 1;
+			publicVariable "RGG_Barracks_Sentries";
+			systemChat format ["There are currently %1 Sentries at the Barracks FOB", RGG_Barracks_Sentries];
+		}];
+		systemChat str _testVariable;
 		deleteVehicle _vrWallBlock;
+
 	};
 	default { systemChat "error, no wall type specified" };
 };
