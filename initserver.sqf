@@ -15,7 +15,9 @@ Base Types:
 
 */
 
-// creation states 
+// ----- creation states -----
+// these globals record whether a type of base exists or not .. the more bases that exist the more reports players get 
+// everything is false to start with, as nothing exists when mission starts 
 BARRACKS = false;
 MEDICAL = false;
 RADAR = false;
@@ -25,6 +27,9 @@ CAR = false;
 WORKSHOP = false;
 TRAINING = false;
 
+
+// --- Base Stats -----
+// these record base stats for food, fuel ammo and defences xx
 
 // Barracks
 RGG_Barracks_Food = 0;
@@ -36,78 +41,94 @@ publicVariable "RGG_Barracks_Ammo";
 publicVariable "RGG_Barracks_Fuel";
 publicVariable "RGG_Barracks_Sentries";
 
-
 // Medical
 RGG_Medical_Food = 0;
 RGG_Medical_Ammo = 0;
 RGG_Medical_Fuel = 0;
+RGG_Medical_Sentries = 0;
 publicVariable "RGG_Medical_Food";
 publicVariable "RGG_Medical_Ammo";
 publicVariable "RGG_Medical_Fuel";
-
+publicVariable "RGG_Medical_Sentries";
 
 // Radar
 RGG_Radar_Food = 0;
 RGG_Radar_Ammo = 0;
 RGG_Radar_Fuel = 0;
+RGG_Radar_Sentries = 0;
 publicVariable "RGG_Radar_Food";
 publicVariable "RGG_Radar_Ammo";
 publicVariable "RGG_Radar_Fuel";
-
+publicVariable "RGG_Radar_Sentries";
 
 // Observation
 RGG_Observation_Food = 0;
 RGG_Observation_Ammo = 0;
 RGG_Observation_Fuel = 0;
+RGG_Observation_Sentries = 0;
 publicVariable "RGG_Observation_Food";
 publicVariable "RGG_Observation_Ammo";
 publicVariable "RGG_Observation_Fuel";
-
+publicVariable "RGG_Observation_Sentries";
 
 // Heli
 RGG_Heli_Food = 0;
 RGG_Heli_Ammo = 0;
 RGG_Heli_Fuel = 0;
+RGG_Heli_Sentries = 0;
 publicVariable "RGG_Heli_Food";
 publicVariable "RGG_Heli_Ammo";
 publicVariable "RGG_Heli_Fuel";
-
+publicVariable "RGG_Heli_Sentries";
 
 // Car
 RGG_Car_Food = 0;
 RGG_Car_Ammo = 0;
 RGG_Car_Fuel = 0;
+RGG_Car_Sentries = 0;
 publicVariable "RGG_Car_Food";
 publicVariable "RGG_Car_Ammo";
 publicVariable "RGG_Car_Fuel";
-
+publicVariable "RGG_Car_Sentries";
 
 // Workshop
 RGG_Workshop_Food = 0;
 RGG_Workshop_Ammo = 0;
 RGG_Workshop_Fuel = 0;
+RGG_Workshop_Sentries = 0;
 publicVariable "RGG_Workshop_Food";
 publicVariable "RGG_Workshop_Ammo";
 publicVariable "RGG_Workshop_Fuel";
-
+publicVariable "RGG_Workshop_Sentries";
 
 // Training
 RGG_Training_Food = 0;
 RGG_Training_Ammo = 0;
 RGG_Training_Fuel = 0;
+RGG_Training_Sentries = 0;
 publicVariable "RGG_Training_Food";
 publicVariable "RGG_Training_Ammo";
 publicVariable "RGG_Training_Fuel";
-
-// cycle count of base supplies 
-[] spawn RGGc_fnc_count_monitorSupplies; 
-[] spawn RGGc_fnc_count_depleteSupplies;
+publicVariable "RGG_Training_Sentries";
 
 
-// call RGG_fnc_1_setup_createMainBaseMarker; 
+// ----- cycle count of base supplies -----
+[] spawn RGGc_fnc_count_monitorSupplies; // this counts supplies of any 'live' base every x seconds 
+[] spawn RGGc_fnc_count_depleteSupplies; // this depletes supplies of live bases every x seconds 
 
+
+// call RGG_fnc_1_setup_createMainBaseMarker; // this relates to an older design (of functions hierarchy), leaving here in case needed but may remove 
+
+
+// ----- Slingloading EH -----
+// This is a hard-coded solution to enable slingloading EH on a set heli specified in the mission (heli1) 
+// this needs to be improced so that the EH is applied to the heli, even after respawn 
+// note: rule - only Hurons should be able to slingload 
 execVM "eventHandlers\slingLoadMonitor.sqf";
 
+// ----- Garbage Removal -----
+// very crude system of deletion 
+// this should be improved to only apply to areas where players are not close by 
 while {true} do {
 	{ deleteVehicle _x } forEach allDead;
 	systemChat "cleanup";
@@ -139,7 +160,7 @@ while {true} do {
 
 // to avoid errors 
 // ???
-REARMONSPAWN = true; 
+REARMONSPAWN = true; // ?????
 
 
 // initialise Heli Systems
