@@ -17,5 +17,10 @@ class RGGc {
 			Description = "This function will slowly reduce base supplies";
 		};
 
+		class count_bluforSentryRespawnCheck {
+			Description = "This function will determine whether a killed sentry can be respawned or placed in a queue";
+		};
+
 	};
 };
+

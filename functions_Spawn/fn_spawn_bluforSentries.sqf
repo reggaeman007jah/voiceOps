@@ -166,14 +166,19 @@ switch (_wallType) do {
 		_unit1 setVariable ["sentryAlive", [_spawnPoint, _spawnDirection, _wallType], TRUE]; // attempt 1 to see if we can use main spawn point as unique ID for unit
 		// systemChat str _spawnDirection;
 		_testVariable = _unit1 getVariable "sentryAlive";
+		// systemChat str _testVariable;
+		systemChat format ["Test Data / _testVariable from set/getVariable =  %1", _testVariable];
+
 		_unit1 addEventHandler ["Killed", {
 			params ["_unit", "_killer", "_instigator", "_useEffects"];
 			systemChat "A CORNER SENTRY IS DEAD";
+			systemChat format ["Data from EH trigger: %1", _testVariable];
 			RGG_Barracks_Sentries = RGG_Barracks_Sentries - 1;
 			publicVariable "RGG_Barracks_Sentries";
 			systemChat format ["There are currently %1 Sentries at the Barracks FOB", RGG_Barracks_Sentries];
+			[_unit] spawn RGGc_fnc_count_bluforSentryRespawnCheck;
 		}];
-		systemChat str _testVariable;
+
 		deleteVehicle _vrWallBlock;
 
 	};
