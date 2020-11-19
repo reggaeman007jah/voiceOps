@@ -13,8 +13,7 @@ If !(isServer) exitwith {};
 	}];
 } foreach allUnits;
 
-// temp p[lacement 
-[] call RGGm_fnc_mission_extractInjured;
+
 
 
 // DECIDE = false; // I think this is the only var i need to declare, as the motion.sqf relys on this.
