@@ -48,6 +48,13 @@ heli1 addEventHandler ["RopeBreak", {
 	// 	default { systemChat "Error: no suitable object found in rope break EH"; };
 	// };
 
+	if (typeOf _object2 == "B_Slingload_01_Cargo_F") then { 
+		systemChat "Supply Depot Deployed"; 
+		[_object2, "B_Slingload_01_Cargo_F"] spawn RGGb_fnc_build_bluforSupplyDepot; // NOTE - test theory that you do not need this second arg !!
+		heli1 removeEventHandler ["RopeBreak", 0]; // otherwise this triggers 4 times!
+		execVM "eventHandlers\slingLoadMonitor.sqf"; // reloads EH to the designated heli - currently "heli1"
+	};
+
 	if (typeOf _object2 == "B_Slingload_01_Medevac_F") then { 
 		systemChat "Med-Base Deployed:"; 
 		[_object2, "B_Slingload_01_Medevac_F"] spawn RGGb_fnc_build_bluforMedbase; 
@@ -68,7 +75,7 @@ heli1 addEventHandler ["RopeBreak", {
 		[_object2, "I_supplyCrate_F"] spawn RGGc_fnc_count_bluforBaseSupplies; 
 		heli1 removeEventHandler ["RopeBreak", 0]; // otherwise this triggers 4 times!
 		execVM "eventHandlers\slingLoadMonitor.sqf"; // reloads EH to the designated heli - currently "heli1"
-		// sleep 15;
+		// sleep 15; 
 	};
 	
 	if (typeOf _object2 == "CargoNet_01_barrels_F") then { 

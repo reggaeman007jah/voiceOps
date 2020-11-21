@@ -12,19 +12,20 @@ while {true} do {
 
 	if (BARRACKS) then {
 		systemChat "Barracks Supplies:";
-		systemChat format ["Food: %1", RGG_Barracks_Food];
-		systemChat format ["Ammo: %1", RGG_Barracks_Ammo];
-		systemChat format ["Fuel: %1", RGG_Barracks_Fuel];	
-		systemChat format ["Sentries: %1", RGG_Barracks_Sentries];	
+		systemChat format ["Food: %1 ¦ Ammo: %2 ¦ Fuel: %3 ¦ Sentries: %4", RGG_Barracks_Food, RGG_Barracks_Ammo, RGG_Barracks_Fuel, RGG_Barracks_Sentries];
+		// systemChat format ["Ammo: %1", RGG_Barracks_Ammo];
+		// systemChat format ["Fuel: %1", RGG_Barracks_Fuel];	
+		// systemChat format ["Sentries: %1", RGG_Barracks_Sentries];	
 	};
 
 	sleep 5;
 
 	if (MEDICAL) then {
 		systemChat "Med-Base Supplies:";
-		systemChat format ["Food: %1", RGG_Medical_Food];
-		systemChat format ["Ammo: %1", RGG_Medical_Ammo];
-		systemChat format ["Fuel: %1", RGG_Medical_Fuel];	
+		systemChat format ["Food: %1 ¦ Ammo: %2 ¦ Fuel: %3 ¦ Sentries: %4", RGG_Medical_Food, RGG_Medical_Ammo, RGG_Medical_Fuel, RGG_Medical_Sentries];
+		// systemChat format ["Food: %1", RGG_Medical_Food];
+		// systemChat format ["Ammo: %1", RGG_Medical_Ammo];
+		// systemChat format ["Fuel: %1", RGG_Medical_Fuel];	
 	};
 
 	sleep 5;

@@ -384,8 +384,8 @@ _barracksDZ setMarkerSize [15, 15];
 // spawn baseline units from main tent
 // [_northCentralTent, 6, "Barracks"] call RGGs_fnc_spawn_bluforBaseMinCrew;
 
-systemChat "sentries...";
-
+systemChat "Barracks Sentries Spawning In ...";
+sleep 5;
 [_northTowerLeft, 0, "tower", "barracks"] call RGGs_fnc_spawn_bluforSentries;
 sleep 1;
 [_northTowerRight, 0, "tower", "barracks"] call RGGs_fnc_spawn_bluforSentries;
@@ -402,7 +402,6 @@ sleep 1;
 sleep 1;
 [_southTowerRight, 180, "tower", "barracks"] call RGGs_fnc_spawn_bluforSentries;
 sleep 1;
-
 [_westWall2, 270, "wall", "barracks"] call RGGs_fnc_spawn_bluforSentries;
 sleep 1;
 [_westWall3, 270, "wall", "barracks"] call RGGs_fnc_spawn_bluforSentries;
@@ -410,7 +409,6 @@ sleep 1;
 [_eastWall2, 90, "wall", "barracks"] call RGGs_fnc_spawn_bluforSentries;
 sleep 1;
 [_eastWall3, 90, "wall", "barracks"] call RGGs_fnc_spawn_bluforSentries;
-
 sleep 1;
 [_northWestCorner, 270, "corner", "barracks"] call RGGs_fnc_spawn_bluforSentries;
 sleep 1;
@@ -419,8 +417,7 @@ sleep 1;
 [_southWestCorner, 270, "corner", "barracks"] call RGGs_fnc_spawn_bluforSentries;
 sleep 1;
 [_southEastCorner, 270, "corner", "barracks"] call RGGs_fnc_spawn_bluforSentries;
-
-
+systemChat "Barracks Sentries Spawned In ...";
 
 
 

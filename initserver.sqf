@@ -21,21 +21,37 @@ setTimeMultiplier 60;
 // ----- creation states -----
 // these globals record whether a type of base exists or not .. the more bases that exist the more reports players get 
 // everything is false to start with, as nothing exists when mission starts 
+SUPPLY = false;
 BARRACKS = false;
+
 MEDICAL = false;
 RADAR = false;
-OBSERVATION = false;
+
+OBSERVATION = false; // remove?
+
 HELI = false;
 CAR = false;
+
 WORKSHOP = false;
 TRAINING = false;
 
 
 // ----- this holds and sentry units waiting to spawn in (but can't due to lack of base food) -----
-RGG_sentryQueue = [];
+RGG_sentryQueue = []; // holds sentry respawn data 
+RGG_supplyQueue = []; // holds supply respawn data 
 
 // --- Base Stats -----
 // these record base stats for food, fuel ammo and defences xx
+
+// Supply
+// RGG_supply_Food = 0;
+// RGG_supply_Ammo = 0;
+// RGG_supply_Fuel = 0;
+RGG_supply_Sentries = 0;
+// publicVariable "RGG_supply_Food";
+// publicVariable "RGG_supply_Ammo";
+// publicVariable "RGG_supply_Fuel";
+publicVariable "RGG_supply_Sentries";
 
 // Barracks
 RGG_Barracks_Food = 0;

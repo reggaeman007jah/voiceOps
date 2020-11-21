@@ -13,6 +13,10 @@ class RGGb {
 			Description = "This function will manage the sinking of blocks";
 		};
 
+		class build_bluforSupplyDepot {
+			Description = "This function will deploy blufor supply depot from seed (container) position";
+		};
+
 		class build_bluforBarracks {
 			Description = "This function will deploy blufor barracks from seed (container) position";
 		};

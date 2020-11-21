@@ -1,5 +1,5 @@
 /*
-This function builds a medic-base FOB 
+This function builds a supply-base FOB 
 */
 
 // -------------------------------------------------------------------------------------------
@@ -75,9 +75,42 @@ _medicHutPos = _medicHutPos getPos [2,180];
 
 _officePos = _medicHutPos getPos [7,270];
 
-_medicTentPos = _heliPadPos getPos [18,0];
-_medicTentPos = _medicTentPos getPos [3,90];
-_medicTentPos = _medicTentPos getPos [10,270];
+_food1Pos = _heliPadPos getPos [3,180];
+_food2Pos = _food1Pos getPos [3,90];
+_food3Pos = _food1Pos getPos [3,0];
+_food4Pos = _food2Pos getPos [3,0];
+
+_ammo1Pos = _food1Pos getPos [12,0];
+_ammo2Pos = _ammo1Pos getPos [3,90];
+_ammo3Pos = _ammo1Pos getPos [3,0];
+_ammo4Pos = _ammo2Pos getPos [3,0];
+
+_fuel1Pos = _food1Pos getPos [21,0];
+_fuel2Pos = _fuel1Pos getPos [3,90];
+_fuel3Pos = _fuel1Pos getPos [3,0];
+_fuel4Pos = _fuel2Pos getPos [3,0];
+
+
+// _ammo1Pos = _food1Pos getPos [3,270];
+// _fuel1Pos = _ammo1Pos getPos [3,270];
+
+// _food2Pos = _food1Pos getPos [6,0];
+// _food3Pos = _food1Pos getPos [9,0];
+// _food4Pos = _food1Pos getPos [12,0];
+
+// _ammo2Pos = _ammo1Pos getPos [3,0];
+// _ammo3Pos = _ammo1Pos getPos [6,0];
+// _ammo4Pos = _ammo1Pos getPos [9,0];
+
+// _fuel2Pos = _fuel1Pos getPos [3,0];
+// _fuel3Pos = _fuel1Pos getPos [6,0];
+// _fuel4Pos = _fuel1Pos getPos [9,0];
+
+
+
+// _medicTentPos = _heliPadPos getPos [18,0];
+// _medicTentPos = _medicTentPos getPos [3,90];
+// _medicTentPos = _medicTentPos getPos [10,270];
 
 // -------------------------------------------------------------------------------------------
 // block creation 
@@ -198,15 +231,15 @@ sleep _spawnSpeed;
  
 
 // Land_HelipadSquare_F
-_heliPad = "Land_HelipadSquare_F" createVehicle _mapCorner;
-[_heliPad, _heliPadPos, 0] spawn RGGb_fnc_build_blockManager;
-sleep _spawnSpeed;
+// _heliPad = "Land_Cargo_Tower_V2_F" createVehicle _mapCorner;
+// [_heliPad, _heliPadPos, 0] spawn RGGb_fnc_build_blockManager;
+// sleep _spawnSpeed;
 
 // Land_Medevac_house_V1_F
-_medicHut = "Land_Medevac_house_V1_F" createVehicle _mapCorner;
-[_medicHut, _medicHutPos, 270] spawn RGGb_fnc_build_blockManager;
-// _medicHut setDir 270;
-sleep _spawnSpeed;
+// _medicHut = "Land_Medevac_house_V1_F" createVehicle _mapCorner;
+// [_medicHut, _medicHutPos, 270] spawn RGGb_fnc_build_blockManager;
+// // _medicHut setDir 270;
+// sleep _spawnSpeed;
 
 // OFFICE 
 
@@ -215,31 +248,26 @@ _office = "Land_Cargo_House_V3_F" createVehicle _mapCorner;
 // _medicHut setDir 0;
 sleep _spawnSpeed;
 
-// medic tent 
-
-_medicTent = "Land_MedicalTent_01_MTP_closed_F" createVehicle _mapCorner;
-[_medicTent, _medicTentPos, 0] spawn RGGb_fnc_build_blockManager;
-// sleep _spawnSpeed;
 // -------------------------------------------------------------------------------------------
 
-MEDICAL = true; // designates this base as active 
+SUPPLY = true; // designates this base as active 
 
 // register main base as a blue marker
-_base = createMarker ["Medical", _rootPos];
+_base = createMarker ["Supply", _rootPos];
 _base setMarkerShape "ELLIPSE";
 _base setMarkerColor "ColorBlue";
 _base setMarkerSize [50, 50];
 _base setMarkerAlpha 0.5;
 
 // create invisible marker for supply drops 
-_medicalDZ = createMarker ["Medical_DZ", _heliPadPos];
-_medicalDZ setMarkerShape "ELLIPSE";
-_medicalDZ setMarkerColor "ColorRed";
-_medicalDZ setMarkerSize [15, 15];
-_medicalDZ setMarkerAlpha 0.5;
+// _medicalDZ = createMarker ["Medical_DZ", _heliPadPos];
+// _medicalDZ setMarkerShape "ELLIPSE";
+// _medicalDZ setMarkerColor "ColorRed";
+// _medicalDZ setMarkerSize [15, 15];
+// _medicalDZ setMarkerAlpha 0.5;
 
 // sentries 
-systemChat "Med-Base Sentries Spawning In ...";
+systemChat "Supply-Base Sentries Spawning In ...";
 sleep 5;
 [_bunker2, 0, "tower", "medical"] call RGGs_fnc_spawn_bluforSentries;
 sleep 1;
@@ -252,5 +280,103 @@ sleep 1;
 [_NWCorner, 90, "corner", "medical"] call RGGs_fnc_spawn_bluforSentries;
 systemChat "Med-Base Sentries Spawned In ...";
 
-// trigger medevac missions 
-[] call RGGm_fnc_mission_extractInjured;
+
+// supplies 
+systemChat "Supplies Spawning In ...";
+sleep 5;
+
+// food 
+_food1 = "I_supplyCrate_F" createVehicle _mapCorner;
+_food1 setVariable ["supplySpawnPos", [_food1Pos], TRUE]; 
+[_food1, _food1Pos, 0] spawn RGGb_fnc_build_blockManager;
+sleep _spawnSpeed;
+
+_food2 = "I_supplyCrate_F" createVehicle _mapCorner;
+_food2 setVariable ["supplySpawnPos", [_food2Pos], TRUE]; 
+// _supplySpawnPos = _food2 getVariable "supplySpawnPos";
+[_food2, _food2Pos, 0] spawn RGGb_fnc_build_blockManager;
+sleep _spawnSpeed;
+
+_food3 = "I_supplyCrate_F" createVehicle _mapCorner;
+_food3 setVariable ["supplySpawnPos", [_food3Pos], TRUE]; 
+[_food3, _food3Pos, 0] spawn RGGb_fnc_build_blockManager;
+sleep _spawnSpeed;
+
+_food4 = "I_supplyCrate_F" createVehicle _mapCorner;
+_food4 setVariable ["supplySpawnPos", [_food4Pos], TRUE]; 
+[_food4, _food4Pos, 0] spawn RGGb_fnc_build_blockManager;
+sleep _spawnSpeed;
+
+
+// ammo
+_ammo1 = "I_CargoNet_01_ammo_F" createVehicle _mapCorner;
+[_ammo1, _ammo1Pos, 0] spawn RGGb_fnc_build_blockManager;
+sleep _spawnSpeed;
+
+_ammo2 = "I_CargoNet_01_ammo_F" createVehicle _mapCorner;
+[_ammo2, _ammo2Pos, 0] spawn RGGb_fnc_build_blockManager;
+sleep _spawnSpeed;
+
+_ammo3 = "I_CargoNet_01_ammo_F" createVehicle _mapCorner;
+[_ammo3, _ammo3Pos, 0] spawn RGGb_fnc_build_blockManager;
+sleep _spawnSpeed;
+
+_ammo4 = "I_CargoNet_01_ammo_F" createVehicle _mapCorner;
+[_ammo4, _ammo4Pos, 0] spawn RGGb_fnc_build_blockManager;
+sleep _spawnSpeed;
+
+
+// fuel
+_fuel1 = "CargoNet_01_barrels_F" createVehicle _mapCorner;
+[_fuel1, _fuel1Pos, 0] spawn RGGb_fnc_build_blockManager;
+sleep _spawnSpeed;
+
+_fuel2 = "CargoNet_01_barrels_F" createVehicle _mapCorner;
+[_fuel2, _fuel2Pos, 0] spawn RGGb_fnc_build_blockManager;
+sleep _spawnSpeed;
+
+_fuel3 = "CargoNet_01_barrels_F" createVehicle _mapCorner;
+[_fuel3, _fuel3Pos, 0] spawn RGGb_fnc_build_blockManager;
+sleep _spawnSpeed;
+
+_fuel4 = "CargoNet_01_barrels_F" createVehicle _mapCorner;
+[_fuel4, _fuel4Pos, 0] spawn RGGb_fnc_build_blockManager;
+sleep _spawnSpeed;
+
+
+
+
+// [_food1, "food"] call RGGb_fnc_build_blockManager;
+// sleep 1;
+// [_food2, "food"] call RGGb_fnc_build_blockManager;
+// sleep 1;
+// [_food3, "food"] call RGGb_fnc_build_blockManager;
+// sleep 1;
+// [_food4, "food"] call RGGb_fnc_build_blockManager;
+// sleep 1;
+// [_food5, "food"] call RGGb_fnc_build_blockManager;
+// sleep 1;
+// [_ammo1, "ammo"] call RGGb_fnc_build_blockManager;
+// sleep 1;
+// [_ammo2, "ammo"] call RGGb_fnc_build_blockManager;
+// sleep 1;
+// [_ammo3, "ammo"] call RGGb_fnc_build_blockManager;
+// sleep 1;
+// [_ammo4, "ammo"] call RGGb_fnc_build_blockManager;
+// sleep 1;
+// [_ammo5, "ammo"] call RGGb_fnc_build_blockManager;
+// sleep 1;
+// [_fuel1, "fuel"] call RGGb_fnc_build_blockManager;
+// sleep 1;
+// [_fuel2, "fuel"] call RGGb_fnc_build_blockManager;
+// sleep 1;
+// [_fuel3, "fuel"] call RGGb_fnc_build_blockManager;
+// sleep 1;
+// [_fuel4, "fuel"] call RGGb_fnc_build_blockManager;
+// sleep 1;
+// [_fuel5, "fuel"] call RGGb_fnc_build_blockManager;
+sleep 5;
+systemChat "Supplies Spawned In ...";
+
+// trigger supply respawn system 
+// TBC
