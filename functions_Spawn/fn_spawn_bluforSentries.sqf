@@ -5,37 +5,7 @@ takes location and direction and block type (for height) as args
 
 */
 
-/*
-from test file:
-
-RGG_placeTowerSentry = {
-	params ["_pos", "_dir"];
-
-	_vrBlock = _pos;
-	_vrBlock set [2,1.3];
-	_vrWallBlock = "Land_VR_Shape_01_cube_1m_F" createVehicle _vrBlock; 
-	_vrWallBlock enableSimulation false;
-	_vrWallBlock setPos _vrBlock;
-
-	_indiGroup = createGroup independent;
-	_unit1 = _indiGroup createUnit ["B_G_Soldier_A_F", [0,0], [], 0, "FORM"];
-	_vrBlock set [2,3];
-
-	_unit1 enableSimulation false;
-	_unit1 setPos _vrBlock;
-	_unit1pos = getPos _unit1;
-
-	_unit1pos set [2,2.6];
-
-	_unit1 setPos _unit1pos;
-
-	_unit1 enableSimulation true;
-	_unit1 setUnitPos "UP";
-
-};
-*/
-
-// -------------------------------------------------------------------------------
+// ----- setup ----- 
 private ["_spawnPoint", "_spawnDirection", "_wallType", "_baseType"];
 
 _spawnPoint = param[0];
@@ -46,14 +16,13 @@ _baseType = param[3];
 RGG_Barracks_Sentries = RGG_Barracks_Sentries + 1;
 publicVariable "RGG_Barracks_Sentries";
 
-// private ["_spawnHeight"]; // may not be needed now, as switch is more defined and explicit based on walltype 
-
-// -------------------------------------------------------------------------------
+// ----- function -----
 
 switch (_wallType) do {
 	case "wall": { 
 		private ["_shift"];
-		// this switch pushes the block slightly away from the parsed direction , to ensure the unit does not spawn on the top block, but rather spawns on the lower (protected) level
+		// this switch pushes the block slightly away from the parsed direction , to ensure the unit does not spawn ...
+		// on the top block, but rather spawns on the lower (protected) level
 		switch (_spawnDirection) do {
 			case 0: { _shift = 180 };
 			case 90: { _shift = 270 };
@@ -66,7 +35,6 @@ switch (_wallType) do {
 		_vrBlock set [2, _spawnHeight];
 		_vrBlock = _vrBlock getPos [1.3, _shift]; // shift away so unit is not on top block 
 		_vrWallBlock = "Land_VR_Shape_01_cube_1m_F" createVehicle _vrBlock; 
-		// systemChat "block created";
 		_vrWallBlock enableSimulation false;
 		_vrWallBlock setPos _vrBlock;
 
@@ -85,28 +53,18 @@ switch (_wallType) do {
 		_unit1 enableSimulation true;
 		_unit1 setUnitPos "UP";
 		_unit1 setFormDir _spawnDirection;
-		// systemChat str _spawnDirection;
 
-		_unit1 setVariable ["sentryAlive", [_spawnPoint, _spawnDirection, _wallType, _baseType], TRUE]; // attempt 1 to see if we can use main spawn point as unique ID for unit
+		_unit1 setVariable ["sentryAlive", [_spawnPoint, _spawnDirection, _wallType, _baseType], TRUE]; 
 		_testVariable = _unit1 getVariable "sentryAlive";
 
 		_unit1 addEventHandler ["Killed", {
 			params ["_unit", "_killer", "_instigator", "_useEffects"];
-			systemChat "A CORNER SENTRY IS DEAD";
+			systemChat "A WALL SENTRY IS DEAD";
 			RGG_Barracks_Sentries = RGG_Barracks_Sentries - 1;
 			publicVariable "RGG_Barracks_Sentries";
-
-			// systemChat format ["There are currently %1 Sentries at the Barracks FOB", RGG_Barracks_Sentries];
 			[_unit] spawn RGGc_fnc_count_bluforSentryRespawnCheck;
 		}];
 
-		// _unit1 addEventHandler ["Killed", {
-		// 	params ["_unit", "_killer", "_instigator", "_useEffects"];
-		// 	systemChat "A WALL SENTRY IS DEAD";
-		// 	RGG_Barracks_Sentries = RGG_Barracks_Sentries - 1;
-		// 	publicVariable "RGG_Barracks_Sentries";
-		// 	systemChat format ["There are currently %1 Sentries at the Barracks FOB", RGG_Barracks_Sentries];
-		// }];
 		deleteVehicle _vrWallBlock;
 	};
 	case "tower": { 
@@ -133,7 +91,7 @@ switch (_wallType) do {
 		_unit1 setUnitPos "UP";
 		_unit1 setFormDir _spawnDirection;
 
-		_unit1 setVariable ["sentryAlive", [_spawnPoint, _spawnDirection, _wallType, _baseType], TRUE]; // attempt 1 to see if we can use main spawn point as unique ID for unit
+		_unit1 setVariable ["sentryAlive", [_spawnPoint, _spawnDirection, _wallType, _baseType], TRUE]; 
 		_testVariable = _unit1 getVariable "sentryAlive";
 
 		_unit1 addEventHandler ["Killed", {
@@ -141,8 +99,6 @@ switch (_wallType) do {
 			systemChat "A TOWER SENTRY IS DEAD";
 			RGG_Barracks_Sentries = RGG_Barracks_Sentries - 1;
 			publicVariable "RGG_Barracks_Sentries";
-
-			// systemChat format ["There are currently %1 Sentries at the Barracks FOB", RGG_Barracks_Sentries];
 			[_unit] spawn RGGc_fnc_count_bluforSentryRespawnCheck;
 		}];
 
@@ -150,7 +106,6 @@ switch (_wallType) do {
 	};
 	case "corner": { 
 		private ["_shift"];
-		// this switch pushes the block slightly away from the parsed direction , to ensure the unit does not spawn on the top block, but rather spawns on the lower (protected) level
 		switch (_spawnDirection) do {
 			case 0: { _shift = 180 };
 			case 90: { _shift = 270 };
@@ -161,7 +116,7 @@ switch (_wallType) do {
 		_spawnHeight = 0.3;
 		_vrBlock = _spawnPoint;
 		_vrBlock set [2, _spawnHeight];
-		_vrBlock = _vrBlock getPos [0.1, _shift]; // shift away so unit is not on top block 
+		_vrBlock = _vrBlock getPos [0.1, _shift]; 
 		_vrWallBlock = "Land_VR_Shape_01_cube_1m_F" createVehicle _vrBlock; 
 		_vrWallBlock enableSimulation false;
 		_vrWallBlock setPos _vrBlock;
@@ -182,7 +137,7 @@ switch (_wallType) do {
 		_unit1 setUnitPos "UP";
 		_unit1 setFormDir _spawnDirection;
 
-		_unit1 setVariable ["sentryAlive", [_spawnPoint, _spawnDirection, _wallType, _baseType], TRUE]; // attempt 1 to see if we can use main spawn point as unique ID for unit
+		_unit1 setVariable ["sentryAlive", [_spawnPoint, _spawnDirection, _wallType, _baseType], TRUE]; 
 		_testVariable = _unit1 getVariable "sentryAlive";
 
 		_unit1 addEventHandler ["Killed", {
@@ -190,15 +145,10 @@ switch (_wallType) do {
 			systemChat "A CORNER SENTRY IS DEAD";
 			RGG_Barracks_Sentries = RGG_Barracks_Sentries - 1;
 			publicVariable "RGG_Barracks_Sentries";
-
-			// systemChat format ["There are currently %1 Sentries at the Barracks FOB", RGG_Barracks_Sentries];
 			[_unit] spawn RGGc_fnc_count_bluforSentryRespawnCheck;
 		}];
 
 		deleteVehicle _vrWallBlock;
-
 	};
 	default { systemChat "error, no wall type specified" };
 };
-
-// -------------------------------------------------------------------------------

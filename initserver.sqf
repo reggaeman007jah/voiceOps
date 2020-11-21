@@ -1,5 +1,6 @@
 
 /*
+Notes:
 Set up global vars to enable management of base crates and supplies 
 For now, create the mission so there is only ever one type of base 
 
@@ -12,10 +13,9 @@ Base Types:
 	Car Pool 			Outpost Victor	(Oscar Victor / Victor / The Car Park)
 	Workshop			Outpost Whiskey	(Oscar Whiskey / Whiskey / Monkeywrench)
 	Training Camp		Outpost Tango  	(Oscar Tango / Tango / The Killhouse)
-
 */
 
-// time speed up 
+// ----- time speed up -----
 setTimeMultiplier 60;
 
 // ----- creation states -----
@@ -31,7 +31,7 @@ WORKSHOP = false;
 TRAINING = false;
 
 
-// ----- this holds and sentry units waiting to spawn in (but can't due to lack of base food)
+// ----- this holds and sentry units waiting to spawn in (but can't due to lack of base food) -----
 RGG_sentryQueue = [];
 
 // --- Base Stats -----
@@ -123,13 +123,10 @@ publicVariable "RGG_Training_Sentries";
 [] spawn RGGc_fnc_count_depleteSupplies; // this depletes supplies of live bases every x seconds 
 
 
-// call RGG_fnc_1_setup_createMainBaseMarker; // this relates to an older design (of functions hierarchy), leaving here in case needed but may remove 
-
-
 // ----- Slingloading EH -----
 // This is a hard-coded solution to enable slingloading EH on a set heli specified in the mission (heli1) 
 // this needs to be improced so that the EH is applied to the heli, even after respawn 
-// note: rule - only Hurons should be able to slingload 
+// note: rule - only Hurons should be able to slingload? 
 execVM "eventHandlers\slingLoadMonitor.sqf";
 
 // ----- Garbage Removal -----

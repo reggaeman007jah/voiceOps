@@ -1,4 +1,5 @@
 // RGGb - Counting Classes
+
 class RGGs {
 	tag = "RGGs";
 	class functions_Spawn {
