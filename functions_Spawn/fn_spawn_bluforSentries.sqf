@@ -39,7 +39,7 @@ switch (_wallType) do {
 		_vrWallBlock setPos _vrBlock;
 
 		_indiGroup = createGroup independent;
-		_unit1 = _indiGroup createUnit ["B_G_Soldier_A_F", [0,0], [], 0, "FORM"];
+		_unit1 = _indiGroup createUnit ["B_G_Soldier_A_F", [0,0], [], 0, "FORM"]; // walls get basic riflemen 
 		_vrBlock set [2,3];
 
 		_unit1 enableSimulation false;
@@ -76,7 +76,7 @@ switch (_wallType) do {
 		_vrWallBlock setPos _vrBlock;
 
 		_indiGroup = createGroup independent;
-		_unit1 = _indiGroup createUnit ["B_G_Soldier_A_F", [0,0], [], 0, "FORM"];
+		_unit1 = _indiGroup createUnit ["B_G_Soldier_M_F", [0,0], [], 0, "FORM"]; // towers get sharpshooters
 		_vrBlock set [2,3];
 
 		_unit1 enableSimulation false;
@@ -122,7 +122,7 @@ switch (_wallType) do {
 		_vrWallBlock setPos _vrBlock;
 
 		_indiGroup = createGroup independent;
-		_unit1 = _indiGroup createUnit ["B_G_Soldier_A_F", [0,0], [], 0, "FORM"];
+		_unit1 = _indiGroup createUnit ["B_G_Soldier_AR_F", [0,0], [], 0, "FORM"]; // corner blocks get auto gunners 
 		_vrBlock set [2,3];
 
 		_unit1 enableSimulation false;
