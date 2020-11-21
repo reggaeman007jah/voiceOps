@@ -8,13 +8,14 @@ make this only appear while in map mode
 
 while {true} do {
 	
-	sleep 30;
+	sleep 15;
 
 	if (BARRACKS) then {
 		systemChat "Barracks Supplies:";
 		systemChat format ["Food: %1", RGG_Barracks_Food];
 		systemChat format ["Ammo: %1", RGG_Barracks_Ammo];
 		systemChat format ["Fuel: %1", RGG_Barracks_Fuel];	
+		systemChat format ["Sentries: %1", RGG_Barracks_Sentries];	
 	};
 
 	sleep 5;

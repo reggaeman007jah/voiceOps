@@ -386,39 +386,39 @@ _barracksDZ setMarkerSize [15, 15];
 
 systemChat "sentries...";
 
-[_northTowerLeft, 0, "tower"] call RGGs_fnc_spawn_bluforSentries;
+[_northTowerLeft, 0, "tower", "barracks"] call RGGs_fnc_spawn_bluforSentries;
 sleep 1;
-[_northTowerRight, 0, "tower"] call RGGs_fnc_spawn_bluforSentries;
+[_northTowerRight, 0, "tower", "barracks"] call RGGs_fnc_spawn_bluforSentries;
 sleep 1;
-[_westTower1, 270, "tower"] call RGGs_fnc_spawn_bluforSentries;
+[_westTower1, 270, "tower", "barracks"] call RGGs_fnc_spawn_bluforSentries;
 sleep 1;
-[_eastTower1, 90, "tower"] call RGGs_fnc_spawn_bluforSentries;
+[_eastTower1, 90, "tower", "barracks"] call RGGs_fnc_spawn_bluforSentries;
 sleep 1;
-[_westTower2, 270, "tower"] call RGGs_fnc_spawn_bluforSentries;
+[_westTower2, 270, "tower", "barracks"] call RGGs_fnc_spawn_bluforSentries;
 sleep 1;
-[_eastTower2, 90, "tower"] call RGGs_fnc_spawn_bluforSentries;
+[_eastTower2, 90, "tower", "barracks"] call RGGs_fnc_spawn_bluforSentries;
 sleep 1;
-[_southTowerLeft, 180, "tower"] call RGGs_fnc_spawn_bluforSentries;
+[_southTowerLeft, 180, "tower", "barracks"] call RGGs_fnc_spawn_bluforSentries;
 sleep 1;
-[_southTowerRight, 180, "tower"] call RGGs_fnc_spawn_bluforSentries;
+[_southTowerRight, 180, "tower", "barracks"] call RGGs_fnc_spawn_bluforSentries;
 sleep 1;
 
-[_westWall2, 270, "wall"] call RGGs_fnc_spawn_bluforSentries;
+[_westWall2, 270, "wall", "barracks"] call RGGs_fnc_spawn_bluforSentries;
 sleep 1;
-[_westWall3, 270, "wall"] call RGGs_fnc_spawn_bluforSentries;
+[_westWall3, 270, "wall", "barracks"] call RGGs_fnc_spawn_bluforSentries;
 sleep 1;
-[_eastWall2, 90, "wall"] call RGGs_fnc_spawn_bluforSentries;
+[_eastWall2, 90, "wall", "barracks"] call RGGs_fnc_spawn_bluforSentries;
 sleep 1;
-[_eastWall3, 90, "wall"] call RGGs_fnc_spawn_bluforSentries;
+[_eastWall3, 90, "wall", "barracks"] call RGGs_fnc_spawn_bluforSentries;
 
 sleep 1;
-[_northWestCorner, 270, "corner"] call RGGs_fnc_spawn_bluforSentries;
+[_northWestCorner, 270, "corner", "barracks"] call RGGs_fnc_spawn_bluforSentries;
 sleep 1;
-[_northEastCorner, 90, "corner"] call RGGs_fnc_spawn_bluforSentries;
+[_northEastCorner, 90, "corner", "barracks"] call RGGs_fnc_spawn_bluforSentries;
 sleep 1;
-[_southWestCorner, 270, "corner"] call RGGs_fnc_spawn_bluforSentries;
+[_southWestCorner, 270, "corner", "barracks"] call RGGs_fnc_spawn_bluforSentries;
 sleep 1;
-[_southEastCorner, 270, "corner"] call RGGs_fnc_spawn_bluforSentries;
+[_southEastCorner, 270, "corner", "barracks"] call RGGs_fnc_spawn_bluforSentries;
 
 
 

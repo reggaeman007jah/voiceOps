@@ -15,6 +15,9 @@ Base Types:
 
 */
 
+// time speed up 
+setTimeMultiplier 60;
+
 // ----- creation states -----
 // these globals record whether a type of base exists or not .. the more bases that exist the more reports players get 
 // everything is false to start with, as nothing exists when mission starts 
@@ -27,6 +30,9 @@ CAR = false;
 WORKSHOP = false;
 TRAINING = false;
 
+
+// ----- this holds and sentry units waiting to spawn in (but can't due to lack of base food)
+RGG_sentryQueue = [];
 
 // --- Base Stats -----
 // these record base stats for food, fuel ammo and defences xx

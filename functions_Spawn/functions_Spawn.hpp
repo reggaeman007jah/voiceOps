@@ -16,9 +16,9 @@ class RGGs {
 			Description = "This function will generate small enemy camp";
 		};
 
-		// class spawn_ {
-		// 	Description = "This function will ";
-		// };
+		class spawn_bluforSentryRespawnQueue {
+			Description = "This function will temporarily house any sentry data due to a base being unable to respawn a unit";
+		};
 
 	};
 };
