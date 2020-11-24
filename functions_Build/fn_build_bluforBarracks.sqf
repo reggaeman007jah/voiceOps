@@ -13,59 +13,11 @@ _rootPos = getPos _object2; // reference to the position of the item dropped
 
 [_object2] spawn RGGb_fnc_build_blockSinker;
 
-// ["_spawnPoint", "_spawnNumber", "_markerArea"];
-// register main base as a blue marker
 _base = createMarker ["Barracks", _rootPos];
 _base setMarkerShape "ELLIPSE";
 _base setMarkerColor "ColorGreen";
 _base setMarkerSize [50, 50];
 _base setMarkerAlpha 0.5;
-
-// RGG_riseUp = {
-// 	params ["_block", "_pos", "_dir"];
-// 	_block enableSimulation false;
-// 	_pos set [2,-5];
-// 	_block setPos _pos;
-// 	_block setDir _dir; // ?
-	
-// 	for [{_i = -5}, {_i < 0.2}, {_i = _i + 0.1}] do {
-// 		_pos set [2,_i]; 
-		
-// 		_block setPos _pos;
-// 		sleep 0.1;
-// 	};
-
-// 	_pos set [2,0];
-// 	_block setPos _pos;
-// 	_block enableSimulation true;
-// };
-
-// -------------------------------------------------------------------------------------------
-
-// sleep 10;
-
-// _object2 = _this select 0;
-// _object2 enableSimulation false;
-// _seedPos = getPos _object2;
-
-// _rootPos = getPos _object2;
-
-// for [{_i = 0}, {_i > -5}, {_i = _i - 0.1}] do {
-// 	_seedPos set [2,_i]; 
-// 	_object2 setPos _seedPos;
-// 	sleep 0.1;
-// };
-
-// _object2 setPos _mapCorner;
-
-// deleteVehicle _object2;
-
-
-
-
-// _spawnSpeedLong = 1.5;
-
-
 
 // -------------------------------------------------------------------------------------------
 // block and asset positions 
@@ -419,7 +371,12 @@ sleep 1;
 [_southEastCorner, 270, "corner", "barracks"] call RGGs_fnc_spawn_bluforSentries;
 systemChat "Barracks Sentries Spawned In ...";
 
+// -------------------------------------------------------------------------------------------
 
+BARRACKS = true; // designates this base as active and triggers creation of next base crate (and truck)
+
+// ----- create next spawn crate / truck -----
+[] spawn RGGs_fnc_spawn_baseSpawnCrate;
 
 
 
@@ -449,8 +406,4 @@ systemChat "Barracks Sentries Spawned In ...";
 	
 // } forEach _indiFor;
 
-
-
-// confirm existance to enable counting of supplies 
-BARRACKS = true;
 

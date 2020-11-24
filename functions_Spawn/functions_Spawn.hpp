@@ -5,6 +5,10 @@ class RGGs {
 	class functions_Spawn {
 		file = "functions_Spawn";
 
+		class spawn_baseSpawnCrate {
+			Description = "This function will create the correct crate (or truck) to generate the next base";
+		};
+
 		class spawn_bluforBaseMinCrew {
 			Description = "This function will create minimum base crew of 8 units";
 		};

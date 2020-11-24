@@ -138,6 +138,9 @@ publicVariable "RGG_Training_Sentries";
 [] spawn RGGc_fnc_count_monitorSupplies; // this counts supplies of any 'live' base every x seconds 
 [] spawn RGGc_fnc_count_depleteSupplies; // this depletes supplies of live bases every x seconds 
 
+// ----- create initial supply crate to enable creation of supply depot -----
+[] spawn RGGs_fnc_spawn_baseSpawnCrate;
+
 
 // ----- Slingloading EH -----
 // This is a hard-coded solution to enable slingloading EH on a set heli specified in the mission (heli1) 

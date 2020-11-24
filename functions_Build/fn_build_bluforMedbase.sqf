@@ -154,14 +154,6 @@ _wallBlock = "Land_HBarrierWall6_F" createVehicle _mapCorner; // west 2
 [_wallBlock, _westBlock2, 271.703] spawn RGGb_fnc_build_blockManager;
 sleep _spawnSpeed;
 
-// _wallBlock = "Land_HBarrierWall6_F" createVehicle _westBlock3; // west 3
-// _wallBlock enableSimulation false;
-// _wallBlock setDir 271.703;
-// _westBlock3 set [2,0]; 
-// _wallBlock setPos _westBlock3;
-// _wallBlock enableSimulation true;
-// sleep _spawnSpeed;
-
 _wallBlock = "Land_HBarrierWall6_F" createVehicle _mapCorner; // west 4
 [_wallBlock, _westBlock4, 271.703] spawn RGGb_fnc_build_blockManager;
 sleep _spawnSpeed;
@@ -180,14 +172,6 @@ _wallBlock = "Land_BagBunker_Small_F" createVehicle _mapCorner; // bunker 1
 [_wallBlock, _bunker1, 91.703] spawn RGGb_fnc_build_blockManager;
 sleep _spawnSpeed;
 
-// _wallBlock = "Land_BagBunker_Small_F" createVehicle _bunker2; // bunker 2
-// _wallBlock enableSimulation false;
-// _wallBlock setDir 91.703;
-// _bunker2 set [2,0]; 
-// _wallBlock setPos _bunker2;
-// _wallBlock enableSimulation true;
-// sleep _spawnSpeed;
-
 _wallBlock = "Land_HBarrierTower_F" createVehicle _mapCorner; // bunker 3
 [_wallBlock, _bunker2, 91.703] spawn RGGb_fnc_build_blockManager;
 sleep _spawnSpeed;
@@ -195,7 +179,6 @@ sleep _spawnSpeed;
 _wallBlock = "Land_HBarrier_Big_F" createVehicle _mapCorner; // bunker 3
 [_wallBlock, _gateBlock3, 90] spawn RGGb_fnc_build_blockManager;
 sleep _spawnSpeed;
- 
 
 // Land_HelipadSquare_F
 _heliPad = "Land_HelipadSquare_F" createVehicle _mapCorner;
@@ -221,8 +204,6 @@ _medicTent = "Land_MedicalTent_01_MTP_closed_F" createVehicle _mapCorner;
 [_medicTent, _medicTentPos, 0] spawn RGGb_fnc_build_blockManager;
 // sleep _spawnSpeed;
 // -------------------------------------------------------------------------------------------
-
-MEDICAL = true; // designates this base as active 
 
 // register main base as a blue marker
 _base = createMarker ["Medical", _rootPos];
@@ -253,4 +234,12 @@ sleep 1;
 systemChat "Med-Base Sentries Spawned In ...";
 
 // trigger medevac missions 
-[] call RGGm_fnc_mission_extractInjured;
+// [] call RGGm_fnc_mission_extractInjured;
+
+
+// -------------------------------------------------------------------------------------------
+
+MEDICAL = true; // designates this base as active and triggers creation of next base crate (and truck)
+
+// ----- create next spawn crate / truck -----
+[] spawn RGGs_fnc_spawn_baseSpawnCrate;

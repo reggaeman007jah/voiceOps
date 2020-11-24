@@ -24,6 +24,20 @@ if (typeOf _object2 == "I_supplyCrate_F") then {
 	[_crate, _pos, 0] spawn RGGb_fnc_build_blockManager;
 };
 
+if (typeOf _object2 == "I_CargoNet_01_ammo_F") then { 
+	_supplySpawnPos = _object2 getVariable "supplySpawnPos";
+	_crate = "I_CargoNet_01_ammo_F" createVehicle [1,1];;
+	_pos = _supplySpawnPos select 0;
+	[_crate, _pos, 0] spawn RGGb_fnc_build_blockManager;
+};
+
+if (typeOf _object2 == "CargoNet_01_barrels_F") then { 
+	_supplySpawnPos = _object2 getVariable "supplySpawnPos";
+	_crate = "CargoNet_01_barrels_F" createVehicle [1,1];;
+	_pos = _supplySpawnPos select 0;
+	[_crate, _pos, 0] spawn RGGb_fnc_build_blockManager;
+};
+
 deleteVehicle _object2;
 
 
