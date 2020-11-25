@@ -212,15 +212,15 @@ _base setMarkerAlpha 0.5;
 // sentries 
 systemChat "Supply-Base Sentries Spawning In ...";
 sleep 5;
-[_bunker2, 0, "tower", "medical"] call RGGs_fnc_spawn_bluforSentries;
+[_bunker2, 0, "tower", "supply"] call RGGs_fnc_spawn_bluforSentries;
 sleep 1;
-[_SWCorner, 270, "corner", "medical"] call RGGs_fnc_spawn_bluforSentries;
+[_SWCorner, 270, "corner", "supply"] call RGGs_fnc_spawn_bluforSentries;
 sleep 1;
-[_SECorner, 90, "corner", "medical"] call RGGs_fnc_spawn_bluforSentries;
+[_SECorner, 90, "corner", "supply"] call RGGs_fnc_spawn_bluforSentries;
 sleep 1;
-[_NECorner, 270, "corner", "medical"] call RGGs_fnc_spawn_bluforSentries;
+[_NECorner, 270, "corner", "supply"] call RGGs_fnc_spawn_bluforSentries;
 sleep 1;
-[_NWCorner, 90, "corner", "medical"] call RGGs_fnc_spawn_bluforSentries;
+[_NWCorner, 90, "corner", "supply"] call RGGs_fnc_spawn_bluforSentries;
 systemChat "Med-Base Sentries Spawned In ...";
 
 // ----- SUPPLIES ----- // 

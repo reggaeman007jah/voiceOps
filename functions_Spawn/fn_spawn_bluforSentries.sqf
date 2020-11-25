@@ -13,10 +13,19 @@ _spawnDirection = param[1];
 _wallType = param[2];
 _baseType = param[3];
 
-RGG_Barracks_Sentries = RGG_Barracks_Sentries + 1;
-publicVariable "RGG_Barracks_Sentries";
+
 
 // ----- function -----
+
+// calculate sentries for relevant base
+switch (_baseType) do {
+	case "supply": { RGG_Supply_Sentries = RGG_Supply_Sentries + 1; publicVariable "RGG_Supply_Sentries"; };
+	case "barracks": { RGG_Barracks_Sentries = RGG_Barracks_Sentries + 1; publicVariable "RGG_Barracks_Sentries"; };
+	case "medical": { RGG_Medical_Sentries = RGG_Medical_Sentries + 1; publicVariable "RGG_Medical_Sentries"; };
+	// case "value": { };
+	// case "value": { };
+	default { systemChat "error: _baseType incorrect"; systemChat str _baseType };
+};
 
 switch (_wallType) do {
 	case "wall": { 
