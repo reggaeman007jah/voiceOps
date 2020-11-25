@@ -44,13 +44,13 @@ RGG_supplyQueue = []; // holds supply respawn data
 // these record base stats for food, fuel ammo and defences xx
 
 // Supply
-// RGG_supply_Food = 0;
-// RGG_supply_Ammo = 0;
-// RGG_supply_Fuel = 0;
-RGG_supply_Sentries = 0;
-// publicVariable "RGG_supply_Food";
-// publicVariable "RGG_supply_Ammo";
-// publicVariable "RGG_supply_Fuel";
+RGG_Supply_Food = 0;
+RGG_Supply_Ammo = 0;
+RGG_Supply_Fuel = 0;
+RGG_Supply_Sentries = 0;
+publicVariable "RGG_supply_Food";
+publicVariable "RGG_supply_Ammo";
+publicVariable "RGG_supply_Fuel";
 publicVariable "RGG_supply_Sentries";
 
 // Barracks

@@ -12,8 +12,8 @@ disableSerialization;
 
 // MISSION INTEL 
 500 cutRsc ["BARRACKS_STATS_TOP_LABEL", "PLAIN"];
-// 501 cutRsc ["BARRACKS_STATS_FOOD_LABEL", "PLAIN"];
-// 502 cutRsc ["BARRACKS_STATS_FOOD_VALUE", "PLAIN"];
+501 cutRsc ["SUPPLY_STATS_TOP_LABEL", "PLAIN"];
+502 cutRsc ["MEDICAL_STATS_TOP_LABEL", "PLAIN"];
 // 503 cutRsc ["BARRACKS_STATS_AMMO_LABEL", "PLAIN"];
 // 504 cutRsc ["BARRACKS_STATS_AMMO_VALUE", "PLAIN"];
 // 505 cutRsc ["BARRACKS_STATS_FUEL_LABEL", "PLAIN"];
@@ -31,34 +31,25 @@ waitUntil {!isNull (uiNameSpace getVariable "BARRACKS_STATS_TOP_LABEL")};
 
 	while {true} do {
 
-		// // total count in game 
-		// _barracksFoodCount = RGG_Barracks_Food;
-		// // total blufor in game
-		// _barracksAmmoCount = RGG_Barracks_Ammo;
-		// // total opfor in game
-		// _barracksFuelCount = RGG_Barracks_Fuel;
-		// // total count in objective zone
-		// _barracksSentryCount = RGG_Barracks_Sentries;
-
 		// TOTAL UNIT COUNT IN OBJECTIVE AREA (NUMBERS AND WORDS)
-		_displayOBJUNITS = uiNameSpace getVariable "BARRACKS_STATS_TOP_LABEL";
+		_displayOBJUNITS = uiNameSpace getVariable "SUPPLY_STATS_TOP_LABEL";
 		_setText = _displayOBJUNITS displayCtrl 999100;
-		_setText ctrlSetStructuredText (parseText format ["BARRACKS STATS <br />FOOD %1  <br />AMMO %2  <br />FUEL %3  <br />SENTRIES %4",RGG_Barracks_Food, RGG_Barracks_Ammo, RGG_Barracks_Fuel, RGG_Barracks_Sentries]);
+		_setText ctrlSetStructuredText (parseText format ["SUPPLY DEPOT <br />FOOD %1  <br />AMMO %2  <br />FUEL %3  <br />SENTRIES %4",RGG_Supply_Food, RGG_Supply_Ammo, RGG_Supply_Fuel, RGG_Supply_Sentries]);
 		_setText ctrlSetBackgroundColor [0,0,0,0.5];
 
+		sleep 1;
 
-		// // TOTAL BLUFOR UNIT COUNT IN GAME (NUMBERS AND WORDS)
-		// _displayOBJUNITS = uiNameSpace getVariable "BLUDATA";
-		// _setText = _displayOBJUNITS displayCtrl 999510;
-		// _setText ctrlSetStructuredText (parseText format ["BLUFOR ASSETS<br /> TOTAL UNITS IN COMBAT ZONE %1<br />  TOTAL UNITS IN MAIN AO %2<br />", _allBluUnitsObj, _allBluforBZ]); 
-		// _setText ctrlSetBackgroundColor [0,0,0,0.5];
+		_displayOBJUNITS = uiNameSpace getVariable "BARRACKS_STATS_TOP_LABEL";
+		_setText = _displayOBJUNITS displayCtrl 999101;
+		_setText ctrlSetStructuredText (parseText format ["BARRACKS FOB <br />FOOD %1  <br />AMMO %2  <br />FUEL %3  <br />SENTRIES %4",RGG_Barracks_Food, RGG_Barracks_Ammo, RGG_Barracks_Fuel, RGG_Barracks_Sentries]);
+		_setText ctrlSetBackgroundColor [0,0,0,0.5];
 
+		sleep 1;
 
-		// // TOTAL OPFOR UNIT COUNT IN GAME (NUMBERS AND WORDS)
-		// _displayOBJUNITS = uiNameSpace getVariable "OPDATA";
-		// _setText = _displayOBJUNITS displayCtrl 999520;
-		// _setText ctrlSetStructuredText (parseText format ["OPFOR ASSETS<br /> TOTAL UNITS IN COMBAT ZONE%1<br />  TOTAL UNITS IN MAIN AO %2<br />", _allOpUnitsObj, _allOpforBZ]);
-		// _setText ctrlSetBackgroundColor [0,0,0,0.5];
+		_displayOBJUNITS = uiNameSpace getVariable "MEDICAL_STATS_TOP_LABEL";
+		_setText = _displayOBJUNITS displayCtrl 999102;
+		_setText ctrlSetStructuredText (parseText format ["MEDICAL FOB <br />FOOD %1  <br />AMMO %2  <br />FUEL %3  <br />SENTRIES %4",RGG_Medical_Food, RGG_Medical_Ammo, RGG_Medical_Fuel, RGG_Medical_Sentries]);
+		_setText ctrlSetBackgroundColor [0,0,0,0.5];
 
 		sleep 5;
 	};
