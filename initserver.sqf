@@ -148,6 +148,9 @@ publicVariable "RGG_Training_Sentries";
 // note: rule - only Hurons should be able to slingload? 
 execVM "eventHandlers\slingLoadMonitor.sqf";
 
+// ----- Start GUI calcs -----
+execVM "dialogs\guiCalcs.sqf";
+
 // ----- Garbage Removal -----
 // very crude system of deletion 
 // this should be improved to only apply to areas where players are not close by 

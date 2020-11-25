@@ -29,6 +29,8 @@ class cfgFunctions {
 	#include "functions_Spawn\functions_Spawn.hpp"
 }
 
+// map display dialog 
+#include "dialogs\mapDisplay.hpp"
 
 // briefingName = $STR_MISSION_TITLE;
 overviewText = "VOICE OPS";
