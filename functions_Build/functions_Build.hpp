@@ -6,11 +6,11 @@ class RGGb {
 		file = "functions_Build"; 
 
 		class build_blockManager {
-			Description = "This function will manage rising up and setting of individual base building blocks";
+			Description = "This function will manage rising up and setting of individual base building blocks - soon to be deprecated";
 		};
 
 		class build_blockSinker {
-			Description = "This function will manage the sinking of blocks";
+			Description = "This function will manage the sinking of blocks - soon to be deprecated";
 		};
 
 		class build_bluforSupplyDepot {

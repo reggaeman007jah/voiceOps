@@ -60,7 +60,8 @@ if (_seedPos inArea "Barracks_DZ") then {
 		};
 	};
 
-	[_object2] spawn RGGb_fnc_build_blockSinker;
+	// [_object2] spawn RGGb_fnc_build_blockSinker;
+	[_object2] spawn RGGe_fnc_effects_blockSinker;
 };
 
 // } else {
@@ -93,5 +94,6 @@ if (_seedPos inArea "Medical_DZ") then {
 		};
 	};
 
-	[_object2] spawn RGGb_fnc_build_blockSinker;
+	// [_object2] spawn RGGb_fnc_build_blockSinker;
+	[_object2] spawn RGGe_fnc_effects_blockSinker;
 };

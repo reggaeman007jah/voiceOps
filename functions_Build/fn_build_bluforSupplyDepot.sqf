@@ -15,7 +15,8 @@ _mapCorner = [0,0]; // corner pos for initial spawning to hide glitching
 _object2 = _this select 0; // reference to the item dropped 
 _rootPos = getPos _object2; // reference to the position of the item dropped 
 
-[_object2] spawn RGGb_fnc_build_blockSinker;
+// [_object2] spawn RGGb_fnc_build_blockSinker;
+[_object2] spawn RGGe_fnc_effects_blockSinker;
 
 
 // -------------------------------------------------------------------------------------------
@@ -301,4 +302,5 @@ systemChat "Supplies Spawned In ...";
 SUPPLY = true; // designates this base as active and triggers creation of next base crate (and truck)
 
 // ----- create next spawn crate / truck -----
-[] spawn RGGs_fnc_spawn_baseSpawnCrate;
+// [] spawn RGGs_fnc_spawn_baseSpawnCrate;
+[] spawn RGGs_fnc_spawn_baseSpawnContainer;

@@ -139,7 +139,8 @@ publicVariable "RGG_Training_Sentries";
 [] spawn RGGc_fnc_count_depleteSupplies; // this depletes supplies of live bases every x seconds 
 
 // ----- create initial supply crate to enable creation of supply depot -----
-[] spawn RGGs_fnc_spawn_baseSpawnCrate;
+// [] spawn RGGs_fnc_spawn_baseSpawnCrate;
+[] spawn RGGs_fnc_spawn_baseSpawnContainer;
 
 
 // ----- Slingloading EH -----
