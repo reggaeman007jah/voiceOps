@@ -6,6 +6,8 @@ make this only appear while in map mode
 
 */
 
+
+
 while {true} do {
 	
 	sleep 15;

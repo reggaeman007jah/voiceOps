@@ -135,7 +135,7 @@ publicVariable "RGG_Training_Sentries";
 
 
 // ----- cycle count of base supplies -----
-[] spawn RGGc_fnc_count_monitorSupplies; // this counts supplies of any 'live' base every x seconds 
+// [] spawn RGGc_fnc_count_monitorSupplies; // this counts supplies of any 'live' base every x seconds // don't need this now 
 [] spawn RGGc_fnc_count_depleteSupplies; // this depletes supplies of live bases every x seconds 
 
 // ----- create initial supply crate to enable creation of supply depot -----

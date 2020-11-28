@@ -232,63 +232,87 @@ sleep 5;
 _food1 = "I_supplyCrate_F" createVehicle _mapCorner;
 _food1 setVariable ["supplySpawnPos", [_food1Pos], TRUE]; 
 [_food1, _food1Pos, 0] spawn RGGb_fnc_build_blockManager;
+RGG_Supply_Food = RGG_Supply_Food + 10;
+publicVariable "RGG_Supply_Food";
 sleep _spawnSpeed;
 
 _food2 = "I_supplyCrate_F" createVehicle _mapCorner;
 _food2 setVariable ["supplySpawnPos", [_food2Pos], TRUE]; 
 [_food2, _food2Pos, 0] spawn RGGb_fnc_build_blockManager;
+RGG_Supply_Food = RGG_Supply_Food + 10;
+publicVariable "RGG_Supply_Food";
 sleep _spawnSpeed;
 
 _food3 = "I_supplyCrate_F" createVehicle _mapCorner;
 _food3 setVariable ["supplySpawnPos", [_food3Pos], TRUE]; 
 [_food3, _food3Pos, 0] spawn RGGb_fnc_build_blockManager;
+RGG_Supply_Food = RGG_Supply_Food + 10;
+publicVariable "RGG_Supply_Food";
 sleep _spawnSpeed;
 
 _food4 = "I_supplyCrate_F" createVehicle _mapCorner;
 _food4 setVariable ["supplySpawnPos", [_food4Pos], TRUE]; 
 [_food4, _food4Pos, 0] spawn RGGb_fnc_build_blockManager;
+RGG_Supply_Food = RGG_Supply_Food + 10;
+publicVariable "RGG_Supply_Food";
 sleep _spawnSpeed;
 
 // ammo
 _ammo1 = "I_CargoNet_01_ammo_F" createVehicle _mapCorner;
 _ammo1 setVariable ["supplySpawnPos", [_ammo1Pos], TRUE]; 
 [_ammo1, _ammo1Pos, 0] spawn RGGb_fnc_build_blockManager;
+RGG_Supply_Ammo = RGG_Supply_Ammo + 10;
+publicVariable "RGG_Supply_Ammo";
 sleep _spawnSpeed;
 
 _ammo2 = "I_CargoNet_01_ammo_F" createVehicle _mapCorner;
 _ammo2 setVariable ["supplySpawnPos", [_ammo2Pos], TRUE]; 
 [_ammo2, _ammo2Pos, 0] spawn RGGb_fnc_build_blockManager;
+RGG_Supply_Ammo = RGG_Supply_Ammo + 10;
+publicVariable "RGG_Supply_Ammo";
 sleep _spawnSpeed;
 
 _ammo3 = "I_CargoNet_01_ammo_F" createVehicle _mapCorner;
 _ammo3 setVariable ["supplySpawnPos", [_ammo3Pos], TRUE]; 
 [_ammo3, _ammo3Pos, 0] spawn RGGb_fnc_build_blockManager;
+RGG_Supply_Ammo = RGG_Supply_Ammo + 10;
+publicVariable "RGG_Supply_Ammo";
 sleep _spawnSpeed;
 
 _ammo4 = "I_CargoNet_01_ammo_F" createVehicle _mapCorner;
 _ammo4 setVariable ["supplySpawnPos", [_ammo4Pos], TRUE]; 
 [_ammo4, _ammo4Pos, 0] spawn RGGb_fnc_build_blockManager;
+RGG_Supply_Ammo = RGG_Supply_Ammo + 10;
+publicVariable "RGG_Supply_Ammo";
 sleep _spawnSpeed;
 
 // fuel
 _fuel1 = "CargoNet_01_barrels_F" createVehicle _mapCorner;
 _fuel1 setVariable ["supplySpawnPos", [_fuel1Pos], TRUE]; 
 [_fuel1, _fuel1Pos, 0] spawn RGGb_fnc_build_blockManager;
+RGG_Supply_Fuel = RGG_Supply_Fuel + 10;
+publicVariable "RGG_Supply_Fuel";
 sleep _spawnSpeed;
 
 _fuel2 = "CargoNet_01_barrels_F" createVehicle _mapCorner;
 _fuel2 setVariable ["supplySpawnPos", [_fuel2Pos], TRUE]; 
 [_fuel2, _fuel2Pos, 0] spawn RGGb_fnc_build_blockManager;
+RGG_Supply_Fuel = RGG_Supply_Fuel + 10;
+publicVariable "RGG_Supply_Fuel";
 sleep _spawnSpeed;
 
 _fuel3 = "CargoNet_01_barrels_F" createVehicle _mapCorner;
 _fuel3 setVariable ["supplySpawnPos", [_fuel3Pos], TRUE]; 
 [_fuel3, _fuel3Pos, 0] spawn RGGb_fnc_build_blockManager;
+RGG_Supply_Fuel = RGG_Supply_Fuel + 10;
+publicVariable "RGG_Supply_Fuel";
 sleep _spawnSpeed;
 
 _fuel4 = "CargoNet_01_barrels_F" createVehicle _mapCorner;
 _fuel4 setVariable ["supplySpawnPos", [_fuel4Pos], TRUE]; 
 [_fuel4, _fuel4Pos, 0] spawn RGGb_fnc_build_blockManager;
+RGG_Supply_Fuel = RGG_Supply_Fuel + 10;
+publicVariable "RGG_Supply_Fuel";
 sleep _spawnSpeed;
 
 sleep 5;

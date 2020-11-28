@@ -15,7 +15,7 @@ while {true} do {
 			systemChat "alert: Barracks has no food!";
 		};
 		if (RGG_Barracks_Fuel > 0) then {
-			RGG_Barracks_Fuel = RGG_Barracks_Fuel -1;
+			RGG_Barracks_Fuel = RGG_Barracks_Fuel - 0.5;
 		} else {
 			systemChat "alert: Barracks has no fuel!";
 		};
@@ -42,7 +42,7 @@ while {true} do {
 			// RGG_Medical_Fuel = RGG_Medical_Fuel -1;
 		};
 		if (RGG_Medical_Ammo > 0) then {
-			RGG_Medical_Ammo = RGG_Medical_Ammo -1;
+			RGG_Medical_Ammo = RGG_Medical_Ammo - 0.5;
 		} else {
 			systemChat "alert: Medical Base has no ammo!";
 			// RGG_Medical_Ammo = RGG_Medical_Ammo -1;

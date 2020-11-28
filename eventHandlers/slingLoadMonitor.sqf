@@ -11,6 +11,9 @@ setVariable is a batter way - explore this!
 https://community.bistudio.com/wiki/setVariable
 */
 
+
+
+// this detects the thing you have deployed via slingload, and takes relevant follow on action 
 heli1 addEventHandler ["RopeBreak", {
 	params ["_object1", "_rope", "_object2"];
 	
@@ -105,9 +108,37 @@ heli1 addEventHandler ["RopeBreak", {
 
 }];
 
-// might need this 
+// this detects when supplies are picked up from the depot, and reduces score accorindgly 
 // heli1 addEventHandler ["RopeAttach", {
 // 	params ["_object1", "_rope", "_object2"];
-// 	// hint "something has been lifted:";
-// 	// systemChat str _object2;
+
+// 	// food 
+// 	if (typeOf _object2 == "I_supplyCrate_F") then { 
+// 		systemChat "Supplies Loaded"; 
+// 		RGG_Supply_Food = RGG_Supply_Food - 10;
+// 		publicVariable "RGG_Supply_Food";
+// 		// if (true) exitWith {};
+		
+// 		heli1 removeEventHandler ["RopeAttach", 0]; // otherwise this triggers 4 times!
+// 		// execVM "eventHandlers\slingLoadMonitor.sqf"; // reloads EH to the designated heli - currently "heli1"
+// 	};
+	
+// 	// fuel 
+// 	if (typeOf _object2 == "CargoNet_01_barrels_F") then { 
+// 		systemChat "Fuel Loaded"; 
+// 		RGG_Supply_Fuel = RGG_Supply_Fuel - 10;
+// 		publicVariable "RGG_Supply_Fuel";
+// 		heli1 removeEventHandler ["RopeAttach", 0]; // otherwise this triggers 4 times!
+// 		execVM "eventHandlers\slingLoadMonitor.sqf"; // reloads EH to the designated heli - currently "heli1"
+// 	};
+
+// 	// ammo 
+// 	if (typeOf _object2 == "I_CargoNet_01_ammo_F") then { 
+// 		systemChat "Ammo Loaded"; 
+// 		RGG_Supply_Ammo = RGG_Supply_Ammo - 10;
+// 		publicVariable "RGG_Supply_Ammo";
+// 		heli1 removeEventHandler ["RopeAttach", 0]; // otherwise this triggers 4 times!
+// 		execVM "eventHandlers\slingLoadMonitor.sqf"; // reloads EH to the designated heli - currently "heli1"
+// 	};
 // }];
+
