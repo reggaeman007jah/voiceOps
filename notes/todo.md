@@ -1,5 +1,7 @@
 Things to do...
 
+test
+
 generate ambient combat zones
 selecting location for battlezone
 generating opfor
