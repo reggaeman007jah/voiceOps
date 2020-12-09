@@ -8,7 +8,7 @@ notes:
 myPlaces = selectBestPlaces [position player, 50, "meadow + 2*hills", 1, 5];
 
 */
-
+systemChat "RUNNING - spawn_opforCamp";
 private ["_spawnPoint", "_campSize"];
 
 _spawnPoint = param[0];

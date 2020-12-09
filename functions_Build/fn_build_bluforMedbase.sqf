@@ -4,6 +4,7 @@ This function builds a medic-base FOB
 
 // -------------------------------------------------------------------------------------------
 // setup 
+systemChat "RUNNING - build_bluforMedbase";
 
 sleep 10;
 _spawnSpeed = 0.5;

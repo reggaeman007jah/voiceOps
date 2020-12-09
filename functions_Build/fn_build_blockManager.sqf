@@ -3,6 +3,8 @@ This function manages the construction of blocks, rising them up from the ground
 */
 
 // -------------------------------------------------------------------------------------------
+systemChat "RUNNING - build_blockManager";
+
 params ["_block", "_pos", "_dir"];
 
 _block enableSimulation false;

@@ -16,24 +16,22 @@ Base Types:
 */
 
 // ----- time speed up -----
-setTimeMultiplier 60;
+setTimeMultiplier 40;
 
 // ----- creation states -----
 // these globals record whether a type of base exists or not .. the more bases that exist the more reports players get 
 // everything is false to start with, as nothing exists when mission starts 
 SUPPLY = false;
 BARRACKS = false;
-
 MEDICAL = false;
-RADAR = false;
 
-OBSERVATION = false; // remove?
-
+WORKSHOP = false;
 HELI = false;
 CAR = false;
 
-WORKSHOP = false;
+LOGISTICS = false; 
 TRAINING = false;
+RADAR = false;
 
 
 // ----- this holds and sentry units waiting to spawn in (but can't due to lack of base food) -----
@@ -43,6 +41,7 @@ RGG_supplyQueue = []; // holds supply respawn data
 // --- Base Stats -----
 // these record base stats for food, fuel ammo and defences xx
 
+// Level 1 ------------------------------------------------------
 // Supply
 RGG_Supply_Food = 0;
 RGG_Supply_Ammo = 0;
@@ -72,36 +71,18 @@ publicVariable "RGG_Medical_Food";
 publicVariable "RGG_Medical_Ammo";
 publicVariable "RGG_Medical_Fuel";
 publicVariable "RGG_Medical_Sentries";
+// Level 1 ------------------------------------------------------
 
-// Radar
-RGG_Radar_Food = 0;
-RGG_Radar_Ammo = 0;
-RGG_Radar_Fuel = 0;
-RGG_Radar_Sentries = 0;
-publicVariable "RGG_Radar_Food";
-publicVariable "RGG_Radar_Ammo";
-publicVariable "RGG_Radar_Fuel";
-publicVariable "RGG_Radar_Sentries";
-
-// Observation
-RGG_Observation_Food = 0;
-RGG_Observation_Ammo = 0;
-RGG_Observation_Fuel = 0;
-RGG_Observation_Sentries = 0;
-publicVariable "RGG_Observation_Food";
-publicVariable "RGG_Observation_Ammo";
-publicVariable "RGG_Observation_Fuel";
-publicVariable "RGG_Observation_Sentries";
-
-// Heli
-RGG_Heli_Food = 0;
-RGG_Heli_Ammo = 0;
-RGG_Heli_Fuel = 0;
-RGG_Heli_Sentries = 0;
-publicVariable "RGG_Heli_Food";
-publicVariable "RGG_Heli_Ammo";
-publicVariable "RGG_Heli_Fuel";
-publicVariable "RGG_Heli_Sentries";
+// Level 2 ------------------------------------------------------
+// Workshop
+RGG_Workshop_Food = 0;
+RGG_Workshop_Ammo = 0;
+RGG_Workshop_Fuel = 0;
+RGG_Workshop_Sentries = 0;
+publicVariable "RGG_Workshop_Food";
+publicVariable "RGG_Workshop_Ammo";
+publicVariable "RGG_Workshop_Fuel";
+publicVariable "RGG_Workshop_Sentries";
 
 // Car
 RGG_Car_Food = 0;
@@ -113,15 +94,37 @@ publicVariable "RGG_Car_Ammo";
 publicVariable "RGG_Car_Fuel";
 publicVariable "RGG_Car_Sentries";
 
-// Workshop
-RGG_Workshop_Food = 0;
-RGG_Workshop_Ammo = 0;
-RGG_Workshop_Fuel = 0;
-RGG_Workshop_Sentries = 0;
-publicVariable "RGG_Workshop_Food";
-publicVariable "RGG_Workshop_Ammo";
-publicVariable "RGG_Workshop_Fuel";
-publicVariable "RGG_Workshop_Sentries";
+// Heli
+RGG_Heli_Food = 0;
+RGG_Heli_Ammo = 0;
+RGG_Heli_Fuel = 0;
+RGG_Heli_Sentries = 0;
+publicVariable "RGG_Heli_Food";
+publicVariable "RGG_Heli_Ammo";
+publicVariable "RGG_Heli_Fuel";
+publicVariable "RGG_Heli_Sentries";
+// Level 2 ------------------------------------------------------
+
+// Level 3 ------------------------------------------------------
+// Radar
+RGG_Radar_Food = 0;
+RGG_Radar_Ammo = 0;
+RGG_Radar_Fuel = 0;
+RGG_Radar_Sentries = 0;
+publicVariable "RGG_Radar_Food";
+publicVariable "RGG_Radar_Ammo";
+publicVariable "RGG_Radar_Fuel";
+publicVariable "RGG_Radar_Sentries";
+
+// Logistics
+RGG_Logistics_Food = 0;
+RGG_Logistics_Ammo = 0;
+RGG_Logistics_Fuel = 0;
+RGG_Logistics_Sentries = 0;
+publicVariable "RGG_Logistics_Food";
+publicVariable "RGG_Logistics_Ammo";
+publicVariable "RGG_Logistics_Fuel";
+publicVariable "RGG_Logistics_Sentries";
 
 // Training
 RGG_Training_Food = 0;
@@ -132,6 +135,7 @@ publicVariable "RGG_Training_Food";
 publicVariable "RGG_Training_Ammo";
 publicVariable "RGG_Training_Fuel";
 publicVariable "RGG_Training_Sentries";
+// Level 3 ------------------------------------------------------
 
 
 // ----- cycle count of base supplies -----

@@ -6,6 +6,7 @@ requires: spawn location
 
 // ** imports 
 // _fobBaseLocation
+systemChat "RUNNING - spawn_baseMinCrew";
 private ["_spawnPoint", "_spawnNumber", "_markerArea"];
 
 // private ["_bluforFob", "_opforFob", "_initialBluforInfiPresence", "_initialBluforVicPresence", "_battleZone"];

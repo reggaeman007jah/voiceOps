@@ -9,6 +9,10 @@ class RGGs {
 			Description = "This function will create the correct container (or truck) to generate the next base";
 		};
 
+		class spawn_baseSpawnContainerLevel2 {
+			Description = "This function will create the correct container (or truck) to generate the next base - all level 1 basses must be built and be healthy first";
+		};
+
 		class spawn_bluforBaseMinCrew {
 			Description = "This function will create minimum base crew of 8 units";
 		};

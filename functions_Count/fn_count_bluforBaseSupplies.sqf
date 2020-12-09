@@ -2,7 +2,9 @@
 This function regularly checks the base supplies of all blufor FOBs
 
 Notes:
-This function is triggered by a rope break and must be holding a relevant supply crate 
+This function is triggered by a rope break EH, from dropping one of the three available supply crates 
+The EH sends this function _object2 which is a simple parse of the object that was dropped, as well as the specific _className of the item 
+
 Barracks_DZ = marker name 
 _playerIsInside = player inArea _myTrigger;
 Each helipad has an invisible marker 
@@ -25,6 +27,7 @@ systemChat format ["Athira Mil-Base now has %1 virtual units", athiraMilBaseVirt
 */
 
 // -------------------------------------------------------------------------------------------
+systemChat "RUNNING - count_bluforBaseSupplies";
 params ["_object2", "_className"];
 
 _object2 = _this select 0;
@@ -43,17 +46,17 @@ if (_seedPos inArea "Barracks_DZ") then {
 		case "I_supplyCrate_F": { 
 			RGG_Barracks_Food = RGG_Barracks_Food + 10;
 			publicVariable "RGG_Barracks_Food";
-			systemChat format ["Barracks now has %1 Food", RGG_Barracks_Food];
+			systemChat format ["Barracks now has %1 Food", RGG_Barracks_Food]; // needs voice 
 		};
 		case "CargoNet_01_barrels_F": { 
 			RGG_Barracks_Fuel = RGG_Barracks_Fuel + 10;
 			publicVariable "RGG_Barracks_Fuel";
-			systemChat format ["Barracks now has %1 Fuel", RGG_Barracks_Fuel];
+			systemChat format ["Barracks now has %1 Fuel", RGG_Barracks_Fuel]; // needs voice 
 		};
 		case "I_CargoNet_01_ammo_F": { 
 			RGG_Barracks_Ammo = RGG_Barracks_Ammo + 10;
 			publicVariable "RGG_Barracks_Ammo";
-			systemChat format ["Barracks now has %1 Ammo", RGG_Barracks_Ammo];
+			systemChat format ["Barracks now has %1 Ammo", RGG_Barracks_Ammo]; // needs voice 
 		};
 		default { 
 			systemChat "error - nothing deployed";
@@ -61,6 +64,7 @@ if (_seedPos inArea "Barracks_DZ") then {
 	};
 
 	// [_object2] spawn RGGb_fnc_build_blockSinker;
+	hint "activating RGGe_fnc_effects_blockSinker";
 	[_object2] spawn RGGe_fnc_effects_blockSinker;
 };
 
@@ -95,5 +99,10 @@ if (_seedPos inArea "Medical_DZ") then {
 	};
 
 	// [_object2] spawn RGGb_fnc_build_blockSinker;
+	hint "activating RGGe_fnc_effects_blockSinker";
 	[_object2] spawn RGGe_fnc_effects_blockSinker;
 };
+
+// try a check here for L2 bases 
+[] spawn RGGs_fnc_spawn_baseSpawnContainerLevel2;
+       

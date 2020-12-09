@@ -4,6 +4,7 @@ This function builds a barracks FOB complex
 
 // -------------------------------------------------------------------------------------------
 // setup
+systemChat "RUNNING - build_bluforBarracks";
 
 sleep 10;
 _spawnSpeed = 0.1;

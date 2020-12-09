@@ -11,7 +11,7 @@ Order:
 3: Medical 
 
 */
-
+systemChat "RUNNING - spawn_baseSpawnContainer";
 sleep 5;
 
 if (!SUPPLY) then {

@@ -38,28 +38,30 @@ waitUntil {!isNull (uiNameSpace getVariable "BARRACKS_STATS_TOP_LABEL")};
 		_setText ctrlSetBackgroundColor [0,0,0,0.5];
 		
 		if (!SUPPLY) then {
-			_setText ctrlSetTextColor [1, 1, 0, 0.5];
+			_setText ctrlSetTextColor [1, 1, 0, 0.5]; // pale yellow - indicating needs to be established
 		};
 		// if ((SUPPLY) && (RGG_Supply_Food > 10)) then {
 		// 	_setText ctrlSetTextColor [1, 1, 0, 1];
 		// };
 		if (SUPPLY) then {
-			_setText ctrlSetTextColor [0, 1, 0, 1];
+			_setText ctrlSetTextColor [0, 1, 0, 1]; // green - indicates established and working
 		};
 		
-
 		sleep 1;
 
 		_displayOBJUNITS = uiNameSpace getVariable "BARRACKS_STATS_TOP_LABEL";
 		_setText = _displayOBJUNITS displayCtrl 999101;
 		_setText ctrlSetStructuredText (parseText format ["BARRACKS FOB <br />FOOD %1  <br />AMMO %2  <br />FUEL %3  <br />SENTRIES %4",RGG_Barracks_Food, RGG_Barracks_Ammo, RGG_Barracks_Fuel, RGG_Barracks_Sentries]);
 		_setText ctrlSetBackgroundColor [0,0,0,0.5];
+
 		if (!BARRACKS) then {
 			_setText ctrlSetTextColor [0, 0, 0, 0.5]; // pale grey - indicating previous base needs to be made first
 		};
+
 		if ((!BARRACKS) && (SUPPLY)) then {
 			_setText ctrlSetTextColor [1, 1, 0, 0.5]; // pale yellow - indicating needs to be established
 		};
+
 		if (BARRACKS) then {
 			_setText ctrlSetTextColor [1, 1, 0, 1];
 			if (RGG_Barracks_Food > 10) then {
@@ -73,11 +75,17 @@ waitUntil {!isNull (uiNameSpace getVariable "BARRACKS_STATS_TOP_LABEL")};
 		_setText = _displayOBJUNITS displayCtrl 999102;
 		_setText ctrlSetStructuredText (parseText format ["MEDICAL FOB <br />FOOD %1  <br />AMMO %2  <br />FUEL %3  <br />SENTRIES %4",RGG_Medical_Food, RGG_Medical_Ammo, RGG_Medical_Fuel, RGG_Medical_Sentries]);
 		_setText ctrlSetBackgroundColor [0,0,0,0.5];
+
 		if (!MEDICAL) then {
 			_setText ctrlSetTextColor [0, 0, 0, 0.5]; // pale grey - indicating previous base needs to be made first
-		}; // complete medical!
+		}; 
+
+		if ((!MEDICAL) && (BARRACKS)) then {
+			_setText ctrlSetTextColor [1, 1, 0, 0.5]; // pale yellow - indicating needs to be established
+		};
+
 		if (MEDICAL) then {
-			_setText ctrlSetTextColor [0, 0, 0, 1];
+			_setText ctrlSetTextColor [1, 1, 0, 1];
 			if (RGG_Medical_Food > 10) then {
 				_setText ctrlSetTextColor [0, 1, 0, 1];
 			};

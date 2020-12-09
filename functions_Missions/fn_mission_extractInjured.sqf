@@ -9,6 +9,7 @@ This is nowhere near finished!!
 // gen random pos 
 // gen units + injured units 
 // gen marker 
+systemChat "RUNNING - missions_extractInjured";
 
 _areaCenter = [10000,3000];
 _extractPos = [_areaCenter, 10, 3000, 40, 0, 1, 0] call BIS_fnc_findSafePos;

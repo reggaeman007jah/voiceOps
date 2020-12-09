@@ -3,6 +3,8 @@ This function manages the sinking and deleting of blocks passed to it
 */
 
 // -------------------------------------------------------------------------------------------
+systemChat "RUNNING - build_blockSinker";
+
 params ["_object2"];
 
 _object2 = _this select 0;
@@ -38,6 +40,7 @@ if (typeOf _object2 == "CargoNet_01_barrels_F") then {
 	[_crate, _pos, 0] spawn RGGb_fnc_build_blockManager;
 };
 
+systemChat format ["----- DELETING %1 -----", _object2];
 deleteVehicle _object2;
 
 

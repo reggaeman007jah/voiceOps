@@ -6,6 +6,7 @@ takes location and direction and block type (for height) as args
 */
 
 // ----- setup ----- 
+systemChat "RUNNING - spawn_bluforSentriesbaseSpawnContainer";
 private ["_spawnPoint", "_spawnDirection", "_wallType", "_baseType"];
 
 _spawnPoint = param[0];
@@ -17,27 +18,27 @@ _baseType = param[3];
 
 // ----- function -----
 
-// calculate sentries for relevant base
+// calculate new sentry score for base in question
 switch (_baseType) do {
 	case "supply": { RGG_Supply_Sentries = RGG_Supply_Sentries + 1; publicVariable "RGG_Supply_Sentries"; };
 	case "barracks": { RGG_Barracks_Sentries = RGG_Barracks_Sentries + 1; publicVariable "RGG_Barracks_Sentries"; };
 	case "medical": { RGG_Medical_Sentries = RGG_Medical_Sentries + 1; publicVariable "RGG_Medical_Sentries"; };
 	// case "value": { };
 	// case "value": { };
-	default { systemChat "error: _baseType incorrect"; systemChat str _baseType };
+	default { systemChat format ["ERROR: _baseType switch: %1", _baseType]; };
 };
 
 switch (_wallType) do {
 	case "wall": { 
 		private ["_shift"];
-		// this switch pushes the block slightly away from the parsed direction , to ensure the unit does not spawn ...
+		// this switch pushes the block slightly away from the parsed direction, to ensure the unit does not spawn ...
 		// on the top block, but rather spawns on the lower (protected) level
 		switch (_spawnDirection) do {
 			case 0: { _shift = 180 };
 			case 90: { _shift = 270 };
 			case 180: { _shift = 0 };
 			case 270: { _shift = 90 };
-			default { systemChat "error, direction not correct"; };
+			default { systemChat format ["ERROR: _spawnDirection switch: %1", _spawnDirection]; };
 		};
 		_spawnHeight = 0.3;
 		_vrBlock = _spawnPoint;
@@ -68,7 +69,7 @@ switch (_wallType) do {
 
 		_unit1 addEventHandler ["Killed", {
 			params ["_unit", "_killer", "_instigator", "_useEffects"];
-			systemChat "A WALL SENTRY IS DEAD";
+			systemChat format ["A %1 WALL SENTRY IS DEAD", _baseType];
 			RGG_Barracks_Sentries = RGG_Barracks_Sentries - 1;
 			publicVariable "RGG_Barracks_Sentries";
 			[_unit] spawn RGGc_fnc_count_bluforSentryRespawnCheck;
@@ -105,8 +106,8 @@ switch (_wallType) do {
 
 		_unit1 addEventHandler ["Killed", {
 			params ["_unit", "_killer", "_instigator", "_useEffects"];
-			systemChat "A TOWER SENTRY IS DEAD";
-			RGG_Barracks_Sentries = RGG_Barracks_Sentries - 1;
+			systemChat format ["A %1 TOWER SENTRY IS DEAD", _baseType];
+			RGG_Barracks_Sentries = RGG_Barracks_Sentries - 1; // NOTE HERE - everything goes to Barracks???? This needs to better reflect the base type -- ADDRESS THIS 
 			publicVariable "RGG_Barracks_Sentries";
 			[_unit] spawn RGGc_fnc_count_bluforSentryRespawnCheck;
 		}];
@@ -120,7 +121,7 @@ switch (_wallType) do {
 			case 90: { _shift = 270 };
 			case 180: { _shift = 0 };
 			case 270: { _shift = 90 };
-			default { systemChat "error, direction not correct"; };
+			default { systemChat format ["ERROR: _spawnDirection switch: %1", _spawnDirection]; };
 		};
 		_spawnHeight = 0.3;
 		_vrBlock = _spawnPoint;
@@ -151,7 +152,7 @@ switch (_wallType) do {
 
 		_unit1 addEventHandler ["Killed", {
 			params ["_unit", "_killer", "_instigator", "_useEffects"];
-			systemChat "A CORNER SENTRY IS DEAD";
+			systemChat format ["A %1 CORNER SENTRY IS DEAD", _baseType];
 			RGG_Barracks_Sentries = RGG_Barracks_Sentries - 1;
 			publicVariable "RGG_Barracks_Sentries";
 			[_unit] spawn RGGc_fnc_count_bluforSentryRespawnCheck;

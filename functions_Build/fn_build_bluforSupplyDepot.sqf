@@ -2,12 +2,13 @@
 This function builds a supply-base FOB 
 
 Notes:
-I use setVariable on the supply blocks to record their spqwn location, so they can be respawned at the native position after being absorbed by a base 
+I use setVariable on the supply blocks to record their spawn location, so they can be respawned at the native position after being absorbed by a base 
 
 */
 
 // -------------------------------------------------------------------------------------------
 // setup 
+systemChat "RUNNING - build_bluforSupplyDepot";
 
 sleep 10;
 _spawnSpeed = 0.5;
@@ -222,7 +223,7 @@ sleep 1;
 [_NECorner, 270, "corner", "supply"] call RGGs_fnc_spawn_bluforSentries;
 sleep 1;
 [_NWCorner, 90, "corner", "supply"] call RGGs_fnc_spawn_bluforSentries;
-systemChat "Med-Base Sentries Spawned In ...";
+systemChat "Supply-Base Sentries Spawned In ...";
 
 // ----- SUPPLIES ----- // 
 systemChat "Supplies Spawning In ...";
@@ -324,6 +325,7 @@ systemChat "Supplies Spawned In ...";
 // -------------------------------------------------------------------------------------------
 
 SUPPLY = true; // designates this base as active and triggers creation of next base crate (and truck)
+// note, there is no other test for SUPPLY DEPOT other than dropping a crate down - all other bases will need a check  
 
 // ----- create next spawn crate / truck -----
 // [] spawn RGGs_fnc_spawn_baseSpawnCrate;

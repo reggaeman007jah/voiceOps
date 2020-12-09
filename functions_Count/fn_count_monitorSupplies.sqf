@@ -6,7 +6,7 @@ make this only appear while in map mode
 
 */
 
-
+systemChat "RUNNING - count_monitorSupplies";
 
 while {true} do {
 	
