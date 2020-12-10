@@ -27,6 +27,7 @@ systemChat "you have 10 seconds to teleport and check...";
 sleep 10;
 
 _object2 setPos [0,0];
+// test 
 
 if (typeOf _object2 == "I_supplyCrate_F") then { 
 	_supplySpawnPos = _object2 getVariable "supplySpawnPos";
