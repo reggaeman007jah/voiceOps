@@ -2,11 +2,11 @@
 
 Welcome
 
-This is a little project designed to explore automated CTI style missions, and also designed to have fun and learn about scripting for Arma 3. 
+This is a little project designed to explore automated CTI style missions, and also designed to have fun and learn about scripting for Arma 3.
 
 I have some loose ideas about players (MP) being given orders to deploy containers, that in turn spawn certain types of bases (barracks, repair, radar etc), which when built enables the AI forces to do certain things.
 
-E.g., create barracks, and then Blufor AI will spawn every so often, go out on patrol and look for enemies. 
+E.g., create barracks, and then Blufor AI will spawn every so often, go out on patrol and look for enemies.
 
 Every so often, players will be told to resupply bases, extract injured, do CAS runs etc (still loose on all that).
 
@@ -17,9 +17,8 @@ This is an open project, so please let me know if you want to get involved.
 Cheers
 Reggs
 
-
 11 November
-I now am able to automate barracks, based on dropping a container. So, I am thinking now the player/pilot should pickup and then drop a container to kick off the mission. Once the base has spawned, and populated, then it can be subject to attacks. 
+I now am able to automate barracks, based on dropping a container. So, I am thinking now the player/pilot should pickup and then drop a container to kick off the mission. Once the base has spawned, and populated, then it can be subject to attacks.
 
 I ran a little base-overrun test and it worked pretty well. I need to be able to get the blufor units to man the bunker and tower positions though. Maybe I could do this with bespoke markers (sentry markers)?
 
@@ -50,69 +49,73 @@ all missions should be playabe as SP or MP.
 question - what does a Barracks FOB need?
 four types - none are needed after spawning - the base is considered fully operational on spawn
 
-Med suplies 
-Food supplies 
+Med suplies
+Food supplies
 Ammo supplies  
 Fuel
 One of each once every day?
 
-When deployed, the score for that item is reset - you can stock up bases in advance 
-stocks scores are shown next to base marker 
+When deployed, the score for that item is reset - you can stock up bases in advance
+stocks scores are shown next to base marker
 
-Set rule - bases must be x m apart 
-Or, mission dictates when new FOB is deployed and in which sector 
+Set rule - bases must be x m apart
+Or, mission dictates when new FOB is deployed and in which sector
 
 when sling loading - snipers are nearby?? CAS as an escort?
 
 TODO:
 Determine how to create a base score for MP, that decreases as time goes by and is boosted when containers are brought in.
 
-17 November 
+17 November
 
 BARRACKS
 Unlocks the auto generation (slowly) of sentries on bases. also generates VA at all live bases.
-food rate: high 
-Ammo rate: high 
+food rate: high
+Ammo rate: high
 Fuel rate: high
 
 TRAINING:
 Spawns units at training post, and enables ablity to pick up and deploy units
-food rate: high 
-Ammo rate: high 
+food rate: high
+Ammo rate: high
 Fuel rate: low
 
 HELI:
 Unlocks heli missions. These missions can be aggressive or defensive. + heli flybys
-food rate: low 
-Ammo rate: high 
+food rate: low
+Ammo rate: high
 Fuel rate: high
 
 MEDICAL:
-Unlocks medevac missions and healing posts at all live bases 
-food rate: high 
-Ammo rate: low 
+Unlocks medevac missions and healing posts at all live bases
+food rate: high
+Ammo rate: low
 Fuel rate: low
 
 RADAR:
 Unlocks ability to receive advanced warning of some attacks (not all) + jet flybys
-food rate: low 
-Ammo rate: low 
+food rate: low
+Ammo rate: low
 Fuel rate: high
 
-OBSERVATION = 
-food rate: low 
-Ammo rate: low 
+OBSERVATION =
+food rate: low
+Ammo rate: low
 Fuel rate: low
 
-CAR = 
-food rate: low 
-Ammo rate: high 
+CAR =
+food rate: low
+Ammo rate: high
 Fuel rate: high
 
 WORKSHOP:
 Unlocks repair stations at all live bases
-food rate: low 
-Ammo rate: low 
+food rate: low
+Ammo rate: low
 Fuel rate: high
 
 Base-perks cease when any base score reaches 0
+
+10 December
+Finally worked out the issue with crates not respawning - I was creating a new crate but the new crate did not have setVar applied, so the new crrate had no setVar data
+Fixed by simply not deleting the original, and instead just re-teleporting the original crate, thereby preserving the setVar data

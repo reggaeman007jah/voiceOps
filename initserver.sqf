@@ -1,47 +1,54 @@
-
 /*
 Notes:
 Set up global vars to enable management of base crates and supplies 
-For now, create the mission so there is only ever one type of base 
+For now, create the mission so there is only ever one type of base (no duplicates, only unique)
 
 Base Types:
-	Barracks 			Outpost Bravo 	(Oscar Bravo / Camp Bravo / Snakepit)
-	Medical Outpost 	Outpost Mike	(Oscar Mike / Mike / Bloodbank)
-	Radar Station 		Outpost Romeo 	(Oscar Romeo / Romeo / Skynet)
-	Observation Post 	Outpost Oscar	(Oscar Whiskey / Whiskey / Peep Show)
-	Heli Base 			Outpost Hotel	(Oscar Hotel / Hotal / The Rotary Club)
-	Car Pool 			Outpost Victor	(Oscar Victor / Victor / The Car Park)
-	Workshop			Outpost Whiskey	(Oscar Whiskey / Whiskey / Monkeywrench)
-	Training Camp		Outpost Tango  	(Oscar Tango / Tango / The Killhouse)
+
+	Tier 1 / SBM 
+	Supply				Outpost Sierra	(Oscar Sierra / Camp Sierra / The Warehouse)
+	Barracks 			Outpost Bravo 	(Oscar Bravo / Camp Bravo / The Snakepit)
+	Medical Outpost 	Outpost Mike	(Oscar Mike / Camp Mike / The Bloodbank)
+
+	Tier 2 / WHV
+	Workshop			Outpost Whiskey	(Oscar Whiskey / Camp Whiskey / The Greasepit)
+	Heli Base 			Outpost Hotel	(Oscar Hotel / Camp Hotal / The Rotary Club)
+	Car Pool 			Outpost Victor	(Oscar Victor / Camp Victor / The Car Park)
+
+	Tier 3 / LTR
+	Logistics Post	 	Outpost Lima	(Oscar Lima / Camp Lima / Mainline)
+	Training Camp		Outpost Tango  	(Oscar Tango / Camp Tango / Tango Down)
+	Radar Station 		Outpost Romeo 	(Oscar Romeo / Camp Romeo / Skynet)
 */
 
-// ----- time speed up -----
+// ----- time accelerator -----
 setTimeMultiplier 40;
 
 // ----- creation states -----
 // these globals record whether a type of base exists or not .. the more bases that exist the more reports players get 
 // everything is false to start with, as nothing exists when mission starts 
-SUPPLY = false;
-BARRACKS = false;
-MEDICAL = false;
 
-WORKSHOP = false;
-HELI = false;
-CAR = false;
+SUPPLY = false; // Sierra
+BARRACKS = false; // Bravo 
+MEDICAL = false; // Mike 
 
-LOGISTICS = false; 
-TRAINING = false;
-RADAR = false;
+WORKSHOP = false; // Whiskey  
+HELI = false; // Hotal
+CAR = false; // Victor
 
+LOGISTICS = false; // Lima
+TRAINING = false; // Tango 
+RADAR = false; // Romeo 
 
-// ----- this holds and sentry units waiting to spawn in (but can't due to lack of base food) -----
+// ----- this holds any sentry units waiting to spawn in (but can't due to lack of base food) -----
 RGG_sentryQueue = []; // holds sentry respawn data 
 RGG_supplyQueue = []; // holds supply respawn data 
 
 // --- Base Stats -----
-// these record base stats for food, fuel ammo and defences xx
+// these record base stats for food, fuel ammo and defences 
 
 // Level 1 ------------------------------------------------------
+
 // Supply
 RGG_Supply_Food = 0;
 RGG_Supply_Ammo = 0;
@@ -71,9 +78,10 @@ publicVariable "RGG_Medical_Food";
 publicVariable "RGG_Medical_Ammo";
 publicVariable "RGG_Medical_Fuel";
 publicVariable "RGG_Medical_Sentries";
-// Level 1 ------------------------------------------------------
+
 
 // Level 2 ------------------------------------------------------
+
 // Workshop
 RGG_Workshop_Food = 0;
 RGG_Workshop_Ammo = 0;
@@ -83,6 +91,16 @@ publicVariable "RGG_Workshop_Food";
 publicVariable "RGG_Workshop_Ammo";
 publicVariable "RGG_Workshop_Fuel";
 publicVariable "RGG_Workshop_Sentries";
+
+// Heli
+RGG_Heli_Food = 0;
+RGG_Heli_Ammo = 0;
+RGG_Heli_Fuel = 0;
+RGG_Heli_Sentries = 0;
+publicVariable "RGG_Heli_Food";
+publicVariable "RGG_Heli_Ammo";
+publicVariable "RGG_Heli_Fuel";
+publicVariable "RGG_Heli_Sentries";
 
 // Car
 RGG_Car_Food = 0;
@@ -94,27 +112,8 @@ publicVariable "RGG_Car_Ammo";
 publicVariable "RGG_Car_Fuel";
 publicVariable "RGG_Car_Sentries";
 
-// Heli
-RGG_Heli_Food = 0;
-RGG_Heli_Ammo = 0;
-RGG_Heli_Fuel = 0;
-RGG_Heli_Sentries = 0;
-publicVariable "RGG_Heli_Food";
-publicVariable "RGG_Heli_Ammo";
-publicVariable "RGG_Heli_Fuel";
-publicVariable "RGG_Heli_Sentries";
-// Level 2 ------------------------------------------------------
 
 // Level 3 ------------------------------------------------------
-// Radar
-RGG_Radar_Food = 0;
-RGG_Radar_Ammo = 0;
-RGG_Radar_Fuel = 0;
-RGG_Radar_Sentries = 0;
-publicVariable "RGG_Radar_Food";
-publicVariable "RGG_Radar_Ammo";
-publicVariable "RGG_Radar_Fuel";
-publicVariable "RGG_Radar_Sentries";
 
 // Logistics
 RGG_Logistics_Food = 0;
@@ -135,36 +134,44 @@ publicVariable "RGG_Training_Food";
 publicVariable "RGG_Training_Ammo";
 publicVariable "RGG_Training_Fuel";
 publicVariable "RGG_Training_Sentries";
-// Level 3 ------------------------------------------------------
+
+// Radar
+RGG_Radar_Food = 0;
+RGG_Radar_Ammo = 0;
+RGG_Radar_Fuel = 0;
+RGG_Radar_Sentries = 0;
+publicVariable "RGG_Radar_Food";
+publicVariable "RGG_Radar_Ammo";
+publicVariable "RGG_Radar_Fuel";
+publicVariable "RGG_Radar_Sentries";
 
 
 // ----- cycle count of base supplies -----
-// [] spawn RGGc_fnc_count_monitorSupplies; // this counts supplies of any 'live' base every x seconds // don't need this now 
 [] spawn RGGc_fnc_count_depleteSupplies; // this depletes supplies of live bases every x seconds 
 
 // ----- create initial supply crate to enable creation of supply depot -----
-// [] spawn RGGs_fnc_spawn_baseSpawnCrate;
 [] spawn RGGs_fnc_spawn_baseSpawnContainer;
 
 
 // ----- Slingloading EH -----
-// This is a hard-coded solution to enable slingloading EH on a set heli specified in the mission (heli1) 
-// this needs to be improced so that the EH is applied to the heli, even after respawn 
-// note: rule - only Hurons should be able to slingload? 
+// This is a hard-coded solution to enable slingloading EH on a set heli specified in the mission (for now, heli1) 
+// this needs to be improved so that the EH is applied to the heli, even after respawn 
+// note: rule/question - should only Hurons should be able to slingload? 
 execVM "eventHandlers\slingLoadMonitor.sqf";
 
 // ----- Start GUI calcs -----
 execVM "dialogs\guiCalcs.sqf";
 
 // ----- Garbage Removal -----
-// very crude system of deletion 
-// this should be improved to only apply to areas where players are not close by 
+// very crude system of deletion - this should be improved to only apply to areas where players are not close by 
 while {true} do {
 	{ deleteVehicle _x } forEach allDead;
 	systemChat "cleanup";
 	sleep 300;
 };
 
+
+// action - review the code below and delete anything that won't be of use 
 
 // Voice Activation Global Declaration 
 // VAA_Activate = true;
@@ -190,7 +197,7 @@ while {true} do {
 
 // to avoid errors 
 // ???
-REARMONSPAWN = true; // ?????
+// REARMONSPAWN = true; // ?????
 
 
 // initialise Heli Systems
