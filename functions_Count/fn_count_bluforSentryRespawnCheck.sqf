@@ -48,7 +48,7 @@ switch (_baseType) do {
 			systemChat format ["There are currently %1 Sentries at the Supply Depot", RGG_Supply_Sentries];
 			// systemChat format ["Med-Base Food Supplies: %1", RGG_Medical_Food];
 		} else {
-			systemChat "SENTRY CANNOT RESPAWN AT MEDBASE - NOT ENOUGH FOOD ............";
+			systemChat "SENTRY CANNOT RESPAWN AT SUPPLY DEPOT - NOT ENOUGH FOOD ............";
 			RGG_sentryQueue pushBack [_block, _dir, _pos, _baseType];
 		};
 	};
