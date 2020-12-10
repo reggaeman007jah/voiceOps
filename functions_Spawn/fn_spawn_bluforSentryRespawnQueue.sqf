@@ -10,6 +10,7 @@ We do not handle base supply score adjustments here - this is done by the spawne
 Issues:
 Currently this is fixed to barracks, but it should ideally serve all bases 
 */
+
 systemChat "RUNNING - spawn_bluforSentryRespawnQueue";
 _waitingSentries = count RGG_sentryQueue; // used to determine if there is any spawning work to do here 
 _sleep = 30; // respawn speed for anything queued 

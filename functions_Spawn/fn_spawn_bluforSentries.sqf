@@ -6,14 +6,12 @@ takes location and direction and block type (for height) as args
 */
 
 // ----- setup ----- 
-systemChat "RUNNING - spawn_bluforSentriesbaseSpawnContainer";
+// systemChat "RUNNING - spawn_bluforSentriesbaseSpawnContainer";
 private ["_spawnPoint", "_spawnDirection", "_wallType", "_baseType"];
-
 _spawnPoint = param[0];
 _spawnDirection = param[1];
 _wallType = param[2];
 _baseType = param[3];
-
 
 
 // ----- function -----
