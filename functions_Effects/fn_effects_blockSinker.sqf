@@ -29,21 +29,27 @@ sleep 10;
 _object2 setPos [0,0];
 // test 
 
+// if (typeOf _object2 == "I_supplyCrate_F") then { 
+// 	_supplySpawnPos = _object2 getVariable "supplySpawnPos";
+// 	systemChat "DEBUG";
+// 	systemChat format ["----- SUPPLY CRATE GETVARIABLE %1 -----", _supplySpawnPos];
+// 	sleep 5;
+// 	systemChat "getting _supplySpawnPos select 0";
+// 	_pos = _supplySpawnPos select 0;
+// 	sleep 1;
+// 	_crate = "I_supplyCrate_F" createVehicle [5,5];
+// 	systemChat format ["----- SUPPLY CRATE CREATED %1 -----", _crate];
+// 	sleep 2;
+// 	systemChat format ["----- DELETING SUPPLY CRATE %1 -----", _object2];
+// 	sleep 1;
+// 	deleteVehicle _object2;
+// 	[_crate, _pos, 0] spawn RGGb_fnc_build_blockManager;
+// };
+
 if (typeOf _object2 == "I_supplyCrate_F") then { 
 	_supplySpawnPos = _object2 getVariable "supplySpawnPos";
-	systemChat "DEBUG";
-	systemChat format ["----- SUPPLY CRATE GETVARIABLE %1 -----", _supplySpawnPos];
-	sleep 5;
-	systemChat "getting _supplySpawnPos select 0";
 	_pos = _supplySpawnPos select 0;
-	sleep 1;
-	_crate = "I_supplyCrate_F" createVehicle [5,5];
-	systemChat format ["----- SUPPLY CRATE CREATED %1 -----", _crate];
-	sleep 2;
-	systemChat format ["----- DELETING SUPPLY CRATE %1 -----", _object2];
-	sleep 1;
-	deleteVehicle _object2;
-	[_crate, _pos, 0] spawn RGGb_fnc_build_blockManager;
+	[_object2, _pos, 0] spawn RGGb_fnc_build_blockManager;
 };
 
 if (typeOf _object2 == "I_CargoNet_01_ammo_F") then { 
