@@ -32,6 +32,7 @@ waitUntil {!isNull (uiNameSpace getVariable "BARRACKS_STATS_TOP_LABEL")};
 
 	while {true} do {
 
+		// supply depot display stats
 		// TOTAL UNIT COUNT IN OBJECTIVE AREA (NUMBERS AND WORDS)
 		_displayOBJUNITS = uiNameSpace getVariable "SUPPLY_STATS_TOP_LABEL";
 		_setText = _displayOBJUNITS displayCtrl 999100;
@@ -50,6 +51,7 @@ waitUntil {!isNull (uiNameSpace getVariable "BARRACKS_STATS_TOP_LABEL")};
 		
 		sleep 1;
 
+		// barracks display stats
 		_displayOBJUNITS = uiNameSpace getVariable "BARRACKS_STATS_TOP_LABEL";
 		_setText = _displayOBJUNITS displayCtrl 999101;
 		_setText ctrlSetStructuredText (parseText format ["BARRACKS FOB <br />FOOD %1  <br />AMMO %2  <br />FUEL %3  <br />SENTRIES %4",RGG_Barracks_Food, RGG_Barracks_Ammo, RGG_Barracks_Fuel, RGG_Barracks_Sentries]);
@@ -72,6 +74,7 @@ waitUntil {!isNull (uiNameSpace getVariable "BARRACKS_STATS_TOP_LABEL")};
 
 		sleep 1;
 
+		// medical display stats
 		_displayOBJUNITS = uiNameSpace getVariable "MEDICAL_STATS_TOP_LABEL";
 		_setText = _displayOBJUNITS displayCtrl 999102;
 		_setText ctrlSetStructuredText (parseText format ["MEDICAL FOB <br />FOOD %1  <br />AMMO %2  <br />FUEL %3  <br />SENTRIES %4",RGG_Medical_Food, RGG_Medical_Ammo, RGG_Medical_Fuel, RGG_Medical_Sentries]);
@@ -94,6 +97,7 @@ waitUntil {!isNull (uiNameSpace getVariable "BARRACKS_STATS_TOP_LABEL")};
 
 		sleep 1;
 
+		// workshop display stats
 		_displayOBJUNITS = uiNameSpace getVariable "WORKSHOP_STATS_TOP_LABEL";
 		_setText = _displayOBJUNITS displayCtrl 999103;
 		_setText ctrlSetStructuredText (parseText format ["WORKSHOP FOB <br />FOOD %1  <br />AMMO %2  <br />FUEL %3  <br />SENTRIES %4",RGG_Workshop_Food, RGG_Workshop_Ammo, RGG_Workshop_Fuel, RGG_Workshop_Sentries]);
