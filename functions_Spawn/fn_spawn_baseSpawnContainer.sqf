@@ -10,7 +10,7 @@ Order:
 2: Barracks 
 3: Medical 
 4: Workshop / key item: Land_RepairDepot_01_green_F / seed: B_Slingload_01_Fuel_F
-5:
+5: 
 6:
 7:
 8:
@@ -34,10 +34,6 @@ Radar Station 		Outpost Romeo 	(Oscar Romeo / Camp Romeo / Skynet)
 */
 systemChat "RUNNING - spawn_baseSpawnContainer";
 sleep 5;
-
-if (!SUPPLY) then {
-	systemChat "supply bool false";
-};
 
 if (!SUPPLY) then {
 	_container = "B_Slingload_01_Cargo_F" createVehicle [0,0];  

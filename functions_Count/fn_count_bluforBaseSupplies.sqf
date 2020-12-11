@@ -26,7 +26,7 @@ publicVariable "athiraMilBaseVirtualUnits";
 systemChat format ["Athira Mil-Base now has %1 virtual units", athiraMilBaseVirtualUnits];
 */
 
-// -------------------------------------------------------------------------------------------
+// Barracks -------------------------------------------------------------------------------------------
 systemChat "RUNNING - count_bluforBaseSupplies";
 params ["_object2", "_className"];
 
@@ -39,7 +39,7 @@ _seedPos = getPos _object2;
 // systemChat format["_object2 = %1", _object2];
 
 if (_seedPos inArea "Barracks_DZ") then {
-	systemChat "well done, supplies dropped successfully";
+	systemChat "Well done, Barracks supplies dropped successfully";
 	sleep 10;
 
 	switch (_className) do {
@@ -64,17 +64,13 @@ if (_seedPos inArea "Barracks_DZ") then {
 	};
 
 	// [_object2] spawn RGGb_fnc_build_blockSinker;
-	hint "activating RGGe_fnc_effects_blockSinker";
+	systemChat "activating RGGe_fnc_effects_blockSinker";
 	[_object2] spawn RGGe_fnc_effects_blockSinker;
 };
 
-// } else {
-// 	systemChat "Supplies dropped in wrong place - try again pilot !!";
-// };
-
-// ------------------------------------------------------------------------------------------
+// Medical ------------------------------------------------------------------------------------------
 if (_seedPos inArea "Medical_DZ") then {
-	systemChat "well done, supplies dropped successfully";
+	systemChat "Well done, Medical supplies dropped successfully";
 	sleep 10;
 
 	switch (_className) do {
@@ -98,11 +94,40 @@ if (_seedPos inArea "Medical_DZ") then {
 		};
 	};
 
-	// [_object2] spawn RGGb_fnc_build_blockSinker;
-	hint "activating RGGe_fnc_effects_blockSinker";
+	systemChat "activating RGGe_fnc_effects_blockSinker";
 	[_object2] spawn RGGe_fnc_effects_blockSinker;
 };
 
-// try a check here for L2 bases 
+// Workshop ------------------------------------------------------------------------------------------
+if (_seedPos inArea "Workshop_DZ") then {
+	systemChat "Well done, Workshop supplies dropped successfully";
+	sleep 10;
+
+	switch (_className) do {
+		case "I_supplyCrate_F": { 
+			RGG_Workshop_Food = RGG_Workshop_Food + 10;
+			publicVariable "RGG_Workshop_Food";
+			systemChat format ["Workshop-Base now has %1 Food", RGG_Workshop_Food];
+		};
+		case "CargoNet_01_barrels_F": { 
+			RGG_Workshop_Fuel = RGG_Workshop_Fuel + 10;
+			publicVariable "RGG_Workshop_Fuel";
+			systemChat format ["Workshop-Base now has %1 Fuel", RGG_Workshop_Fuel];
+		};
+		case "I_CargoNet_01_ammo_F": { 
+			RGG_Workshop_Ammo = RGG_Workshop_Ammo + 10;
+			publicVariable "RGG_Workshop_Ammo";
+			systemChat format ["Workshop-Base now has %1 Ammo", RGG_Workshop_Ammo];
+		};
+		default { 
+			systemChat "error - nothing deployed";
+		};
+	};
+
+	systemChat "activating RGGe_fnc_effects_blockSinker";
+	[_object2] spawn RGGe_fnc_effects_blockSinker;
+};
+
+// this checks for Level 2 bases  
 [] spawn RGGs_fnc_spawn_baseSpawnContainerLevel2;
        

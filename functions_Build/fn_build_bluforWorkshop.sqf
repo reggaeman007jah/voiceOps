@@ -210,20 +210,23 @@ _office = "Land_Cargo_House_V3_F" createVehicle _mapCorner;
 // _medicHut setDir 0;
 sleep _spawnSpeed;
 
-// repair crane 
-_crane = "Land_RepairDepot_01_green_F" createVehicle _mapCorner;
-[_crane, _cranePos, 0] spawn RGGb_fnc_build_blockManager;
-// _crane setDir 90;
-sleep _spawnSpeed;
+
 
 // concrete apron 
 _concrete = "Land_Sidewalk_01_8m_F" createVehicle _mapCorner;
 [_concrete, _concretePos, 0] spawn RGGb_fnc_build_blockManager;
+_crane setDir 90;
 sleep _spawnSpeed;
 
 // Land_WaterTank_02_F
 _waterTower = "Land_WaterTank_02_F" createVehicle _mapCorner;
 [_waterTower, _waterTowerPos, 0] spawn RGGb_fnc_build_blockManager;
+
+// repair crane 
+_crane = "Land_RepairDepot_01_green_F" createVehicle _mapCorner;
+[_crane, _cranePos, 0] spawn RGGb_fnc_build_blockManager;
+
+sleep _spawnSpeed;
 
 // -------------------------------------------------------------------------------------------
 
