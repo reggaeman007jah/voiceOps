@@ -24,7 +24,7 @@ Base Types:
 systemChat "init server running";
 
 // ----- time accelerator -----
-setTimeMultiplier 40;
+setTimeMultiplier 30;
 
 // ----- creation states -----
 // these globals record whether a type of base exists or not .. the more bases that exist the more reports players get 

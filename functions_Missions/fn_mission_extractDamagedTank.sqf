@@ -25,9 +25,6 @@ _medevacPos1 setMarkerShape "ELLIPSE";
 _medevacPos1 setMarkerColor "ColorRed";
 _medevacPos1 setMarkerSize [5, 5];
 
-
-
-
 // _indiGroup = createGroup independent;
 for "_i" from 1 to 10 do {
 	_indiGroup = createGroup independent;
@@ -36,15 +33,12 @@ for "_i" from 1 to 10 do {
 	_unit doMove _randomMovePos;
 	_stance = selectRandom ["up", "middle", "down"];
 	_unit setUnitPos _stance;
-
 	sleep 2;
 };
 
-
-
 _tank = "I_LT_01_cannon_F" createVehicle _extractPos;
-_tank setDamage 0.8;
+_tank setDamage 0.5;
 
-sleep 30;
+sleep 10;
 
 [_extractPos] call RGG_fnc_3_spawn_opforUnits;
