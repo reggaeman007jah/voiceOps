@@ -63,6 +63,14 @@ heli1 addEventHandler ["RopeBreak", {
 		execVM "eventHandlers\slingLoadMonitor.sqf"; // reloads EH to the designated heli - currently "heli1"
 	};
 
+	// barracks 
+	if (typeOf _object2 == "B_Slingload_01_Ammo_F") then { 
+		systemChat "Barracks Deployed"; 
+		[_object2, "B_Slingload_01_Ammo_F"] spawn RGGb_fnc_build_bluforBarracks; 
+		heli1 removeEventHandler ["RopeBreak", 0]; // otherwise this triggers 4 times!
+		execVM "eventHandlers\slingLoadMonitor.sqf"; // reloads EH to the designated heli - currently "heli1"
+	};
+
 	// med-base 
 	if (typeOf _object2 == "B_Slingload_01_Medevac_F") then { 
 		systemChat "Med-Base Deployed:"; 
@@ -71,10 +79,10 @@ heli1 addEventHandler ["RopeBreak", {
 		execVM "eventHandlers\slingLoadMonitor.sqf"; // reloads EH to the designated heli - currently "heli1"
 	};
 
-	// barracks 
-	if (typeOf _object2 == "B_Slingload_01_Ammo_F") then { 
-		systemChat "Barracks Deployed"; 
-		[_object2, "B_Slingload_01_Ammo_F"] spawn RGGb_fnc_build_bluforBarracks; 
+	// workshop-base 
+	if (typeOf _object2 == "B_Slingload_01_Fuel_F") then { 
+		systemChat "workshop-Base Deployed:"; 
+		[_object2, "B_Slingload_01_Fuel_F"] spawn RGGb_fnc_build_bluforWorkshop; 
 		heli1 removeEventHandler ["RopeBreak", 0]; // otherwise this triggers 4 times!
 		execVM "eventHandlers\slingLoadMonitor.sqf"; // reloads EH to the designated heli - currently "heli1"
 	};

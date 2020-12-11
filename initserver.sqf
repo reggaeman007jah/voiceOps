@@ -21,6 +21,8 @@ Base Types:
 	Radar Station 		Outpost Romeo 	(Oscar Romeo / Camp Romeo / Skynet)
 */
 
+systemChat "init server running";
+
 // ----- time accelerator -----
 setTimeMultiplier 40;
 

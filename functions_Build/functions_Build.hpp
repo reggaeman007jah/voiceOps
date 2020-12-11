@@ -24,6 +24,10 @@ class RGGb {
 		class build_bluforMedbase {
 			Description = "This function will deploy blufor medical base from seed (container) position";
 		};
-		
+
+		class build_bluforWorkshop {
+			Description = "This function will deploy blufor workshop (repair) base from seed (container) position";
+		};
+
 	};
 };

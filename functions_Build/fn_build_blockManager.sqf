@@ -12,7 +12,7 @@ _pos set [2,-5];
 _block setPos _pos;
 _block setDir _dir; // ?
 
-for [{_i = -5}, {_i < 0.2}, {_i = _i + 0.1}] do {
+for [{_i = -5}, {_i < 0.1}, {_i = _i + 0.1}] do {
 	_pos set [2,_i]; 
 	
 	_block setPos _pos;

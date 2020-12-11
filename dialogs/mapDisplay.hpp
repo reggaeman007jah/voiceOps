@@ -139,6 +139,48 @@ class RscTitles {
 		};
 	};
 
+	class WORKSHOP_STATS_TOP_LABEL {
+        idd = 1000003;
+        movingEnable =  0;
+        enableSimulation = 1;
+        enableDisplay = 1;
+        duration     =  99999;
+        fadein       =  2.5;
+        fadeout      =  2;
+        name = "WORKSHOP_STATS_TOP_LABEL";
+		onLoad = "with uiNameSpace do { WORKSHOP_STATS_TOP_LABEL = _this select 0 }";
+	
+		class controls {
+		    class structuredText {
+                access = 0;
+                type = 13;
+                idc = 999103;
+                style = 0x00;
+                lineSpacing = 1;
+				x = 0.420 * safezoneW + safezoneX;
+				y = 0.000 * safezoneH + safezoneY;
+				w = 0.100 * safezoneW;
+				h = 0.100 * safezoneH;
+                size = 0.020;
+                colorBackground[] = {1,1,1,0.1};
+                colorText[] = {0,0,0,1};
+                text = "";
+                font = "PuristaSemiBold";
+				
+				class Attributes {
+					font = "PuristaSemiBold";
+					color = "#FFFFFF";
+					align = "CENTER";
+					valign = "TOP";
+					shadow = false;
+					shadowColor = "#000000";
+					underline = false;
+					size = "2";
+				}; 
+            };
+		};
+	};
+	
 	// class BARRACKS_STATS_FOOD_VALUE {
     //     idd = 1000003;
     //     movingEnable =  0;

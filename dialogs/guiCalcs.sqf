@@ -14,6 +14,7 @@ disableSerialization;
 500 cutRsc ["BARRACKS_STATS_TOP_LABEL", "PLAIN"];
 501 cutRsc ["SUPPLY_STATS_TOP_LABEL", "PLAIN"];
 502 cutRsc ["MEDICAL_STATS_TOP_LABEL", "PLAIN"];
+503 cutRsc ["WORKSHOP_STATS_TOP_LABEL", "PLAIN"];
 // 503 cutRsc ["BARRACKS_STATS_AMMO_LABEL", "PLAIN"];
 // 504 cutRsc ["BARRACKS_STATS_AMMO_VALUE", "PLAIN"];
 // 505 cutRsc ["BARRACKS_STATS_FUEL_LABEL", "PLAIN"];
@@ -91,6 +92,28 @@ waitUntil {!isNull (uiNameSpace getVariable "BARRACKS_STATS_TOP_LABEL")};
 			};
 		};
 
-		sleep 5;
+		sleep 1;
+
+		_displayOBJUNITS = uiNameSpace getVariable "WORKSHOP_STATS_TOP_LABEL";
+		_setText = _displayOBJUNITS displayCtrl 999103;
+		_setText ctrlSetStructuredText (parseText format ["WORKSHOP FOB <br />FOOD %1  <br />AMMO %2  <br />FUEL %3  <br />SENTRIES %4",RGG_Workshop_Food, RGG_Workshop_Ammo, RGG_Workshop_Fuel, RGG_Workshop_Sentries]);
+		_setText ctrlSetBackgroundColor [0,0,0,0.5];
+
+		if (!WORKSHOP) then {
+			_setText ctrlSetTextColor [0, 0, 0, 0.5]; // pale grey - indicating previous base needs to be made first
+		}; 
+
+		if ((BARRACKS) && (!WORKSHOP)) then {
+			_setText ctrlSetTextColor [1, 1, 0, 0.5]; // pale yellow - indicating needs to be established
+		};
+
+		if (WORKSHOP) then {
+			_setText ctrlSetTextColor [1, 1, 0, 1];
+			if (RGG_Workshop_Food > 10) then {
+				_setText ctrlSetTextColor [0, 1, 0, 1];
+			};
+		};
+
+		sleep 10;
 	};
 };
