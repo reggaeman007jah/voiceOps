@@ -261,7 +261,7 @@ sleep 1;
 systemChat "Workshop-Base Sentries Spawned In ...";
 
 // trigger medevac missions 
-// [] call RGGm_fnc_mission_extractInjured;
+[] call RGGm_fnc_mission_extractDamagedTank;
 
 
 // -------------------------------------------------------------------------------------------
