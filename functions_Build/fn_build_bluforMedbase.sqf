@@ -67,7 +67,6 @@ _bunker2 = _bunker2 getPos [5,180];
 _gateBlock3 = _bunker2 getPos [7,45];
 _gateBlock3 = _gateBlock3 getPos [5,0];
 _gateBlock3 = _gateBlock3 getPos [4.5,90];
-// _bunker3 = _northBlock4 getPos [10,180];
 
 _heliPadPos = _SECorner getPos [15,315];
 
@@ -194,17 +193,16 @@ _medicHut = "Land_Medevac_house_V1_F" createVehicle _mapCorner;
 sleep _spawnSpeed;
 
 // OFFICE 
-
 _office = "Land_Cargo_House_V3_F" createVehicle _mapCorner;
 [_office, _officePos, 0] spawn RGGb_fnc_build_blockManager;
 // _medicHut setDir 0;
 sleep _spawnSpeed;
 
 // medic tent 
-
 _medicTent = "Land_MedicalTent_01_MTP_closed_F" createVehicle _mapCorner;
 [_medicTent, _medicTentPos, 0] spawn RGGb_fnc_build_blockManager;
 // sleep _spawnSpeed;
+
 // -------------------------------------------------------------------------------------------
 
 // register main base as a blue marker

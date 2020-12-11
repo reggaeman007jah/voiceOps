@@ -85,7 +85,7 @@ _medicHutPos = _medicHutPos getPos [2,180];
 _officePos = _medicHutPos getPos [7,270];
 
 _cranePos = _heliPadPos getPos [18,0];
-_cranePos = _cranePos getPos [3,90];
+_cranePos = _cranePos getPos [3,270];
 // _cranePos = _cranePos getPos [10,270];
 
 _concretePos = _cranePos getPos [10,270];
@@ -213,19 +213,21 @@ sleep _spawnSpeed;
 
 
 // concrete apron 
-_concrete = "Land_Sidewalk_01_8m_F" createVehicle _mapCorner;
-[_concrete, _concretePos, 0] spawn RGGb_fnc_build_blockManager;
-_crane setDir 90;
-sleep _spawnSpeed;
+// _concrete = "Land_Sidewalk_01_8m_F" createVehicle _mapCorner;
+// [_concrete, _concretePos, 0] spawn RGGb_fnc_build_blockManager;
+// _concrete setDir 90;
+// sleep _spawnSpeed;
 
 // Land_WaterTank_02_F
 _waterTower = "Land_WaterTank_02_F" createVehicle _mapCorner;
 [_waterTower, _waterTowerPos, 0] spawn RGGb_fnc_build_blockManager;
 
+sleep 5;
 // repair crane 
-_crane = "Land_RepairDepot_01_green_F" createVehicle _mapCorner;
-[_crane, _cranePos, 0] spawn RGGb_fnc_build_blockManager;
-
+// _crane = "Land_RepairDepot_01_green_F" createVehicle _mapCorner;
+_crane = "B_Slingload_01_Repair_F" createVehicle _mapCorner;
+// _crane setDir 0;
+[_crane, _cranePos, 270] spawn RGGb_fnc_build_blockManager;
 sleep _spawnSpeed;
 
 // -------------------------------------------------------------------------------------------

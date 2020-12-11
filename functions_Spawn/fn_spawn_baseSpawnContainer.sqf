@@ -36,22 +36,26 @@ systemChat "RUNNING - spawn_baseSpawnContainer";
 sleep 5;
 
 if (!SUPPLY) then {
+	// create supply depot spawn container 
 	_container = "B_Slingload_01_Cargo_F" createVehicle [0,0];  
 	[_container, [4084,10273,0], 0] spawn RGGe_fnc_effects_blockRiser;
 } else {
 	if (!BARRACKS) then {
+		// create barracks spawn container 
 		_container = "B_Slingload_01_Ammo_F" createVehicle [0,0];  
 		[_container, [4084,10273,0], 0] spawn RGGe_fnc_effects_blockRiser;
 	} else {
 		if (!MEDICAL) then {
+			// create med-base spawn container 
 			_container = "B_Slingload_01_Medevac_F" createVehicle [0,0];  
 			[_container, [4084,10273,0], 0] spawn RGGe_fnc_effects_blockRiser;
 		} else {
 			if (!WORKSHOP) then {
+				// create workshop spawn container 
 				_container = "B_Slingload_01_Fuel_F" createVehicle [0,0];  
 				[_container, [4084,10273,0], 0] spawn RGGe_fnc_effects_blockRiser;
 			} else {
-				systemChat "Note: Well done ! No more bases left to build";
+				systemChat "Note: No more bases left to build";
 			};
 		};
 	};

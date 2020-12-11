@@ -1,12 +1,17 @@
 /*
-this function creates wall and tower sentries 
+This function creates wall and tower sentries
 
-takes location and direction and block type (for height) as args 
+Is called from:
+	when bases are bening built 
+	TBC ??
+
+Takes location and direction and block type (for height) as args 
+Also takes base type as an arg - this is to ensure that sentry calcs are managed properly 
 
 */
 
 // ----- setup ----- 
-// systemChat "RUNNING - spawn_bluforSentriesbaseSpawnContainer";
+// systemChat "RUNNING - spawn_bluforSentriesBaseSpawnContainer";
 private ["_spawnPoint", "_spawnDirection", "_wallType", "_baseType"];
 _spawnPoint = param[0];
 _spawnDirection = param[1];
@@ -21,6 +26,7 @@ switch (_baseType) do {
 	case "supply": { RGG_Supply_Sentries = RGG_Supply_Sentries + 1; publicVariable "RGG_Supply_Sentries"; };
 	case "barracks": { RGG_Barracks_Sentries = RGG_Barracks_Sentries + 1; publicVariable "RGG_Barracks_Sentries"; };
 	case "medical": { RGG_Medical_Sentries = RGG_Medical_Sentries + 1; publicVariable "RGG_Medical_Sentries"; };
+	case "workshop": { RGG_Workshop_Sentries = RGG_Workshop_Sentries + 1; publicVariable "RGG_Workshop_Sentries"; };
 	// case "value": { };
 	// case "value": { };
 	default { systemChat format ["ERROR: _baseType switch: %1", _baseType]; };
@@ -67,9 +73,24 @@ switch (_wallType) do {
 
 		_unit1 addEventHandler ["Killed", {
 			params ["_unit", "_killer", "_instigator", "_useEffects"];
+
+			_sentryData = _unit getVariable "sentryAlive";
+
+			_block = _sentryData select 0;
+			_dir = _sentryData select 1;
+			_pos = _sentryData select 2;
+			_baseType = _sentryData select 3;
+
 			systemChat format ["A %1 WALL SENTRY IS DEAD", _baseType];
-			RGG_Barracks_Sentries = RGG_Barracks_Sentries - 1;
-			publicVariable "RGG_Barracks_Sentries";
+
+			switch (_baseType) do {
+				case "supply": { RGG_Supply_Sentries = RGG_Supply_Sentries - 1; publicVariable "RGG_Supply_Sentries"; };
+				case "barracks": { RGG_Barracks_Sentries = RGG_Barracks_Sentries - 1; publicVariable "RGG_Barracks_Sentries"; };
+				case "medical": { RGG_Medical_Sentries = RGG_Medical_Sentries - 1; publicVariable "RGG_Medical_Sentries"; };
+				case "workshop": { RGG_Workshop_Sentries = RGG_Workshop_Sentries - 1; publicVariable "RGG_Workshop_Sentries"; };
+				default { systemChat "Error / Switch _baseType invalid"; };
+			};
+
 			[_unit] spawn RGGc_fnc_count_bluforSentryRespawnCheck;
 		}];
 
@@ -104,9 +125,24 @@ switch (_wallType) do {
 
 		_unit1 addEventHandler ["Killed", {
 			params ["_unit", "_killer", "_instigator", "_useEffects"];
+
+			_sentryData = _unit getVariable "sentryAlive";
+
+			_block = _sentryData select 0;
+			_dir = _sentryData select 1;
+			_pos = _sentryData select 2;
+			_baseType = _sentryData select 3;
+
 			systemChat format ["A %1 TOWER SENTRY IS DEAD", _baseType];
-			RGG_Barracks_Sentries = RGG_Barracks_Sentries - 1; // NOTE HERE - everything goes to Barracks???? This needs to better reflect the base type -- ADDRESS THIS 
-			publicVariable "RGG_Barracks_Sentries";
+
+			switch (_baseType) do {
+				case "supply": { RGG_Supply_Sentries = RGG_Supply_Sentries - 1; publicVariable "RGG_Supply_Sentries"; };
+				case "barracks": { RGG_Barracks_Sentries = RGG_Barracks_Sentries - 1; publicVariable "RGG_Barracks_Sentries"; };
+				case "medical": { RGG_Medical_Sentries = RGG_Medical_Sentries - 1; publicVariable "RGG_Medical_Sentries"; };
+				case "workshop": { RGG_Workshop_Sentries = RGG_Workshop_Sentries - 1; publicVariable "RGG_Workshop_Sentries"; };
+				default { systemChat "Error / Switch _baseType invalid"; };
+			};
+
 			[_unit] spawn RGGc_fnc_count_bluforSentryRespawnCheck;
 		}];
 
@@ -150,9 +186,24 @@ switch (_wallType) do {
 
 		_unit1 addEventHandler ["Killed", {
 			params ["_unit", "_killer", "_instigator", "_useEffects"];
+
+			_sentryData = _unit getVariable "sentryAlive";
+	
+			_block = _sentryData select 0;
+			_dir = _sentryData select 1;
+			_pos = _sentryData select 2;
+			_baseType = _sentryData select 3;
+
 			systemChat format ["A %1 CORNER SENTRY IS DEAD", _baseType];
-			RGG_Barracks_Sentries = RGG_Barracks_Sentries - 1;
-			publicVariable "RGG_Barracks_Sentries";
+
+			switch (_baseType) do {
+				case "supply": { RGG_Supply_Sentries = RGG_Supply_Sentries - 1; publicVariable "RGG_Supply_Sentries"; };
+				case "barracks": { RGG_Barracks_Sentries = RGG_Barracks_Sentries - 1; publicVariable "RGG_Barracks_Sentries"; };
+				case "medical": { RGG_Medical_Sentries = RGG_Medical_Sentries - 1; publicVariable "RGG_Medical_Sentries"; };
+				case "workshop": { RGG_Workshop_Sentries = RGG_Workshop_Sentries - 1; publicVariable "RGG_Workshop_Sentries"; };
+				default { systemChat "Error / Switch _baseType invalid"; };
+			};
+
 			[_unit] spawn RGGc_fnc_count_bluforSentryRespawnCheck;
 		}];
 
