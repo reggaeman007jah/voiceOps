@@ -64,7 +64,6 @@ switch (_baseType) do {
 		} else {
 			systemChat "SENTRY CANNOT RESPAWN AT BARRACKS - NOT ENOUGH FOOD ............";
 			RGG_sentryQueue pushBack [_block, _dir, _pos, _baseType];
-			
 		};
 	};
 	case "medical": {
@@ -73,8 +72,22 @@ switch (_baseType) do {
 			systemChat "MEDICAL SENTRY RESPAWNING ............";
 			sleep 5;
 			RGG_Medical_Food = RGG_Medical_Food - 1;
-			publicVariable "RGG_Barracks_Food";
+			publicVariable "RGG_Medical_Food";
 			systemChat format ["There are currently %1 Sentries at the Medical FOB", RGG_Medical_Sentries];
+			// systemChat format ["Med-Base Food Supplies: %1", RGG_Medical_Food];
+		} else {
+			systemChat "SENTRY CANNOT RESPAWN AT MEDBASE - NOT ENOUGH FOOD ............";
+			RGG_sentryQueue pushBack [_block, _dir, _pos, _baseType];
+		};
+	};
+	case "workshop": {
+		if (RGG_Workshop_Food >= 1) then {
+			[_block, _dir, _pos, _baseType] call RGGs_fnc_spawn_bluforSentries;
+			systemChat "WORKSHOP SENTRY RESPAWNING ............";
+			sleep 5;
+			RGG_Workshop_Food = RGG_Workshop_Food - 1;
+			publicVariable "RGG_Workshop_Food";
+			systemChat format ["There are currently %1 Sentries at the Workshop FOB", RGG_Workshop_Sentries];
 			// systemChat format ["Med-Base Food Supplies: %1", RGG_Medical_Food];
 		} else {
 			systemChat "SENTRY CANNOT RESPAWN AT MEDBASE - NOT ENOUGH FOOD ............";

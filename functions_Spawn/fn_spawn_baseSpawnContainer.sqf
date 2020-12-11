@@ -37,7 +37,6 @@ sleep 5;
 
 if (!SUPPLY) then {
 	_container = "B_Slingload_01_Cargo_F" createVehicle [0,0];  
-	systemChat "spawning blockriser for container 1";
 	[_container, [4084,10273,0], 0] spawn RGGe_fnc_effects_blockRiser;
 } else {
 	if (!BARRACKS) then {
@@ -52,7 +51,7 @@ if (!SUPPLY) then {
 				_container = "B_Slingload_01_Fuel_F" createVehicle [0,0];  
 				[_container, [4084,10273,0], 0] spawn RGGe_fnc_effects_blockRiser;
 			} else {
-				systemChat "Note: Well done ! No bases left to build";
+				systemChat "Note: Well done ! No more bases left to build";
 			};
 		};
 	};
