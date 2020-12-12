@@ -165,6 +165,16 @@ execVM "eventHandlers\slingLoadMonitor.sqf";
 // ----- Start GUI calcs -----
 execVM "dialogs\guiCalcs.sqf";
 
+// ----- local attacks -----
+// this is used to check whether there are any local bases that will stage attacks 
+LOCALATTACKS = true; // will be false when all 9 local opfor camps have been destroyed
+// this ensures only one at any one time 
+// LOCALATTACKINPROG = false;
+// this holds all relevant enemy camps, by holding their position 
+RGG_potentialEnemyCamps = [];
+// this holds enemy camp positions = when 9, job is done 
+RGG_destroyedEnemyCamps = [];
+
 // ----- Garbage Removal -----
 // very crude system of deletion - this should be improved to only apply to areas where players are not close by 
 while {true} do {

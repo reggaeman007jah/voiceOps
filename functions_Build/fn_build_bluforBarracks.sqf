@@ -141,6 +141,7 @@ _downwashWall8 = _downwashWall1 getPos [35,90];
 
 _helipad = _genesisPos getPos [51,180];
 
+// creates enemy base close by 
 [_heliPad] call RGGs_fnc_spawn_opforCamp;
 
 // -------------------------------------------------------------------------------------------

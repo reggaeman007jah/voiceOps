@@ -6,6 +6,7 @@ Ensure that camps to not spawn near existing base locations
 
 notes:
 myPlaces = selectBestPlaces [position player, 50, "meadow + 2*hills", 1, 5];
+param 0 = the local base location that opfor will try to rush 
 
 */
 systemChat "RUNNING - spawn_opforCamp";
@@ -90,3 +91,31 @@ sleep 2;
 systemChat format ["Camp Items: %1", _campItems];
 _noOfCampItems = count _campItems;
 systemChat format ["No. of Camp Items: %1", _noOfCampItems];
+
+// next we need to spawn in opfor, and send to nearest base (location of which is the first arg of the fnc)
+
+/*
+check if base is alive 
+decde on a force size 
+spawn units 
+send them to near base location 
+we should also check that no other main attack is happening 
+so, a design decision here - should there be only one big attack on any base at any one time?
+for now, yes!
+Also, work out direction the camp is in relation the the base target, and include an intel item 
+this intel item should state incoming enemy from x direction 
+Consider also counting number of assaults from each camp, so the report can say 
+"we are being attacked for the nth time from the south east"
+also consider should each attack size increase until camp destroyed 
+*/
+
+// LOCALATTACK = true; // ensures no duplicate attacks, which would hurt perf 
+
+// // for now, we will simply randomise the enemy strength 
+// _enemyStrength = selectRandom [10, 20, 30];
+// [_enemyStrength, _campSitePos] call RGGs_fnc_spawn_opforCampAttackers;
+
+/*
+rethink - we need a regular check to see which bases are active, and which camps are not detroyed
+
+*/
