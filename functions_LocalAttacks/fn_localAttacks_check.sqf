@@ -30,6 +30,7 @@ while {LOCALATTACKS} do {
 		LOCALATTACK = false;
 		// exitWith {};
 	} else {
+		systemChat "CHECKING FOR LOCAL ATTACKS";
 		// decide which live base should be attacked and has a base nearby 
 		// to do this we see which bases are in the relevant canididate array 
 		_candidates = count RGG_potentialEnemyCamps;
