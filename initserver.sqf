@@ -45,6 +45,7 @@ RADAR = false; // Romeo
 // ----- this holds any sentry units waiting to spawn in (but can't due to lack of base food) -----
 RGG_sentryQueue = []; // holds sentry respawn data 
 RGG_supplyQueue = []; // holds supply respawn data 
+RESPAWNQUEUE = false // this tracks whether the sentry respawn system is active 
 
 // --- Base Stats -----
 // these record base stats for food, fuel ammo and defences 

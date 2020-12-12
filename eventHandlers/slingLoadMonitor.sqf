@@ -92,7 +92,11 @@ heli1 addEventHandler ["RopeBreak", {
 	// food 
 	if (typeOf _object2 == "I_supplyCrate_F") then { 
 		systemChat "Supplies Deployed"; 
-		[] spawn RGGs_fnc_spawn_bluforSentryRespawnQueue; // triggers the sentry respawn checking process 
+		// here we apply a check to see if the respawn system is active (processing respawns)
+		// we only call this is the queue is empty 
+		if (!RESPAWNQUEUE) then {
+			[] spawn RGGs_fnc_spawn_bluforSentryRespawnQueue; // triggers the sentry respawn checking process 
+		};
 		[_object2, "I_supplyCrate_F"] spawn RGGc_fnc_count_bluforBaseSupplies; 
 		heli1 removeEventHandler ["RopeBreak", 0]; // otherwise this triggers 4 times!
 		execVM "eventHandlers\slingLoadMonitor.sqf"; // reloads EH to the designated heli - currently "heli1"

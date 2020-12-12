@@ -9,7 +9,7 @@ To-do:
 */
 
 // -------------------------------------------------------------------------------------------
-systemChat "RUNNING - count_bluforSentryRespawnQueue";
+systemChat "RUNNING - count_bluforSentryRespawnCheck";
 
 // params ["_unit", "_baseType"];
 
