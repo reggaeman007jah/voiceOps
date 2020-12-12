@@ -2,8 +2,7 @@
 The existing system of base creation is simple - if you deploy base 1, a containter for base 2 will appear ready for pickup 
 However we need to build a level system to ensure bases are not spammed 
 
-Bases will be deployed in levels 
-
+Bases will be deployed in levels:
 Level 1 = Supply Depot, Barracks and Medical 
 Level 2 = Workshop, Heli, Car  
 Level 3 TBC 

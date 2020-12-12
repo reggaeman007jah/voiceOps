@@ -1,4 +1,6 @@
 /*
+NOTE - currently not in use 
+
 This function generates minimum base ground crew  
 
 requires: spawn location 
