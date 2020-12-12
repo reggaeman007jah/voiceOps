@@ -15,6 +15,9 @@ each camp creation pushes a camp pos to a global array
 each camp destroyed deletes that pos from the candidates array and pushes to the destroyed camps array 
 when destroyed camps == 9, job is done 
 
+_campData = [_heliPad, _campSitePos, "barracks"];
+RGG_potentialEnemyCamps pushBack _campData;
+
 */
 
 // so if we accept that there might be an active enemy base out there 
@@ -33,8 +36,9 @@ while {LOCALATTACKS} do {
 		if (_candidates > 0) then {
 			_attackingCamp = selectRandom RGG_potentialEnemyCamps;
 			_campPos = _attackingCamp select 0;
-			_target = _attackingCamp select 1;
-			[_campPos, _target] call RGGs_fnc_LocalAttacks_generate;
+			_targetPos = _attackingCamp select 1;
+			_target = _attackingCamp select 2;
+			[_campPos, _targetPos, _target] call RGGs_fnc_LocalAttacks_generate;
 		};
 	};
 	sleep 360;

@@ -4,27 +4,30 @@ This function will create a small enemy base camp where opfor will spawn for as 
 To-do:
 Ensure that camps to not spawn near existing base locations 
 
+create an item that kills the camp if destroyed 
+
 notes:
 myPlaces = selectBestPlaces [position player, 50, "meadow + 2*hills", 1, 5];
 param 0 = the local base location that opfor will try to rush 
 
 */
 systemChat "RUNNING - spawn_opforCamp";
-private ["_spawnPoint", "_campSize"];
+// private ["_spawnPoint", "_campSize"];
+private ["_spawnPoint"];
 
 _spawnPoint = param[0];
-_campSize = param[1];
+// _campSize = param[1];
 
-// finds a nice little wooded area not too far from created base 
-_rootPos = [_spawnPoint, 600, 1000, 3, 0] call BIS_fnc_findSafePos;
-_campSite = selectBestPlaces [_rootPos, 200, "forest", 1, 1];
-_campSitePos = ((_campSite select 0) select 0);
+// // finds a nice little wooded area not too far from created base 
+// _rootPos = [_spawnPoint, 600, 1000, 3, 0] call BIS_fnc_findSafePos;
+// _campSite = selectBestPlaces [_rootPos, 200, "forest", 1, 1];
+// _campSitePos = ((_campSite select 0) select 0);
 
-// comment out this marker section when ready to ship 
-_campSiteMarker = createMarker ["_campSite", _campSitePos];
-_campSiteMarker setMarkerShape "ELLIPSE";
-_campSiteMarker setMarkerColor "ColorRed";
-_campSiteMarker setMarkerSize [15, 15];
+// // comment out this marker section when ready to ship 
+// _campSiteMarker = createMarker ["_campSite", _campSitePos];
+// _campSiteMarker setMarkerShape "ELLIPSE";
+// _campSiteMarker setMarkerColor "ColorRed";
+// _campSiteMarker setMarkerSize [15, 15];
 
 // create camp site -----------------------------------------------------
 _campItems = [];
