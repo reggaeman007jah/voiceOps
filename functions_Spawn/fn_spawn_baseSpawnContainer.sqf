@@ -1,8 +1,8 @@
 /*
-This function generates spawns the correct crate (and eventually spawn truck) in the correct order 
+This function generates spawns the correct crate (and eventually spawn truck) in the correct order, at the designated spawn point 
 
-It will respond to the base bool 
-
+Notes:
+It checks the base bool 
 Using an if statement will ensure we work down the list, which will be useful if you need to recreate a destroyed base 
 
 Order:
@@ -32,8 +32,8 @@ Training Camp		Outpost Tango  	(Oscar Tango / Camp Tango / Tango Down)
 Radar Station 		Outpost Romeo 	(Oscar Romeo / Camp Romeo / Skynet)
 
 */
+
 systemChat "RUNNING - spawn_baseSpawnContainer";
-sleep 5;
 
 if (!SUPPLY) then {
 	// create supply depot spawn container 
@@ -60,6 +60,3 @@ if (!SUPPLY) then {
 		};
 	};
 };
-
-// _wallBlock = "Land_SilageWall_01_l_5m_F" createVehicle _mapCorner;  
-// [_wallBlock, _downwashWall7, 0] spawn RGGb_fnc_build_blockManager;
