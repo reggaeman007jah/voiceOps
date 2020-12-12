@@ -1,13 +1,14 @@
 /*
-This function creates wall and tower sentries
+This function creates wall, corner and tower sentries
 
+Note:
 Is called from:
-	when bases are bening built 
+	when bases are being built 
 	TBC ??
+	it is run once per sentry
 
 Takes location and direction and block type (for height) as args 
 Also takes base type as an arg - this is to ensure that sentry calcs are managed properly 
-
 */
 
 // ----- setup ----- 
@@ -20,8 +21,7 @@ _baseType = param[3];
 
 
 // ----- function -----
-
-// calculate new sentry score for base in question
+// this first switch simply calculates the new sentry score for the base in question
 switch (_baseType) do {
 	case "supply": { RGG_Supply_Sentries = RGG_Supply_Sentries + 1; publicVariable "RGG_Supply_Sentries"; };
 	case "barracks": { RGG_Barracks_Sentries = RGG_Barracks_Sentries + 1; publicVariable "RGG_Barracks_Sentries"; };
@@ -29,9 +29,13 @@ switch (_baseType) do {
 	case "workshop": { RGG_Workshop_Sentries = RGG_Workshop_Sentries + 1; publicVariable "RGG_Workshop_Sentries"; };
 	// case "value": { };
 	// case "value": { };
+	// case "value": { };
+	// case "value": { };
+	// case "value": { };
 	default { systemChat format ["ERROR: _baseType switch: %1", _baseType]; };
 };
 
+// this second switch sets up the sentry, in terms of position (on each block-type) and onKilled EH 
 switch (_wallType) do {
 	case "wall": { 
 		private ["_shift"];
@@ -75,7 +79,6 @@ switch (_wallType) do {
 			params ["_unit", "_killer", "_instigator", "_useEffects"];
 
 			_sentryData = _unit getVariable "sentryAlive";
-
 			_block = _sentryData select 0;
 			_dir = _sentryData select 1;
 			_pos = _sentryData select 2;
@@ -88,12 +91,16 @@ switch (_wallType) do {
 				case "barracks": { RGG_Barracks_Sentries = RGG_Barracks_Sentries - 1; publicVariable "RGG_Barracks_Sentries"; };
 				case "medical": { RGG_Medical_Sentries = RGG_Medical_Sentries - 1; publicVariable "RGG_Medical_Sentries"; };
 				case "workshop": { RGG_Workshop_Sentries = RGG_Workshop_Sentries - 1; publicVariable "RGG_Workshop_Sentries"; };
+				// case "value": { };
+				// case "value": { };
+				// case "value": { };
+				// case "value": { };
+				// case "value": { };
 				default { systemChat "Error / Switch _baseType invalid"; };
 			};
 
 			[_unit] spawn RGGc_fnc_count_bluforSentryRespawnCheck;
 		}];
-
 		deleteVehicle _vrWallBlock;
 	};
 	case "tower": { 
@@ -127,7 +134,6 @@ switch (_wallType) do {
 			params ["_unit", "_killer", "_instigator", "_useEffects"];
 
 			_sentryData = _unit getVariable "sentryAlive";
-
 			_block = _sentryData select 0;
 			_dir = _sentryData select 1;
 			_pos = _sentryData select 2;
@@ -140,12 +146,16 @@ switch (_wallType) do {
 				case "barracks": { RGG_Barracks_Sentries = RGG_Barracks_Sentries - 1; publicVariable "RGG_Barracks_Sentries"; };
 				case "medical": { RGG_Medical_Sentries = RGG_Medical_Sentries - 1; publicVariable "RGG_Medical_Sentries"; };
 				case "workshop": { RGG_Workshop_Sentries = RGG_Workshop_Sentries - 1; publicVariable "RGG_Workshop_Sentries"; };
+				// case "value": { };
+				// case "value": { };
+				// case "value": { };
+				// case "value": { };
+				// case "value": { };				
 				default { systemChat "Error / Switch _baseType invalid"; };
 			};
 
 			[_unit] spawn RGGc_fnc_count_bluforSentryRespawnCheck;
 		}];
-
 		deleteVehicle _vrWallBlock;
 	};
 	case "corner": { 
@@ -188,7 +198,6 @@ switch (_wallType) do {
 			params ["_unit", "_killer", "_instigator", "_useEffects"];
 
 			_sentryData = _unit getVariable "sentryAlive";
-	
 			_block = _sentryData select 0;
 			_dir = _sentryData select 1;
 			_pos = _sentryData select 2;
@@ -201,9 +210,13 @@ switch (_wallType) do {
 				case "barracks": { RGG_Barracks_Sentries = RGG_Barracks_Sentries - 1; publicVariable "RGG_Barracks_Sentries"; };
 				case "medical": { RGG_Medical_Sentries = RGG_Medical_Sentries - 1; publicVariable "RGG_Medical_Sentries"; };
 				case "workshop": { RGG_Workshop_Sentries = RGG_Workshop_Sentries - 1; publicVariable "RGG_Workshop_Sentries"; };
+				// case "value": { };
+				// case "value": { };
+				// case "value": { };
+				// case "value": { };
+				// case "value": { };
 				default { systemChat "Error / Switch _baseType invalid"; };
 			};
-
 			[_unit] spawn RGGc_fnc_count_bluforSentryRespawnCheck;
 		}];
 
