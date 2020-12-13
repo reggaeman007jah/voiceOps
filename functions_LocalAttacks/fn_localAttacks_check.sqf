@@ -23,7 +23,7 @@ RGG_potentialEnemyCamps pushBack _campData;
 // so if we accept that there might be an active enemy base out there 
 // LOCALATTACK bool will be false only when all 9 bases have been destroyed 
 while {LOCALATTACKS} do {
-	
+	sleep 360;
 	// check if any attacks can happen by counting RGG_destroyedEnemyCamps
 	_destroyedCamps = count RGG_destroyedEnemyCamps;
 	if (_destroyedCamps == 9) then {
@@ -39,8 +39,11 @@ while {LOCALATTACKS} do {
 			_campPos = _attackingCamp select 0;
 			_targetPos = _attackingCamp select 1;
 			_target = _attackingCamp select 2;
-			[_campPos, _targetPos, _target] call RGGs_fnc_LocalAttacks_generate;
+			systemChat format ["_campPos: %1, _targetPos: %2, _target: %3", _campPos, _targetPos, _target];
+			systemChat "running Generate fnc";
+			sleep 1;
+			[_campPos, _targetPos, _target] call RGGl_fnc_LocalAttacks_generate;
 		};
 	};
-	sleep 360;
+	
 };

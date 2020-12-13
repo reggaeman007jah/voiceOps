@@ -350,7 +350,7 @@ _barracksDZ setMarkerSize [15, 15];
 // _barracksDZ setMarkerAlpha 0.5;
 
 // systemChat "there is an enemy attack on your barracks FOB";
-[_heliPad] call RGG_fnc_3_spawn_opforUnits;
+// [_heliPad] call RGG_fnc_3_spawn_opforUnits;
 
 // this manages ambient movement within the base
 

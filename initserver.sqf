@@ -45,7 +45,7 @@ RADAR = false; // Romeo
 // ----- this holds any sentry units waiting to spawn in (but can't due to lack of base food) -----
 RGG_sentryQueue = []; // holds sentry respawn data 
 RGG_supplyQueue = []; // holds supply respawn data 
-RESPAWNQUEUE = false // this tracks whether the sentry respawn system is active 
+RESPAWNQUEUE = false; // this tracks whether the sentry respawn system is active 
 
 // --- Base Stats -----
 // these record base stats for food, fuel ammo and defences 
@@ -174,6 +174,8 @@ LOCALATTACKS = true; // will be false when all 9 local opfor camps have been des
 RGG_potentialEnemyCamps = [];
 // this holds enemy camp positions = when 9, job is done 
 RGG_destroyedEnemyCamps = [];
+// run local attacks check 
+[] spawn RGGl_fnc_localAttacks_check;
 
 // ----- Garbage Removal -----
 // very crude system of deletion - this should be improved to only apply to areas where players are not close by 
