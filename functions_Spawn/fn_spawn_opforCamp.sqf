@@ -13,9 +13,13 @@ param 0 = the local base location that opfor will try to rush
 */
 systemChat "RUNNING - spawn_opforCamp";
 // private ["_spawnPoint", "_campSize"];
-private ["_spawnPoint"];
+private ["_spawnPoint", "_campType"];
 
 _spawnPoint = param[0];
+_campType = param[1];
+
+SYSTEMcHAT "test debug....";
+systemChat str _campType;
 // _campSize = param[1];
 
 // // finds a nice little wooded area not too far from created base 
@@ -35,7 +39,9 @@ _random5 = random 5;
 _random3 = random 3;
 
 // tents 
-for "_i" from 1 to _random5 do {
+_tents = _random5 + 4;
+for "_i" from 1 to _tents do {
+	systemChat "Tent Created";
 	_randomDir = random 359;
 	_random30 = random 30;
 	_spawnPos = _campSitePos getPos [_random30, _randomDir];
@@ -105,12 +111,39 @@ this addEventHandler ["Explosion", {
 }];
 */
 
+// _satDish = "SatelliteAntenna_01_Sand_F" createVehicle _spawnPoint;
+// _satDish addEventHandler ["Explosion", {
+// 	params ["_vehicle", "_damage"];
+// 	systemChat "dish was exploded";
+// 	// we now here need to delete this option from the global array 
+// }];
+
+
+
 _satDish = "SatelliteAntenna_01_Sand_F" createVehicle _spawnPoint;
+systemChat format ["ENEMY CAMP CREATED - %1", _campType];
+_satDish setVariable ["baseTarget", [_campType, _campItems], TRUE]; 
+
 _satDish addEventHandler ["Explosion", {
 	params ["_vehicle", "_damage"];
-	systemChat "dish was exploded";
+	_baseData = _vehicle getVariable "baseTarget";
+	_camp = _baseData select 0;
+	_campItems = _baseData select 1;
+	systemChat format ["dish at %1 was exploded", _camp];
+	deleteVehicle _vehicle;
+	// delete camp items 
+	// private _myArray = [1, 2, 3, 4, 5];
+	// { systemChat str _x } forEach _myArray;
+	{
+		deleteVehicle _x;
+	} forEach _campItems;
+	_noOfCampItems = count _campItems;
+	systemChat format ["No. of Camp Items Left: %1", _noOfCampItems];
 	// we now here need to delete this option from the global array 
+	[_camp] call RGGl_fnc_localAttacks_manageDestroyedCamps;
 }];
+
+
 
 /*
 or this:

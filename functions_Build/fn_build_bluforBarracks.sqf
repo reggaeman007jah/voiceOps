@@ -160,7 +160,7 @@ _campData = [_campSitePos, _heliPad, "barracks"];
 RGG_potentialEnemyCamps pushBack _campData;
 
 // creates enemy base items 
-[_campSitePos] call RGGs_fnc_spawn_opforCamp;
+[_campSitePos, "barracks"] call RGGs_fnc_spawn_opforCamp;
 
 // -------------------------------------------------------------------------------------------
 // block creation 
