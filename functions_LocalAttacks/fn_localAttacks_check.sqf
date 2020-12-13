@@ -20,6 +20,8 @@ RGG_potentialEnemyCamps pushBack _campData;
 
 */
 
+// usse this - SatelliteAntenna_01_Sand_F
+
 // so if we accept that there might be an active enemy base out there 
 // LOCALATTACK bool will be false only when all 9 bases have been destroyed 
 while {LOCALATTACKS} do {
@@ -40,7 +42,9 @@ while {LOCALATTACKS} do {
 			_targetPos = _attackingCamp select 1;
 			_target = _attackingCamp select 2;
 			systemChat format ["_campPos: %1, _targetPos: %2, _target: %3", _campPos, _targetPos, _target];
-			systemChat "running Generate fnc";
+			systemChat ".....";
+			_azimuth = _targetPos getDir _campPos;
+			systemChat format ["Enemy approaching from heading: %1", _azimuth];
 			sleep 1;
 			[_campPos, _targetPos, _target] call RGGl_fnc_LocalAttacks_generate;
 		};
