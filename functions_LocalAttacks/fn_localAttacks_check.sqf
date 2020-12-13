@@ -25,9 +25,11 @@ RGG_potentialEnemyCamps pushBack _campData;
 // so if we accept that there might be an active enemy base out there 
 // LOCALATTACK bool will be false only when all 9 bases have been destroyed 
 while {LOCALATTACKS} do {
-	sleep 360;
+	sleep 360; // so as not to trigger immediately on mission start 
+
 	// check if any attacks can happen by counting RGG_destroyedEnemyCamps
 	_destroyedCamps = count RGG_destroyedEnemyCamps;
+	
 	if (_destroyedCamps == 9) then {
 		LOCALATTACK = false;
 		// exitWith {};
@@ -44,10 +46,9 @@ while {LOCALATTACKS} do {
 			systemChat format ["_campPos: %1, _targetPos: %2, _target: %3", _campPos, _targetPos, _target];
 			systemChat ".....";
 			_azimuth = _targetPos getDir _campPos;
-			systemChat format ["Enemy approaching from heading: %1", _azimuth];
+			systemChat format ["Command, this is %1 - Enemy approaching from heading: %2", _target, _azimuth];
 			sleep 1;
 			[_campPos, _targetPos, _target] call RGGl_fnc_LocalAttacks_generate;
 		};
-	};
-	
+	};	
 };

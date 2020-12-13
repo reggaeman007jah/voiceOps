@@ -95,6 +95,32 @@ systemChat format ["Camp Items: %1", _campItems];
 _noOfCampItems = count _campItems;
 systemChat format ["No. of Camp Items: %1", _noOfCampItems];
 
+/*
+now run check on a loop to see if sat-dish is alive - when not alive, delete all camp items 
+send signel (somehow) to global array to delete this 
+
+or - EH on the object!? Let's try this:
+this addEventHandler ["Explosion", {
+	params ["_vehicle", "_damage"];
+}];
+*/
+
+_satDish = "SatelliteAntenna_01_Sand_F" createVehicle _spawnPoint;
+_satDish addEventHandler ["Explosion", {
+	params ["_vehicle", "_damage"];
+	systemChat "dish was exploded";
+	// we now here need to delete this option from the global array 
+}];
+
+/*
+or this:
+this addEventHandler ["HandleDamage", {
+	params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint"];
+}];
+
+*/
+
+
 // next we need to spawn in opfor, and send to nearest base (location of which is the first arg of the fnc)
 
 /*

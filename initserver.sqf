@@ -177,6 +177,16 @@ RGG_destroyedEnemyCamps = [];
 // run local attacks check 
 [] spawn RGGl_fnc_localAttacks_check;
 
+// test satdish EH 
+_testPos = potition player getPos [20,0];
+// _downwashWall1 = _downwashWall1 getPos [20,270];
+_satDish = "SatelliteAntenna_01_Sand_F" createVehicle _testPos;
+_satDish addEventHandler ["Explosion", {
+	params ["_vehicle", "_damage"];
+	systemChat "dish was exploded";
+	// we now here need to delete this option from the global array 
+}];
+
 // ----- Garbage Removal -----
 // very crude system of deletion - this should be improved to only apply to areas where players are not close by 
 while {true} do {
