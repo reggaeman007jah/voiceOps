@@ -15,6 +15,7 @@ _rootPos = getPos _object2; // reference to the position of the item dropped
 // [_object2] spawn RGGb_fnc_build_blockSinker;
 [_object2] spawn RGGe_fnc_effects_blockSinker;
 
+// barracks does marker stuff here - why is this different?
 
 // -------------------------------------------------------------------------------------------
 // block and asset positions 
@@ -79,6 +80,27 @@ _officePos = _medicHutPos getPos [7,270];
 _medicTentPos = _heliPadPos getPos [18,0];
 _medicTentPos = _medicTentPos getPos [3,90];
 _medicTentPos = _medicTentPos getPos [10,270];
+
+// -------------------------------------------------------------------------------------------
+// generates enemy camp 
+// finds a nice little wooded area not too far from the base 
+_rootPos = [_heliPadPos, 600, 1200, 3, 0] call BIS_fnc_findSafePos;
+_campSite = selectBestPlaces [_rootPos, 400, "forest", 1, 1];
+_campSitePos = ((_campSite select 0) select 0);
+
+// comment out this marker section when ready to ship 
+_campSiteMarker = createMarker ["_campSite", _campSitePos];
+_campSiteMarker setMarkerShape "ELLIPSE";
+_campSiteMarker setMarkerColor "ColorRed";
+_campSiteMarker setMarkerSize [15, 15];
+// comment out this marker section when ready to ship 
+
+// load data into global condidates array
+_campData = [_campSitePos, _heliPadPos, "medical"];
+RGG_potentialEnemyCamps pushBack _campData; 
+
+// creates enemy base items 
+[_campSitePos, "medical"] call RGGs_fnc_spawn_opforCamp;
 
 // -------------------------------------------------------------------------------------------
 // block creation 

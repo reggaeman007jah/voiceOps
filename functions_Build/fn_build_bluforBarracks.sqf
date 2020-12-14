@@ -142,7 +142,7 @@ _downwashWall8 = _downwashWall1 getPos [35,90];
 _helipad = _genesisPos getPos [51,180];
 
 
-
+// -------------------------------------------------------------------------------------------
 // generates enemy camp 
 // finds a nice little wooded area not too far from the base 
 _rootPos = [_helipad, 600, 1200, 3, 0] call BIS_fnc_findSafePos;
@@ -156,8 +156,9 @@ _campSiteMarker setMarkerColor "ColorRed";
 _campSiteMarker setMarkerSize [15, 15];
 // comment out this marker section when ready to ship 
 
+// load data into global condidates array
 _campData = [_campSitePos, _heliPad, "barracks"];
-RGG_potentialEnemyCamps pushBack _campData;
+RGG_potentialEnemyCamps pushBack _campData; 
 
 // creates enemy base items 
 [_campSitePos, "barracks"] call RGGs_fnc_spawn_opforCamp;
