@@ -13,6 +13,8 @@ params [_campPos, _targetPos, _target];
 _opforGrp = createGroup east;
 _initialOpforInfiPresence = 30; // hardcoded opfor force value for now 
 
+systemChat format ["Enemy is attacking %1 with a force size of %2", _target, _initialOpforInfiPresence];
+
 for "_i" from 1 to _initialOpforInfiPresence do {
 	_rndtype = selectRandom [
 		"O_G_Soldier_A_F",

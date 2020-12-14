@@ -98,12 +98,12 @@ _fuel4Pos = _fuel2Pos getPos [3,0];
 // -------------------------------------------------------------------------------------------
 // generates enemy camp 
 // finds a nice little wooded area not too far from the base 
-_rootPos = [_heliPadPos, 600, 1200, 3, 0] call BIS_fnc_findSafePos;
-_campSite = selectBestPlaces [_rootPos, 400, "forest", 1, 1];
+_campRootPos = [_heliPadPos, 600, 1200, 3, 0] call BIS_fnc_findSafePos;
+_campSite = selectBestPlaces [_campRootPos, 400, "forest", 1, 1];
 _campSitePos = ((_campSite select 0) select 0);
 
 // comment out this marker section when ready to ship 
-_campSiteMarker = createMarker ["_campSite", _campSitePos];
+_campSiteMarker = createMarker ["_campSiteSupply", _campSitePos];
 _campSiteMarker setMarkerShape "ELLIPSE";
 _campSiteMarker setMarkerColor "ColorRed";
 _campSiteMarker setMarkerSize [15, 15];

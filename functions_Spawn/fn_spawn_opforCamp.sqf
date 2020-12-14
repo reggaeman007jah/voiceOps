@@ -48,6 +48,7 @@ for "_i" from 1 to _tents do {
 	_campItem = createVehicle ["Land_TentDome_F", _spawnPos];
 	_campItem setDir _randomDir;
 	_campItems pushback _campItem;
+	sleep 1;
 };
 
 // barrels and other camp stuff 
