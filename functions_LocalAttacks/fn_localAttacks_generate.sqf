@@ -11,8 +11,7 @@ params [_campPos, _targetPos, _target];
 // inform players of _target activity 
 
 _opforGrp = createGroup east;
-_initialOpforInfiPresence = 30; // hardcoded opfor force value for now 
-
+_initialOpforInfiPresence = selectRandom [10, 20, 30];
 systemChat format ["Enemy is attacking %1 with a force size of %2", _target, _initialOpforInfiPresence];
 
 for "_i" from 1 to _initialOpforInfiPresence do {

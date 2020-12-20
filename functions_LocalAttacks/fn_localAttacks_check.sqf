@@ -32,23 +32,32 @@ while {LOCALATTACKS} do {
 	
 	if (_destroyedCamps == 9) then {
 		LOCALATTACK = false;
-		// exitWith {};
+		// exitWith {}; // ?
 	} else {
 		systemChat "CHECKING FOR LOCAL ATTACKS";
-		// decide which live base should be attacked and has a base nearby 
-		// to do this we see which bases are in the relevant canididate array 
-		_candidates = count RGG_potentialEnemyCamps;
-		if (_candidates > 0) then {
-			_attackingCamp = selectRandom RGG_potentialEnemyCamps;
-			_campPos = _attackingCamp select 0;
-			_targetPos = _attackingCamp select 1;
-			_target = _attackingCamp select 2;
-			systemChat format ["_campPos: %1, _targetPos: %2, _target: %3", _campPos, _targetPos, _target];
-			systemChat ".....";
-			_azimuth = _targetPos getDir _campPos;
-			systemChat format ["Command, this is %1 - Enemy approaching from heading: %2", _target, _azimuth];
-			sleep 1;
-			[_campPos, _targetPos, _target] call RGGl_fnc_LocalAttacks_generate;
+		// first check number of opfor - as if too many, skip the spawn this time around 
+		_totEnemy = { alive _x && side _x == EAST } count allUnits;
+		systemChat format ["Number of OPFOR: %1", _totEnemy];
+
+		if (_totEnemy <= 40) then {
+			// decide which live base should be attacked and has a base nearby 
+			// to do this we see which bases are in the relevant canididate array 
+			_candidates = count RGG_potentialEnemyCamps;
+			if (_candidates > 0) then {
+				_attackingCamp = selectRandom RGG_potentialEnemyCamps;
+				_campPos = _attackingCamp select 0;
+				_targetPos = _attackingCamp select 1;
+				_target = _attackingCamp select 2;
+				systemChat format ["_campPos: %1, _targetPos: %2, _target: %3", _campPos, _targetPos, _target];
+				systemChat ".....";
+				_azimuth = _targetPos getDir _campPos;
+				systemChat format ["Command, this is %1 - Enemy approaching from heading: %2", _target, _azimuth];
+				sleep 1;
+				[_campPos, _targetPos, _target] call RGGl_fnc_LocalAttacks_generate;
+			};
+		} else {
+			systemChat "DEBUG - ATTACK SKIPPED AS THERE ARE ALREADY TOO MANY ALIVE OPFOR";
+			systemChat str _totEnemy;
 		};
 	};	
 };

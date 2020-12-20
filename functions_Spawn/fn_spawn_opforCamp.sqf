@@ -18,7 +18,7 @@ private ["_spawnPoint", "_campType"];
 _spawnPoint = param[0];
 _campType = param[1];
 
-SYSTEMcHAT "test debug....";
+systemChat "test debug....";
 systemChat str _campType;
 // _campSize = param[1];
 
@@ -130,7 +130,7 @@ _satDish addEventHandler ["Explosion", {
 	_baseData = _vehicle getVariable "baseTarget";
 	_camp = _baseData select 0;
 	_campItems = _baseData select 1;
-	systemChat format ["dish at %1 was exploded", _camp];
+	systemChat format ["debug - dish at %1 was destroyed", _camp];
 	deleteVehicle _vehicle;
 	// delete camp items 
 	// private _myArray = [1, 2, 3, 4, 5];
